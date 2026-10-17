@@ -106,7 +106,8 @@ def download_profile(session, ident, cache, offline=False, refresh=False, timeou
             resp = session.get(url, timeout=(5, timeout))
             resp.raise_for_status()
             html = resp.content.decode(resp.encoding or "utf-8", errors="replace")
-            if len(html) < 200 or "Date of birth" not in html:
+            visible_text = BeautifulSoup(html, "html.parser").get_text(" ", strip=True).lower()
+            if len(html) < 200 or "date of birth" not in visible_text:
                 raise ValueError("Not a usable biography")
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(html, encoding="utf-8")
