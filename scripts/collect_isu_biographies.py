@@ -26,6 +26,14 @@ DATE_PATTERN = re.compile(r"\b([0-3]?\d\.[01]?\d\.(?:19|20)\d{2})\b")
 BIRTH_LABEL = re.compile(r"\bDate of birth\s*:\s*", re.I)
 PLACE_LABEL = re.compile(r"\bPlace of birth\s*:\s*", re.I)
 PLACE_END = re.compile(r"\b(?:Height|Home town|Profession|Hobbies|Start sk\.|Coach|Internet / Social Media|Former Partners|Practice|Music|Personal Best|Season Best|International Competition)\s*:", re.I)
+# Older profiles sometimes omit Place of birth entirely. Stop reading the
+# name at the next metadata field even if that field has no colon.
+MISSING_PLACE_NAME_END = re.compile(
+    r"\b(?:Height\s*:|Home town\s*:|Profession\s*:|Hobbies\s*:|"
+    r"Start sk\.\s*:|Coach\s*:|Internet / Social Media|Former Partners\s*:|"
+    r"Practice\b|Music\b|Personal Best\b|Season Best\b|International Competition\b)",
+    re.I,
+)
 PROFILE_FIELDS = ["profile_id","profile_url","status","sections_found","exact_matches","error","cached"]
 CAND_FIELDS = ["profile_id","profile_url","side_on_profile","observed_name","person_id","roster_name","date_of_birth","place_of_birth_raw","status","name_match_method"]
 
@@ -50,7 +58,10 @@ def parse_bio(html):
         end = matches[i + 1].start() if i + 1 < len(matches) else len(flat)
         section = flat[m.end():end]
         place = PLACE_LABEL.search(section)
-        first = section[:place.start()] if place else section[:180]
+        # No Place of birth is not the same as no name. Stop at the next
+        # biographical/score field, rather than swallowing the whole page.
+        boundary = MISSING_PLACE_NAME_END.search(section) if not place else None
+        first = section[:place.start()] if place else section[:boundary.start() if boundary else 180]
         dob = DATE_PATTERN.search(first)
         name = clean(first[dob.end():]) if dob else ""
         # Preserve the name from the official profile. A real surname may
@@ -207,6 +218,10 @@ def run(args):
                "profiles_incomplete": sum(x["status"] == "incomplete" for x in inventory),
                "profiles_failed": sum(x["status"] == "error" for x in inventory),
                "birth_candidates": len(candidates),
+               "birth_dates_present": sum(bool(x["date_of_birth"]) for x in candidates),
+               "birth_places_present": sum(bool(x["place_of_birth_raw"]) for x in candidates),
+               "birth_names_present": sum(bool(x["observed_name"]) for x in candidates),
+               "needs_review_count": sum(x["status"] == "needs_review" for x in candidates),
                "exact_name_and_date_matches": sum(x["status"] == "exact_name_match" for x in candidates),
                "roster_confirmed_country_suffix_matches": sum(
                    x["status"] == "exact_name_match"

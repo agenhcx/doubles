@@ -75,6 +75,27 @@ class BiographyParsingTests(unittest.TestCase):
         self.assertEqual(match_profile_name("Kaitlyn WEAVER CAN",roster),
                          ("","","ambiguous"))
 
+    def test_missing_second_birthplace_keeps_name_from_older_profile(self):
+        # The real ISU profile isufs00104674 has a DOB and name for Min CHOE
+        # but no Place of birth row. The next field is "Personal Best" (no colon).
+        html="""<html><body>Ice Dance
+        Date of birth: 26.11.1989 Yong Myong PHYO PRK
+        Place of birth: Pyongyang Height: 159 cm
+        Date of birth: 18.11.1990 Min CHOE PRK
+        Personal Best Total Score 91.64 05.08.2018
+        ISU CS Asian Open Figure Skating Trophy 2018
+        </body></html>"""
+        rows=parse_bio(html)
+        self.assertEqual(len(rows),2)
+        self.assertEqual(rows[0]["observed_name"],"Yong Myong PHYO PRK")
+        self.assertEqual(rows[1]["observed_name"],"Min CHOE PRK")
+        self.assertEqual(rows[1]["date_of_birth"],"1990-11-18")
+        self.assertEqual(rows[1]["place_of_birth_raw"],"")
+        self.assertEqual(rows[1]["status"],"parsed")
+        roster={"choe min":{("p_choe","Min CHOE")}}
+        self.assertEqual(match_profile_name(rows[1]["observed_name"], roster),
+                         ("p_choe","Min CHOE","roster_confirmed_country_suffix"))
+
     def test_invalid_date_does_not_become_a_candidate(self):
         html="""<html>Ice Dance Date of birth: 31.02.2001 Person ALPHA
         Place of birth: Canada Height: 170 cm
