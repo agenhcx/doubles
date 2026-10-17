@@ -67,7 +67,7 @@ python .\scripts\run_all.py
 - 双人滑成人组 `wrpairs.htm`
 - 青年冰舞 `wrjuniordance.htm`
 - 青年双人滑 `wrjuniorpairs.htm`
-- 8个已经结束的赛季、每季4张榜单，预期**32个页面**（部分历史年度可能无法提供某类榜单，会明确报告）。
+- 8个已经结束的赛季，实际存在**22张独立排名页面**：成年组16张（2018–19至2025–26），青年组6张（2023–24至2025–26）。青年组独立世界排名由ISU在2023–24赛季才设立；2018–19至2022–23的10张青年组页面**不适用**，不属于下载失败。来源：https://isu-skating.com/en/news/isu-world-standings-and-isu-seasons-world-ranking-for-single-pair-skating-and-ice-dance/
 
 **重要限制：赛季排名不是全部报名名单。** 只会覆盖在赛季排名体系内取得积分的组合。下一轮需要补ISU各站 Start Lists/Results 以及国家级赛事。排行中的赛季积分不是场次，也**不得**用来增加之前的 `identified_event_count`。
 
@@ -121,7 +121,7 @@ python -m unittest discover -s tests -v
 
 采集及合并后，检查：
 
-- `output/isu/manifest.json`：32张页面的实际成功数量、缺口、错误信息。
+- `output/isu/manifest.json`：22张历史上实际存在的排名页面的成功／失败数，另记10张2023–24以前不适用的青年组页面。
 - `output/isu/source_inventory.csv`：逐网页的返回状态与原始来源。
 - `output/isu/isu_season_roster.csv`：赛季榜单原始记录。
 - `output/master/couples_master.csv`：从v4基线合并后的全部搭档。
