@@ -61,14 +61,19 @@ class ProxyIsolationTests(unittest.TestCase):
             self.assertEqual(rc, 2)
             self.assertEqual(fake.call_count, 1)
             manifest = json.loads((Path(root) / "out/manifest.json").read_text())
-            self.assertEqual(manifest["source_pages_requested"], 8)
+            # Two pre-2023/24 seasons contain four senior sources only.
+            # All four junior sources are inapplicable and excluded from jobs.
+            self.assertEqual(manifest["source_pages_requested"], 4)
+            self.assertEqual(manifest["source_pages_not_applicable"], 4)
             self.assertEqual(manifest["source_pages_attempted"], 1)
-            self.assertEqual(manifest["source_pages_skipped"], 7)
+            self.assertEqual(manifest["source_pages_skipped"], 3)
             self.assertEqual(manifest["source_pages_ok"], 0)
+            self.assertEqual(manifest["source_pages_failed"], 4)
             with (Path(root) / "out/source_inventory.csv").open(encoding="utf-8-sig") as f:
                 inventory = list(csv.DictReader(f))
-            self.assertEqual(len(inventory), 8)
-            self.assertEqual(inventory[1]["status"], "skipped_network")
+            self.assertEqual(len(inventory), 4)
+            self.assertEqual(inventory[0]["status"], "error")
+            self.assertTrue(all(row["status"] == "skipped_network" for row in inventory[1:]))
 
 
 if __name__ == "__main__":
