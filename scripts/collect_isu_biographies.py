@@ -19,7 +19,7 @@ from urllib.parse import urlsplit
 import requests
 from bs4 import BeautifulSoup
 from audit_v4 import norm
-from collect_isu_seasons import configure_session
+from collect_isu_seasons import configure_session, ISU_COUNTRY_CODES
 
 PROFILE_PATTERN = re.compile(r"/bios/(isufs\d+)\.htm$", re.I)
 DATE_PATTERN = re.compile(r"\b([0-3]?\d\.[01]?\d\.(?:19|20)\d{2})\b")
@@ -111,7 +111,7 @@ def match_profile_name(observed_name, roster_names):
     if len(direct) > 1:
         return "", "", "ambiguous"
     parts = observed_name.split()
-    if len(parts) >= 3 and parts[-1] in NATION_CODES:
+    if len(parts) >= 3 and parts[-1] in ISU_COUNTRY_CODES:
         without_country = " ".join(parts[:-1])
         guarded = {pid: name for pid, name in roster_names.get(norm(without_country), set())}
         if len(guarded) == 1:
