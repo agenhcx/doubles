@@ -27,7 +27,7 @@ BIRTH_LABEL = re.compile(r"\bDate of birth\s*:\s*", re.I)
 PLACE_LABEL = re.compile(r"\bPlace of birth\s*:\s*", re.I)
 PLACE_END = re.compile(r"\b(?:Height|Home town|Profession|Hobbies|Start sk\.|Coach|Internet / Social Media|Former Partners|Practice|Music|Personal Best|Season Best|International Competition)\s*:", re.I)
 PROFILE_FIELDS = ["profile_id","profile_url","status","sections_found","exact_matches","error","cached"]
-CAND_FIELDS = ["profile_id","profile_url","side_on_profile","observed_name","person_id","roster_name","date_of_birth","place_of_birth_raw","status"]
+CAND_FIELDS = ["profile_id","profile_url","side_on_profile","observed_name","person_id","roster_name","date_of_birth","place_of_birth_raw","status","name_match_method"]
 
 
 def clean(value):
@@ -92,6 +92,36 @@ def collect_profiles(season_roster):
     return dict(seen)
 
 
+
+def match_profile_name(observed_name, roster_names):
+    """Match to a unique roster person for THIS profile ID.
+
+    Prefer the complete published name. If there is no match, a trailing
+    all-caps country code may be metadata from a separate ISU biography cell.
+    Strip it only when the remainder uniquely matches a known roster person.
+    Never discard a surname such as SUI just because it is a nation code.
+    Return (person_id, roster_name, audit_method).
+    """
+    if not observed_name:
+        return "", "", "unmatched"
+    direct = {pid: name for pid, name in roster_names.get(norm(observed_name), set())}
+    if len(direct) == 1:
+        pid = next(iter(direct))
+        return pid, direct[pid], "exact"
+    if len(direct) > 1:
+        return "", "", "ambiguous"
+    parts = observed_name.split()
+    if len(parts) >= 3 and parts[-1] in NATION_CODES:
+        without_country = " ".join(parts[:-1])
+        guarded = {pid: name for pid, name in roster_names.get(norm(without_country), set())}
+        if len(guarded) == 1:
+            pid = next(iter(guarded))
+            return pid, guarded[pid], "roster_confirmed_country_suffix"
+        if len(guarded) > 1:
+            return "", "", "ambiguous"
+    return "", "", "unmatched"
+
+
 def download_profile(session, ident, cache, offline=False, refresh=False, timeout=15):
     path = cache / (ident + ".html")
     if path.exists() and not refresh:
@@ -145,20 +175,19 @@ def run(args):
             entries = parse_bio(html)
             item["sections_found"] = len(entries)
             for i, p in enumerate(entries):
-                n = norm(p["observed_name"]) if p["observed_name"] else ""
-                matches = profiles[ident].get(n, set()) if n else set()
-                matches = {x[0]: x[1] for x in matches}
-                status = "exact_name_match" if len(matches) == 1 and p["date_of_birth"] else "needs_review"
-                pid = next(iter(matches)) if len(matches) == 1 else ""
+                pid, roster_name, match_method = match_profile_name(
+                    p["observed_name"], profiles[ident])
+                status = "exact_name_match" if pid and p["date_of_birth"] else "needs_review"
                 if status == "exact_name_match":
                     item["exact_matches"] += 1
                 candidates.append({"profile_id": ident, "profile_url": url,
                                    "side_on_profile": i + 1,
                                    "observed_name": p["observed_name"],
-                                   "person_id": pid, "roster_name": matches.get(pid, ""),
+                                   "person_id": pid, "roster_name": roster_name,
                                    "date_of_birth": p["date_of_birth"],
                                    "place_of_birth_raw": p["place_of_birth_raw"],
-                                   "status": status})
+                                   "status": status,
+                                   "name_match_method": match_method})
             item["status"] = "ok" if len(entries) == 2 else "incomplete"
             print(f"[BIO] {ident}: {len(entries)} sections, {item['exact_matches']} exact matches", flush=True)
         except Exception as exc:
@@ -179,6 +208,10 @@ def run(args):
                "profiles_failed": sum(x["status"] == "error" for x in inventory),
                "birth_candidates": len(candidates),
                "exact_name_and_date_matches": sum(x["status"] == "exact_name_match" for x in candidates),
+               "roster_confirmed_country_suffix_matches": sum(
+                   x["status"] == "exact_name_match"
+                   and x["name_match_method"] == "roster_confirmed_country_suffix"
+                   for x in candidates),
                "limitations": ["Only public ISU profile biographies are used",
                                "Candidate DOBs are not merged into athlete master automatically",
                                "Names are matched conservatively to the known profile and roster",

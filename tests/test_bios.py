@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent.parent
 sys.path.insert(0,str(ROOT/"scripts"))
-from collect_isu_biographies import parse_bio,collect_profiles
+from collect_isu_biographies import parse_bio,collect_profiles,match_profile_name
 
 
 class BiographyParsingTests(unittest.TestCase):
@@ -39,6 +39,41 @@ class BiographyParsingTests(unittest.TestCase):
         self.assertEqual([r["observed_name"] for r in rows],["Wenjing SUI","Cong HAN"])
         self.assertEqual([r["date_of_birth"] for r in rows],["1995-07-18","1992-08-06"])
         self.assertTrue(all(r["status"]=="parsed" for r in rows))
+
+    def test_bio_country_code_resolved_only_against_unique_roster(self):
+        # Country is a separate table cell in some older ISU biographies;
+        # flattened text appends it to the name.
+        html="""<html><body><table>
+        <tr><td>Date of birth:</td><td>12.04.1989</td><td>Kaitlyn WEAVER</td><td>CAN</td></tr>
+        <tr><td>Place of birth:</td><td>Houston USA</td></tr>
+        <tr><td>Height:</td><td>169 cm</td></tr>
+        <tr><td>Date of birth:</td><td>25.02.1987</td><td>Andrew POJE</td><td>CAN</td></tr>
+        <tr><td>Place of birth:</td><td>Waterloo, ON</td></tr>
+        <tr><td>Height:</td><td>190 cm</td></tr>
+        </table></body></html>"""
+        rows=parse_bio(html)
+        self.assertEqual([r["observed_name"] for r in rows],
+                         ["Kaitlyn WEAVER CAN", "Andrew POJE CAN"])
+        roster={
+            "kaitlyn weaver":{("p_weaver","Kaitlyn WEAVER")},
+            "andrew poje":{("p_poje","Andrew POJE")},
+        }
+        self.assertEqual(match_profile_name(rows[0]["observed_name"],roster),
+                         ("p_weaver","Kaitlyn WEAVER","roster_confirmed_country_suffix"))
+        self.assertEqual(match_profile_name(rows[1]["observed_name"],roster),
+                         ("p_poje","Andrew POJE","roster_confirmed_country_suffix"))
+        self.assertEqual(match_profile_name("Kaitlyn WEAVER CAN", {}),
+                         ("","","unmatched"))
+
+    def test_country_code_surname_prefers_full_exact_and_ambiguous_remains_review(self):
+        roster={
+            "sui wenjing":{("p_sui","Wenjing SUI")},
+            "kaitlyn weaver":{("p1","Kaitlyn WEAVER"),("p2","WEAVER Kaitlyn")},
+        }
+        self.assertEqual(match_profile_name("Wenjing SUI",roster),
+                         ("p_sui","Wenjing SUI","exact"))
+        self.assertEqual(match_profile_name("Kaitlyn WEAVER CAN",roster),
+                         ("","","ambiguous"))
 
     def test_invalid_date_does_not_become_a_candidate(self):
         html="""<html>Ice Dance Date of birth: 31.02.2001 Person ALPHA
