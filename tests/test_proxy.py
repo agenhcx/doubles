@@ -29,6 +29,24 @@ class ProxyIsolationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "--proxy"):
             isu.configure_session("127.0.0.1:10808")
 
+    def test_junior_rankings_pre_2023_24_not_scheduled(self):
+        with tempfile.TemporaryDirectory() as root:
+            args = argparse.Namespace(
+                out=str(Path(root) / "out"), cache=str(Path(root) / "cache"),
+                proxy=None, no_env_proxy=True, level="senior,junior",
+                season_start=2022, season_end=2023, offline=True,
+                refresh=False, timeout=5, delay=0,
+            )
+            # Offline without cache: all six available-category jobs fail,
+            # but two non-existent 2022-23 junior categories are NOT attempted.
+            rc = isu.run(args)
+            self.assertEqual(rc, 2)
+            manifest = json.loads((Path(root) / "out/manifest.json").read_text())
+            self.assertEqual(manifest["source_pages_requested"], 6)
+            self.assertEqual(manifest["source_pages_not_applicable"], 2)
+            self.assertEqual(manifest["source_pages_attempted"], 6)
+            self.assertEqual(manifest["source_pages_failed"], 6)
+
     def test_network_block_fails_fast_preserves_manifest(self):
         with tempfile.TemporaryDirectory() as root:
             args = argparse.Namespace(
