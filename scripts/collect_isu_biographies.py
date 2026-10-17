@@ -26,7 +26,6 @@ DATE_PATTERN = re.compile(r"\b([0-3]?\d\.[01]?\d\.(?:19|20)\d{2})\b")
 BIRTH_LABEL = re.compile(r"\bDate of birth\s*:\s*", re.I)
 PLACE_LABEL = re.compile(r"\bPlace of birth\s*:\s*", re.I)
 PLACE_END = re.compile(r"\b(?:Height|Home town|Profession|Hobbies|Start sk\.|Coach|Internet / Social Media|Former Partners|Practice|Music|Personal Best|Season Best|International Competition)\s*:", re.I)
-NATION_CODES = frozenset("ARM AUS AUT AZE BEL BLR BRA CAN CHN CRO CYP CZE DEN ESP EST FIN FRA GBR GEO GER GRE HKG HUN INA IND IRL ISL ISR ITA JPN KAZ KOR LAT LTU MAS MEX NED NOR NZL PHI POL PRK ROU RSA RUS SGP SLO SRB SUI SVK SWE TPE TUR UKR USA UZB".split())
 PROFILE_FIELDS = ["profile_id","profile_url","status","sections_found","exact_matches","error","cached"]
 CAND_FIELDS = ["profile_id","profile_url","side_on_profile","observed_name","person_id","roster_name","date_of_birth","place_of_birth_raw","status"]
 
@@ -54,8 +53,8 @@ def parse_bio(html):
         first = section[:place.start()] if place else section[:180]
         dob = DATE_PATTERN.search(first)
         name = clean(first[dob.end():]) if dob else ""
-        if name and name.split()[-1] in NATION_CODES:
-            name = clean(name.rsplit(" ", 1)[0])
+        # Preserve the name from the official profile. A real surname may
+        # equal a country code (e.g. Wenjing SUI, not Wenjing).
         birth_date = ""
         if dob:
             try:

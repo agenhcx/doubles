@@ -25,6 +25,21 @@ class BiographyParsingTests(unittest.TestCase):
         self.assertEqual([x["observed_name"] for x in rows],["Madison CHOCK","Evan BATES"])
         self.assertEqual([x["place_of_birth_raw"] for x in rows],["Redondo Beach, CA","Ann Arbor, MI"])
 
+    def test_surname_matching_a_nation_code_is_preserved(self):
+        # SUI is both the skater's actual surname and the ISO code for Switzerland.
+        html="""<html><body><table>
+        <tr><td>Date of birth:</td><td>18.07.1995</td><td>Wenjing SUI</td></tr>
+        <tr><td>Place of birth:</td><td>Harbin</td></tr>
+        <tr><td>Height:</td><td>154 cm</td><td>CHN</td></tr>
+        <tr><td>Date of birth:</td><td>06.08.1992</td><td>Cong HAN</td></tr>
+        <tr><td>Place of birth:</td><td>Harbin</td></tr>
+        <tr><td>Height:</td><td>170 cm</td><td>CHN</td></tr>
+        </table></body></html>"""
+        rows=parse_bio(html)
+        self.assertEqual([r["observed_name"] for r in rows],["Wenjing SUI","Cong HAN"])
+        self.assertEqual([r["date_of_birth"] for r in rows],["1995-07-18","1992-08-06"])
+        self.assertTrue(all(r["status"]=="parsed" for r in rows))
+
     def test_invalid_date_does_not_become_a_candidate(self):
         html="""<html>Ice Dance Date of birth: 31.02.2001 Person ALPHA
         Place of birth: Canada Height: 170 cm
