@@ -24,6 +24,27 @@ class IsuPageTests(unittest.TestCase):
         self.assertEqual(len(a),2)
         self.assertEqual(a[0]["person_a"],"Evgenia TARASOVA")
         self.assertEqual(a[1]["nation"],"CHN")
+    def test_2018_embedded_country_in_pair_name(self):
+        # Actual 2018-19 ISU table layout: country is appended in the name
+        # cell rather than a separate country column. Previously generated
+        # phantom surnames: "DONOHUE USA", "HAN CHN".
+        html = """<html><head><title>ISU World Ranking 2018/2019</title></head><body>
+        <table><tr><td>1</td><td>2472</td>
+          <td><a href="/bios/isufs00013466.htm">Madison HUBBELL / Zachary DONOHUE USA</a></td>
+          <td>2018-19 results</td></tr>
+        <tr><td>2</td><td>2150</td>
+          <td><a href="/bios/isufs00012227.htm">Wenjing SUI / Cong HAN CHN</a></td>
+          <td>2018-19 results</td></tr></table></body></html>"""
+        rows = parse_page(html, season="2018-19", level="senior",
+                          discipline="Ice Dance",
+                          url="https://results.isu.org/ws/wr2018-19/wrdance.htm")
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(rows[0]["person_b"], "Zachary DONOHUE")
+        self.assertEqual(rows[0]["nation"], "USA")
+        self.assertEqual(rows[0]["name_as_published"], "Madison HUBBELL / Zachary DONOHUE USA")
+        self.assertEqual(rows[1]["person_b"], "Cong HAN")
+        self.assertEqual(rows[1]["nation"], "CHN")
+
     def test_invalid_login_page_fails(self):
         with self.assertRaisesRegex(ValueError,"ranking"):
             parse_page("<html><body>Please log in</body></html>",season="2025-26",level="senior",discipline="Ice Dance",url="https://example.com")
