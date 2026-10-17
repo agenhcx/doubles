@@ -20,7 +20,7 @@ import sys
 import time
 import unicodedata
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
 import requests
 from bs4 import BeautifulSoup
@@ -37,6 +37,34 @@ NATION_PATTERN = re.compile(r"^[A-Z]{3}$")
 INT_PATTERN = re.compile(r"^\d{1,4}$")
 POINT_PATTERN = re.compile(r"^\d{1,5}(?:\.\d+)?$")
 BAD_NAMES = {"men", "ladies", "women", "pairs", "ice dance", "season", "world ranking"}
+
+
+class DownloadFailed(RuntimeError):
+    """A whole source page failed; networking failures should stop the batch."""
+    def __init__(self, message: str, *, network_block: bool = False):
+        super().__init__(message)
+        self.network_block = network_block
+
+
+def configure_session(proxy: str | None = None, no_env_proxy: bool = False) -> requests.Session:
+    """Explicit --proxy takes priority over HTTPS_PROXY/HTTP_PROXY in the environment.
+
+    Requests merges environment proxies into requests before session proxies,
+    so simply calling sess.proxies.update(...) is insufficient when trust_env=True.
+    """
+    session = requests.Session()
+    session.headers["User-Agent"] = (
+        "DoublesResearchDataset/0.2 (ISU public historical roster; research only)"
+    )
+    if proxy:
+        parsed = urlsplit(proxy)
+        if parsed.scheme not in {"http", "https"} or not parsed.hostname:
+            raise ValueError("--proxy must be an HTTP(S) URL, e.g. http://127.0.0.1:10808")
+        session.trust_env = False
+        session.proxies.update({"http": proxy, "https": proxy})
+    elif no_env_proxy:
+        session.trust_env = False
+    return session
 
 
 def clean(x: str) -> str:
@@ -136,10 +164,11 @@ def download(session, season, basename, cache_dir: Path, *, offline=False, refre
     if offline:
         raise FileNotFoundError(f"No cached HTML for {season}/{basename}")
     failures = []
+    network_errors = []
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     for url in urls:
         try:
-            resp = session.get(url, timeout=(8, timeout))
+            resp = session.get(url, timeout=(5, timeout))
             resp.raise_for_status()
             html = resp.content.decode(resp.encoding or "utf-8", errors="replace")
             if len(html) < 300:
@@ -148,7 +177,13 @@ def download(session, season, basename, cache_dir: Path, *, offline=False, refre
             return html, url, cache_path
         except Exception as exc:
             failures.append(f"{url}: {type(exc).__name__}: {str(exc)[:160]}")
-    raise RuntimeError(" ; ".join(failures))
+            network_errors.append(isinstance(exc, (
+                requests.exceptions.ProxyError,
+                requests.exceptions.SSLError,
+                requests.exceptions.ConnectionError,
+                requests.exceptions.Timeout,
+            )))
+    raise DownloadFailed(" ; ".join(failures), network_block=all(network_errors))
 
 
 def write_csv(path: Path, rows, fieldnames):
@@ -163,46 +198,71 @@ def run(args):
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     cache = Path(args.cache)
-    sess = requests.Session()
-    sess.headers["User-Agent"] = "DoublesResearchDataset/0.1 (historical ISU roster collection; please contact repository maintainer)"
-    if args.no_env_proxy:
-        sess.trust_env = False
+    sess = configure_session(args.proxy, args.no_env_proxy)
     if args.proxy:
-        sess.proxies.update({"http": args.proxy, "https": args.proxy})
+        parsed = urlsplit(args.proxy)
+        print(f"[NETWORK] Explicit {parsed.scheme.upper()} proxy at {parsed.hostname}:{parsed.port}; "
+              "ignoring HTTP_PROXY/HTTPS_PROXY environment variables", flush=True)
+    elif args.no_env_proxy:
+        print("[NETWORK] Direct connection; ignoring environment proxies", flush=True)
+    else:
+        print("[NETWORK] Using system environment proxy settings, if configured", flush=True)
     rows, inventory = [], []
     use_levels = set(args.level.split(","))
-    for year in range(args.season_start, args.season_end + 1):
-        season = f"{year}-{(year+1)%100:02d}"
-        for level, discipline, basename in SOURCES:
-            if level not in use_levels:
-                continue
-            url = f"https://results.isu.org/ws/wr{season}/{basename}"
-            ent = dict(season=season, level=level, discipline=discipline,
-                       status="error", rows=0, url=url,
-                       cache_file=str(cache / season / basename), error="")
-            try:
-                html, fetched_url, cache_path = download(sess, season, basename, cache,
-                                              offline=args.offline, refresh=args.refresh,
-                                              timeout=args.timeout)
-                item = parse_page(html, season=season, level=level, discipline=discipline, url=fetched_url)
-                ent.update(status="ok", rows=len(item), url=fetched_url, cache_file=str(cache_path))
-                rows.extend(item)
-                print(f"[OK] {season} {level:<6} {discipline:<13}: {len(item)} couples", flush=True)
-            except Exception as exc:
-                ent["error"] = f"{type(exc).__name__}: {str(exc)[:700]}"
-                print(f"[FAIL] {season} {level:<6} {discipline:<13}: {ent['error']}", file=sys.stderr, flush=True)
-            inventory.append(ent)
-            # Save incrementally so Ctrl-C or network failure doesn't wipe progress.
-            write_csv(out / "isu_season_roster.csv", rows, FIELDS)
-            write_csv(out / "source_inventory.csv", inventory, META_FIELDS)
-            if args.delay > 0 and not args.offline:
-                time.sleep(args.delay)
+    jobs = [(f"{year}-{(year+1)%100:02d}", level, discipline, basename)
+            for year in range(args.season_start, args.season_end + 1)
+            for level, discipline, basename in SOURCES if level in use_levels]
+    for index, (season, level, discipline, basename) in enumerate(jobs):
+        url = f"https://results.isu.org/ws/wr{season}/{basename}"
+        ent = dict(season=season, level=level, discipline=discipline,
+                   status="error", rows=0, url=url,
+                   cache_file=str(cache / season / basename), error="")
+        blocked = False
+        try:
+            html, fetched_url, cache_path = download(
+                sess, season, basename, cache, offline=args.offline,
+                refresh=args.refresh, timeout=args.timeout)
+            item = parse_page(html, season=season, level=level,
+                              discipline=discipline, url=fetched_url)
+            ent.update(status="ok", rows=len(item), url=fetched_url,
+                       cache_file=str(cache_path))
+            rows.extend(item)
+            print(f"[OK] {season} {level:<6} {discipline:<13}: {len(item)} couples", flush=True)
+        except Exception as exc:
+            ent["error"] = f"{type(exc).__name__}: {str(exc)[:700]}"
+            print(f"[FAIL] {season} {level:<6} {discipline:<13}: {ent['error']}",
+                  file=sys.stderr, flush=True)
+            # Two independent mirrors both failing at the connection layer means
+            # there is no reason to try thirty more pages on the same network.
+            blocked = isinstance(exc, DownloadFailed) and exc.network_block and not args.offline
+        inventory.append(ent)
+        if blocked:
+            print("[STOP] Both ISU hosts failed to connect. Remaining pages SKIPPED, "
+                  "not counted as successful. Check proxy port/settings or use offline cache.",
+                  file=sys.stderr, flush=True)
+            for remaining_season, remaining_level, remaining_disc, remaining_base in jobs[index + 1:]:
+                inventory.append(dict(
+                    season=remaining_season, level=remaining_level,
+                    discipline=remaining_disc, status="skipped_network",
+                    rows=0,
+                    url=f"https://results.isu.org/ws/wr{remaining_season}/{remaining_base}",
+                    cache_file=str(cache / remaining_season / remaining_base),
+                    error="Not attempted; earlier source connection failed"))
+        # Preserve success/failure state, even when the network is unavailable.
+        write_csv(out / "isu_season_roster.csv", rows, FIELDS)
+        write_csv(out / "source_inventory.csv", inventory, META_FIELDS)
+        if blocked:
+            break
+        if args.delay > 0 and not args.offline:
+            time.sleep(args.delay)
     failures = sum(1 for x in inventory if x["status"] != "ok")
     summary = {"generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
                "scope": "ISU Season's World Rankings, Ice Dance and Pair Skating, senior/junior; no BaZi",
                "season_start": args.season_start, "season_end": args.season_end,
-               "levels_requested": sorted(use_levels), "source_pages_requested": len(inventory),
-               "source_pages_ok": len(inventory) - failures,
+               "levels_requested": sorted(use_levels), "source_pages_requested": len(jobs),
+               "source_pages_attempted": sum(x["status"] != "skipped_network" for x in inventory),
+               "source_pages_skipped": sum(x["status"] == "skipped_network" for x in inventory),
+               "source_pages_ok": sum(x["status"] == "ok" for x in inventory),
                "source_pages_failed": failures,
                "season_roster_rows": len(rows),
                "all_sources_complete": failures == 0,
@@ -226,8 +286,8 @@ def main():
     p.add_argument("--cache", default="cache/isu")
     p.add_argument("--offline", action="store_true", help="Parse existing cached HTML only")
     p.add_argument("--refresh", action="store_true", help="Redownload pages even when cached")
-    p.add_argument("--proxy", help="HTTP(S) proxy, e.g. http://127.0.0.1:10808")
-    p.add_argument("--no-env-proxy", action="store_true", help="Ignore HTTP_PROXY/HTTPS_PROXY env vars")
+    p.add_argument("--proxy", help="Explicit proxy URL; overrides HTTP_PROXY/HTTPS_PROXY, e.g. http://127.0.0.1:10808")
+    p.add_argument("--no-env-proxy", action="store_true", help="Direct connection if --proxy omitted; with --proxy already implied")
     p.add_argument("--timeout", type=int, default=25)
     p.add_argument("--delay", type=float, default=.3)
     args = p.parse_args()
