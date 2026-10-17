@@ -148,7 +148,7 @@ def parse_page(html: str, *, season: str, level: str, discipline: str, url: str)
             # Some 2018-19 tables embed the nation code in the same TD as
             # the couple name, e.g. "Madison HUBBELL / Zachary DONOHUE USA".
             # Only strip an explicit known ISU three-letter country code.
-            suffix = re.fullmatch(r"(.+?)\\s+([A-Z]{3})", names[1])
+            suffix = re.fullmatch(r"(.+?)\s+([A-Z]{3})", names[1])
             if suffix and suffix.group(2) in ISU_COUNTRY_CODES:
                 candidate_b = suffix.group(1)
                 if validate_pair_name(f"{names[0]} / {candidate_b}"):
