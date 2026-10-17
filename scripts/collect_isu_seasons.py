@@ -37,6 +37,15 @@ NATION_PATTERN = re.compile(r"^[A-Z]{3}$")
 INT_PATTERN = re.compile(r"^\d{1,4}$")
 POINT_PATTERN = re.compile(r"^\d{1,5}(?:\.\d+)?$")
 BAD_NAMES = {"men", "ladies", "women", "pairs", "ice dance", "season", "world ranking"}
+# In 2018-19 some ISU ranking tables put the three-letter country code in
+# the same cell as "person A / person B". Do not mistake it for a surname.
+# Keep this as an explicit allowlist: never trim an arbitrary capitalized name.
+ISU_COUNTRY_CODES = frozenset((
+    "ARM AUS AUT AZE BEL BLR BRA CAN CHN CRO CYP CZE DEN ESP EST FIN FRA "
+    "GBR GEO GER GRE HKG HUN INA IND IRL ISL ISR ITA JPN KAZ KOR LAT LTU "
+    "MAS MEX NED NOR NZL PHI POL PRK ROU RSA RUS SGP SLO SRB SUI SVK "
+    "SWE TPE TUR UKR USA UZB"
+).split())
 
 
 class DownloadFailed(RuntimeError):
@@ -136,9 +145,15 @@ def parse_page(html: str, *, season: str, level: str, discipline: str, url: str)
                 nation = cand.group(1)
                 break
         if not nation:
-            # Keep partial extraction visible for review rather than
-            # silently assigning the skater's nationality from a guess.
-            nation = ""
+            # Some 2018-19 tables embed the nation code in the same TD as
+            # the couple name, e.g. "Madison HUBBELL / Zachary DONOHUE USA".
+            # Only strip an explicit known ISU three-letter country code.
+            suffix = re.fullmatch(r"(.+?)\\s+([A-Z]{3})", names[1])
+            if suffix and suffix.group(2) in ISU_COUNTRY_CODES:
+                candidate_b = suffix.group(1)
+                if validate_pair_name(f"{names[0]} / {candidate_b}"):
+                    names[1] = candidate_b
+                    nation = suffix.group(2)
         anchor = td[idx].find("a", href=True)
         profile = urljoin(url, anchor["href"]) if anchor else ""
         rec = dict(season=season, season_start_year=season[:4], level=level,
