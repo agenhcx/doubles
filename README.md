@@ -132,6 +132,24 @@ ISU双人组官方Biography往往同时提供两名运动员的DOB、出生城�
 旧搭档信息。下一阶段从排名行已记录的profile URL逐个提取，
 必须先核对姓名及身份ID，不能把相似拼写自动视为同一人。
 
+## 出生日期采集试运行：ISU官方双人档案
+
+在完整的排名表合并后，使用 `season_roster.csv` 已有的 `profile_url`
+汇总ISU档案ID（2026-10-17示例数据中共有597个不同档案ID；实际数量以每次manifest为准）。
+**先只测试10个档案**；每个档案通常包含两名选手的DOB和出生城市：
+
+```powershell
+python .\scripts\collect_isu_biographies.py --limit 10 --proxy http://127.0.0.1:10808
+```
+
+结果保存至 `output/bios/manifest.json`、`biography_inventory.csv`、
+`birth_candidates.csv`。`status=exact_name_match` 只代表名字与档案能保守匹配，
+尚不代表人工确认了真实身份，也不自动写回 `athletes_master.csv`。
+请先检查10页的识别质量，再考虑 `--limit 0` 扩大覆盖。
+
+`cache/isu_bios/` 中HTML不上传Git；程序没有经纬度推断，也**没有计算八字**。
+这是试采集器，目前只通过离线结构测试，尚未在维护者网络端完成全量在线验证。
+
 ## 4. 验证与结果
 
 运行测试：
