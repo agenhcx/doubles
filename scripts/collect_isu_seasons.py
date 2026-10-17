@@ -209,9 +209,18 @@ def run(args):
         print("[NETWORK] Using system environment proxy settings, if configured", flush=True)
     rows, inventory = [], []
     use_levels = set(args.level.split(","))
-    jobs = [(f"{year}-{(year+1)%100:02d}", level, discipline, basename)
-            for year in range(args.season_start, args.season_end + 1)
-            for level, discipline, basename in SOURCES if level in use_levels]
+    # Independent Junior World Standings/Season Rankings started only in
+    # 2023-24 (ISU Communication 2550, announced 2023-04-06).
+    # Before that, junior international results contributed to the overall
+    # standings; their standalone wrjunior*.htm pages did not yet exist.
+    all_jobs = [(f"{year}-{(year+1)%100:02d}", level, discipline, basename)
+                for year in range(args.season_start, args.season_end + 1)
+                for level, discipline, basename in SOURCES if level in use_levels]
+    not_applicable = [j for j in all_jobs if j[1] == "junior" and int(j[0][:4]) < 2023]
+    jobs = [j for j in all_jobs if j not in not_applicable]
+    if not_applicable:
+        print(f"[INFO] {len(not_applicable)} pre-2023/24 junior ranking pages "
+              "not applicable (independent junior rankings began 2023/24)", flush=True)
     for index, (season, level, discipline, basename) in enumerate(jobs):
         url = f"https://results.isu.org/ws/wr{season}/{basename}"
         ent = dict(season=season, level=level, discipline=discipline,
@@ -260,6 +269,10 @@ def run(args):
                "scope": "ISU Season's World Rankings, Ice Dance and Pair Skating, senior/junior; no BaZi",
                "season_start": args.season_start, "season_end": args.season_end,
                "levels_requested": sorted(use_levels), "source_pages_requested": len(jobs),
+               "source_pages_not_applicable": len(not_applicable),
+               "not_applicable_pages": [{"season": j[0], "level": j[1],
+                   "discipline": j[2], "reason": "Independent junior rankings did not exist before 2023-24"}
+                   for j in not_applicable],
                "source_pages_attempted": sum(x["status"] != "skipped_network" for x in inventory),
                "source_pages_skipped": sum(x["status"] == "skipped_network" for x in inventory),
                "source_pages_ok": sum(x["status"] == "ok" for x in inventory),
@@ -270,7 +283,9 @@ def run(args):
                  "Rankings exclude teams without qualifying season ranking points and are not full ISU start lists",
                  "A season ranking row is not an individual competition result and must not inflate pair event counts",
                  "Rankings, nation, names and profiles require identity QA; no DOB or place-of-birth implied",
-                 "In-progress seasons should not be compared directly with completed seasons"],
+                 "In-progress seasons should not be compared directly with completed seasons",
+                 "Independent junior World Standings and Season Rankings began in 2023-24; "
+                 "pre-2023/24 junior entries are unavailable as standalone season rankings"],
                "source_failures": [x for x in inventory if x["status"] != "ok"]}
     (out / "manifest.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
     print(json.dumps({k: summary[k] for k in ["source_pages_requested", "source_pages_ok", "source_pages_failed", "season_roster_rows"]}, ensure_ascii=False))
