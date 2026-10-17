@@ -1,0 +1,911 @@
+﻿person_id,name_display,name_variants,disciplines,different_partners_provisional,distinct_identified_competitions,represented_nations,role_A_or_B,date_of_birth,birth_city,birth_country,birth_latitude,dob_status,identity_review_flags
+person_7e75e2d357c6c,DAVIDOVICH A,DAVIDOVICH A,Pair Skating,1,1,ISR,A,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_eeffcc6c64a46,SUNYOTO-YANG A,SUNYOTO-YANG A,Pair Skating,1,1,TPE,A,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_7e0627f4d72ef,Aaron VAN CLEAVE,Aaron VAN CLEAVE,Pair Skating,1,10,GER,B,,,,,not_checked,provisional_identity
+person_5c955737fa8c0,Aaron LOWE,Aaron LOWE | LOWE Aaron,Ice Dance,1,6,CAN,B,,,,,not_checked,multiple_display_names
+person_739f292423de2,Madeline AARON,Madeline AARON,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_f5b6a8840f67f,Aaron PARCHEM,Aaron PARCHEM | PARCHEM Aaron,Pair Skating,1,4,USA,B,,,,,not_checked,multiple_display_names
+person_2301872f5d9f1,Angelique ABACHKINA,Angelique ABACHKINA,Ice Dance,1,3,FRA,A,,,,,not_checked,provisional_identity
+person_abb004246f5d6,Adam JOHNSON,Adam JOHNSON,Pair Skating,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_2e204c1414c1b,Adam LUKACS,Adam LUKACS,Ice Dance,2,3,HUN,B,,,,,not_checked,provisional_identity
+person_782f6d0c57b15,Adam TOTH,Adam TOTH,Ice Dance,1,2,HUN,B,,,,,not_checked,provisional_identity
+person_3de0bad93d673,Adel TANKOVA,Adel TANKOVA | TANKOVA Adel,Ice Dance; Pair Skating,2,5,ISR,A,,,,,not_checked,multi_discipline; multiple_display_names
+person_fd85c03b4bb88,Adele MORRISON,Adele MORRISON,Ice Dance,1,1,AUS,A,,,,,not_checked,provisional_identity
+person_9ed4bbd568fbf,Adeline CANAC,Adeline CANAC,Pair Skating,3,12,FRA,A,,,,,not_checked,provisional_identity
+person_5f24f9bef3193,Adria DIAZ,Adria DIAZ | DIAZ Adria,Ice Dance,2,16,ESP,B,,,,,not_checked,multiple_display_names
+person_2238c677c010f,Alisa AGAFONOVA,AGAFONOVA Alisa | Alisa AGAFONOVA,Ice Dance,1,18,TUR,A,,,,,not_checked,multiple_display_names
+person_14d8ee9e3bcb6,Marina AGANINA,AGANINA Marina | Marina AGANINA,Pair Skating,2,13,UZB,A,,,,,not_checked,multiple_display_names
+person_755601827e58b,Benjamin AGOSTO,AGOSTO Benjamin | Benjamin AGOSTO,Ice Dance,1,21,USA,B,,,,,not_checked,multiple_display_names
+person_a46ab2bb74958,Nadine AHMED,Nadine AHMED,Ice Dance,1,2,AZE,A,,,,,not_checked,provisional_identity
+person_962b34cf509be,Aidas REKLYS,Aidas REKLYS,Ice Dance,1,2,LTU,B,,,,,not_checked,provisional_identity
+person_e75a6120a37e1,Charlotte AIKEN,Charlotte AIKEN,Ice Dance,1,1,GBR,A,,,,,not_checked,provisional_identity
+person_d38b4a8488ea2,Olga AKIMOVA,Olga AKIMOVA,Ice Dance,1,6,UZB,A,,,,,not_checked,provisional_identity
+person_5dd85e9b32eb5,Akiyuki KIDO,Akiyuki KIDO | KIDO Akiyuki,Ice Dance,1,9,JPN,B,,,,,not_checked,multiple_display_names
+person_13668c17a6f28,Vadim AKOLZIN,Vadim AKOLZIN,Pair Skating,2,3,ISR,B,,,,,not_checked,provisional_identity
+person_564d58009748d,Mikhail AKULOV,Mikhail AKULOV,Pair Skating,1,1,SUI,B,,,,,not_checked,provisional_identity
+person_9cdc8704585c6,Albena DENKOVA,Albena DENKOVA | DENKOVA Albena,Ice Dance,1,10,BUL,A,,,,,not_checked,multiple_display_names
+person_f4424b4f3b2a8,Alexandra ALDRIDGE,Alexandra ALDRIDGE,Ice Dance,1,5,USA,A,,,,,not_checked,provisional_identity
+person_d17450d0c8a2f,Aleksandr ZOLOTAREV,Aleksandr ZOLOTAREV,Ice Dance,1,1,GEO,B,,,,,not_checked,provisional_identity
+person_1baf007e3a8dd,Aleksandra BOIKOVA,Aleksandra BOIKOVA,Pair Skating,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_18af67797da2d,Aleksei SAKS,Aleksei SAKS | SAKS Aleksei,Pair Skating,1,7,EST,B,,,,,not_checked,multiple_display_names
+person_3a2993f5708f2,Aleksei TROHLEV,Aleksei TROHLEV,Ice Dance,1,2,EST,B,,,,,not_checked,provisional_identity
+person_e578bc4ae208a,Kirill ALESHIN,Kirill ALESHIN,Ice Dance,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_29438d0fcedcc,Alessandra CERNUSCHI,Alessandra CERNUSCHI,Pair Skating,1,2,ITA,A,,,,,not_checked,provisional_identity
+person_be916f86517a4,Lorenza ALESSANDRINI,Lorenza ALESSANDRINI,Ice Dance,2,9,FRA; ITA,A,,,,,not_checked,provisional_identity
+person_7b01fdb499fb6,Alessia AURELI,Alessia AURELI,Ice Dance,1,4,ITA,A,,,,,not_checked,provisional_identity
+person_ecf044b894a48,Alex BENOIT,Alex BENOIT,Ice Dance,1,4,USA,B,,,,,not_checked,provisional_identity
+person_dc10e728af644,Alex Kang Chan KAM,Alex Kang Chan KAM | KAM Alex Kang Chan,Pair Skating,1,2,KOR,B,,,,,not_checked,multiple_display_names
+person_154491435317a,Alex SHIBUTANI,Alex SHIBUTANI | SHIBUTANI Alex,Ice Dance,1,36,USA,B,,,,,not_checked,multiple_display_names
+person_0c53c4be88d46,Alexa SCIMECA KNIERIM,Alexa SCIMECA KNIERIM | SCIMECA KNIERIM Alexa,Pair Skating,1,5,USA,A,,,,,not_checked,multiple_display_names
+person_d0805bb1ec9d5,Alexa SCIMECA,Alexa SCIMECA,Pair Skating,1,15,USA,A,,,,,not_checked,provisional_identity
+person_62b25fa61db6d,Alexander ENBERT,Alexander ENBERT | ENBERT Alexander,Pair Skating,4,16,OAR; RUS,B,,,,,not_checked,multiple_display_names
+person_6ebaaeef483d2,Alexander GAMELIN,Alexander GAMELIN | GAMELIN Alexander,Ice Dance,1,6,KOR,B,,,,,not_checked,multiple_display_names
+person_a9b8f136ad8b6,Alexander GAZSI,Alexander GAZSI | GAZSI Alexander,Ice Dance,1,24,GER,B,,,,,not_checked,multiple_display_names
+person_6cb9f3807f4ad,Alexander GRACHEV,Alexander GRACHEV,Ice Dance,2,5,RUS,B,,,,,not_checked,provisional_identity
+person_27e3eb437d1e2,Alexander KOROVIN,Alexander KOROVIN,Pair Skating,1,1,RUS,B,,,,,not_checked,provisional_identity
+person_df6991f058ef0,Alexander SHAKALOV,Alexander SHAKALOV,Ice Dance,2,8,UKR; UZB,B,,,,,not_checked,provisional_identity
+person_09ff9c24536ec,Alexander SMIRNOV,Alexander SMIRNOV | SMIRNOV Alexander,Pair Skating,2,41,RUS,B,,,,,not_checked,multiple_display_names
+person_bc1f5e8bf74ae,Alexander VAKHNOV,Alexander VAKHNOV,Ice Dance,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_6fe19e5293928,Alexandr SINICYN,Alexandr SINICYN,Ice Dance,1,3,CZE,B,,,,,not_checked,provisional_identity
+person_6d9a0095ce189,Alexandr ZABOEV,Alexandr ZABOEV,Pair Skating,1,2,EST,B,,,,,not_checked,provisional_identity
+person_ed013222d6498,Alexandra HERBRIKOVA,Alexandra HERBRIKOVA,Pair Skating,2,2,CZE; SUI,A,,,,,not_checked,provisional_identity
+person_85e542b4ca4cb,Alexandra KAUC,Alexandra KAUC | KAUC Alexandra,Ice Dance,1,7,POL,A,,,,,not_checked,multiple_display_names
+person_f79e700f78926,Alexandra MALAKHOVA,Alexandra MALAKHOVA,Pair Skating,1,1,BUL,A,,,,,not_checked,provisional_identity
+person_13d2e5d761691,Alexandra NAZAROVA,Alexandra NAZAROVA | NAZAROVA Alexandra,Ice Dance,1,10,UKR,A,,,,,not_checked,multiple_display_names
+person_5cd1cb82bae2f,Alexandra PAUL,Alexandra PAUL | PAUL Alexandra,Ice Dance,1,15,CAN,A,,,,,not_checked,multiple_display_names
+person_2bd2daab4a7a4,Alexandra STEPANOVA,Alexandra STEPANOVA,Ice Dance,1,16,RUS,A,,,,,not_checked,provisional_identity
+person_5448b61d3a280,Alexandra ZARETSKI,Alexandra ZARETSKI | ZARETSKI Alexandra,Ice Dance,1,19,ISR,A,,,,,not_checked,multiple_display_names
+person_5de4eacee21b9,Alexandra ZARETSKY,Alexandra ZARETSKY | ZARETSKY Alexandra,Ice Dance,1,3,ISR,A,,,,,not_checked,multiple_display_names
+person_6de9f2476fbdf,Alexandra ZVORIGINA,Alexandra ZVORIGINA,Ice Dance,1,1,POL,A,,,,,not_checked,provisional_identity
+person_c88ddd0ea6884,Ekaterina ALEXANDROVSKAYA,ALEXANDROVSKAYA Ekaterina | Ekaterina ALEXANDROVSKAYA,Pair Skating,2,4,AUS,A,,,,,not_checked,multiple_display_names
+person_c4bd0e4f6e006,Alexei BELETSKI,Alexei BELETSKI,Ice Dance,1,2,ISR,B,,,,,not_checked,provisional_identity
+person_53cb79c502ca7,Alexei MENSHIKOV,Alexei MENSHIKOV,Pair Skating,1,2,RUS,B,,,,,not_checked,provisional_identity
+person_9d8cf963787db,Alexei OLEJNIK,Alexei OLEJNIK,Ice Dance,1,1,UKR,B,,,,,not_checked,provisional_identity
+person_06cab51cb4e6d,Alexei ROGONOV,Alexei ROGONOV | ROGONOV Alexei,Pair Skating,2,15,OAR; RUS,B,,,,,not_checked,multiple_display_names
+person_01f871fb99eb8,Alexei SHUMSKI,Alexei SHUMSKI,Ice Dance,1,2,GEO,B,,,,,not_checked,provisional_identity
+person_1ce952ef04858,Alexei SITNIKOV,Alexei SITNIKOV | SITNIKOV Alexei,Ice Dance,1,12,AZE; RUS,B,,,,,not_checked,multiple_display_names
+person_389347e2a958f,Alexei TIKHONOV,Alexei TIKHONOV | TIKHONOV Alexei,Pair Skating,1,13,RUS,B,,,,,not_checked,multiple_display_names
+person_75d6392686651,Ilias ALI,Ilias ALI,Ice Dance,1,1,KAZ,B,,,,,not_checked,provisional_identity
+person_a4783ab7a4a58,Alina DIKHTIAR,Alina DIKHTIAR,Pair Skating,1,1,UKR,A,,,,,not_checked,provisional_identity
+person_efe0600b0f0cb,Alina USTIMKINA,Alina USTIMKINA,Pair Skating,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_595c970e1a342,Aliona SAVCHENKO,Aliona SAVCHENKO | SAVCHENKO Aliona,Pair Skating,2,56,GER,A,,,,,not_checked,multiple_display_names
+person_2cb3b97244330,Alisa ALLAPACH,Alisa ALLAPACH,Ice Dance,1,2,THA,A,,,,,not_checked,provisional_identity
+person_925df45898975,Alisa EFIMOVA,Alisa EFIMOVA,Pair Skating,1,1,RUS,A,,,,,not_checked,provisional_identity
+person_4655a7859898c,Aljona SAVCHENKO,Aljona SAVCHENKO | SAVCHENKO Aljona,Pair Skating,1,3,GER,A,,,,,not_checked,multiple_display_names
+person_9d56601a4c6a6,Alla BEKNAZAROVA,Alla BEKNAZAROVA,Ice Dance,1,7,UKR,A,,,,,not_checked,provisional_identity
+person_8968cfa091fa7,Alla LOBODA,Alla LOBODA,Ice Dance,1,2,RUS,A,,,,,not_checked,provisional_identity
+person_469bd755ed265,Allie HANN-McCURDY,Allie HANN-MCCURDY | Allie HANN-McCURDY,Ice Dance,1,9,CAN,A,,,,,not_checked,provisional_identity
+person_9e4a0071ae4df,Allison REED,Allison REED | REED Allison,Ice Dance,2,11,GEO; ISR,A,,,,,not_checked,multiple_display_names
+person_11ed9aece98c8,Alper UCAR,Alper UCAR | UCAR Alper,Ice Dance,2,19,TUR,B,,,,,not_checked,multiple_display_names
+person_50f8452d24cb8,Amanda EVORA,Amanda EVORA | EVORA Amanda,Pair Skating,1,16,USA,A,,,,,not_checked,multiple_display_names
+person_00b4cd51ed89d,Amanda SUNYOTO-YANG,Amanda SUNYOTO-YANG,Pair Skating,1,3,TPE,A,,,,,not_checked,provisional_identity
+person_73fa2aa3d42a1,Amanda VELENOSI,Amanda VELENOSI,Pair Skating,1,1,CAN,A,,,,,not_checked,provisional_identity
+person_452219175c041,Amani FANCY,Amani FANCY,Pair Skating,1,5,GBR,A,,,,,not_checked,provisional_identity
+person_8fc6a1b616201,Filippo AMBROSINI,Filippo AMBROSINI,Pair Skating,2,3,ITA,B,,,,,not_checked,provisional_identity
+person_dc3061671244a,Saulius AMBRULEVICIUS,Saulius AMBRULEVICIUS,Ice Dance,1,4,LTU,B,,,,,not_checked,provisional_identity
+person_d85cf3068ccc7,Nicolette Amie HOUSE,Nicolette Amie HOUSE,Ice Dance,1,2,LTU,A,,,,,not_checked,provisional_identity
+person_37dc79c585204,Amina ATAKHANOVA,Amina ATAKHANOVA,Pair Skating,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_f0e442505c91b,Amy IRELAND,Amy IRELAND,Pair Skating,1,2,CRO,A,,,,,not_checked,provisional_identity
+person_35d2dd214cfce,Anabelle LANGLOIS,Anabelle LANGLOIS | LANGLOIS Anabelle,Pair Skating,2,13,CAN,A,,,,,not_checked,multiple_display_names
+person_4d73b2e200995,Anais MORAND,Anais MORAND | MORAND Anais,Pair Skating,2,7,SUI,A,,,,,not_checked,multiple_display_names
+person_d82766a786c5f,Anastasia CANNUSCIO,Anastasia CANNUSCIO,Ice Dance,1,6,USA,A,,,,,not_checked,provisional_identity
+person_7877addbd2a2b,Anastasia GALYETA,Anastasia GALYETA,Ice Dance,1,1,AZE,A,,,,,not_checked,provisional_identity
+person_4467569055fa0,Anastasia GREBENKINA,Anastasia GREBENKINA | GREBENKINA Anastasia,Ice Dance,1,14,ARM,A,,,,,not_checked,multiple_display_names
+person_70ddc23af72bd,Anastasia KHROMOVA,Anastasia KHROMOVA,Ice Dance,1,2,KAZ,A,,,,,not_checked,provisional_identity
+person_44bbd0f1c1448,Anastasia MARTIUSHEVA,Anastasia MARTIUSHEVA,Pair Skating,1,5,RUS,A,,,,,not_checked,provisional_identity
+person_8120707f8628d,Anastasia MISHINA,Anastasia MISHINA,Pair Skating,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_a77cd07e8640c,Anastasia PLATONOVA,Anastasia PLATONOVA,Ice Dance,2,4,RUS,A,,,,,not_checked,provisional_identity
+person_2950a03c92827,Anastasia POLUIANOVA,Anastasia POLUIANOVA,Pair Skating,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_515d5df622359,Anastasia SHPILEVAYA,Anastasia SHPILEVAYA,Ice Dance,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_7984173ad5d28,Anastasia SKOPTCOVA,Anastasia SKOPTCOVA,Ice Dance,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_b1f3649d410fa,Andrea CHONG,Andrea CHONG,Ice Dance,2,2,CAN,A,,,,,not_checked,provisional_identity
+person_fa6f17ad6ff7d,Andrea DAVIDOVICH,Andrea DAVIDOVICH,Pair Skating,1,1,ISR,A,,,,,not_checked,provisional_identity
+person_72f2dffb8408e,Andrea FABBRI,Andrea FABBRI,Ice Dance,1,2,ITA,B,,,,,not_checked,provisional_identity
+person_5213316c5dddb,Andrea VATURI,Andrea VATURI,Ice Dance,1,4,ITA,B,,,,,not_checked,provisional_identity
+person_96212a6596e8f,Andrei BEKH,Andrei BEKH | BEKH Andrei,Pair Skating,1,5,UKR,B,,,,,not_checked,multiple_display_names
+person_c4e4a4a6992ee,Andrei BROVENKO,Andrei BROVENKO,Pair Skating,1,2,LAT,B,,,,,not_checked,provisional_identity
+person_64131edd9b29b,Andrei CHUVILAEV,Andrei CHUVILAEV,Pair Skating,1,2,RUS,B,,,,,not_checked,provisional_identity
+person_e161e2d16c1fa,Andrei DEPUTAT,Andrei DEPUTAT,Pair Skating,1,4,RUS,B,,,,,not_checked,provisional_identity
+person_d425254c26190,Andrei MAXIMISHIN,Andrei MAXIMISHIN,Ice Dance,1,2,RUS,B,,,,,not_checked,provisional_identity
+person_12c3fdee10341,Andrei NOVOSELOV,Andrei NOVOSELOV,Pair Skating,1,5,FRA,B,,,,,not_checked,provisional_identity
+person_49a9b871e4851,Andrew DODDS,Andrew DODDS,Ice Dance,1,1,AUS,B,,,,,not_checked,provisional_identity
+person_8155c789359b3,Andrew LAVRIK,Andrew LAVRIK,Ice Dance,1,1,MEX,B,,,,,not_checked,provisional_identity
+person_ea064a397bb41,Andrew POJE,Andrew POJE | POJE Andrew,Ice Dance,1,47,CAN,B,,,,,not_checked,multiple_display_names
+person_a24e06629ba2b,Andrew SPEROFF,Andrew SPEROFF,Pair Skating,1,1,USA,B,,,,,not_checked,provisional_identity
+person_eb6f5be2cd0fb,Andrew WOLFE,Andrew WOLFE,Pair Skating,2,3,CAN,B,,,,,not_checked,provisional_identity
+person_33e5cdff5aa91,Andrey NEVSKIY,Andrey NEVSKIY,Ice Dance,1,6,LAT,B,,,,,not_checked,provisional_identity
+person_e5ec9f2e4abb8,Andy SEITZ,Andy SEITZ,Pair Skating,1,2,USA,B,,,,,not_checked,provisional_identity
+person_fe9a23cd2d9ef,Angelika PYLKINA,Angelika PYLKINA,Pair Skating,1,5,SWE,A,,,,,not_checked,provisional_identity
+person_b8caa1d396099,Angelina TELEGINA,Angelina TELEGINA,Ice Dance,1,3,GEO,A,,,,,not_checked,provisional_identity
+person_11bd1c0bb708f,Anna CAPPELLINI,Anna CAPPELLINI | CAPPELLINI Anna,Ice Dance,1,52,ITA,A,,,,,not_checked,multiple_display_names
+person_273a7588b9f27,Anna DUSKOVA,Anna DUSKOVA | DUSKOVA Anna,Pair Skating,1,3,CZE,A,,,,,not_checked,multiple_display_names
+person_aeb5ad09585a5,Anna GALCHENIUK,Anna GALCHENIUK,Ice Dance,1,1,BLR,A,,,,,not_checked,provisional_identity
+person_837a28e5252d6,Anna KHNYCHENKOVA,Anna KHNYCHENKOVA,Pair Skating,1,1,HUN,A,,,,,not_checked,provisional_identity
+person_9804606e818f8,Anna Marie PEARCE,Anna Marie PEARCE,Pair Skating,1,1,HUN,A,,,,,not_checked,provisional_identity
+person_9753e64ad32a5,Anna NAGORNYUK,Anna NAGORNYUK,Ice Dance,1,3,UZB,A,,,,,not_checked,provisional_identity
+person_b0db0bf4363af,Anna YANOVSKAYA,Anna YANOVSKAYA,Ice Dance,2,3,HUN; RUS,A,,,,,not_checked,provisional_identity
+person_422ed6092434f,Anna ZADOROZHNIUK,Anna ZADOROZHNIUK | ZADOROZHNIUK Anna,Ice Dance,1,19,UKR,A,,,,,not_checked,multiple_display_names
+person_791d0d53d5a6a,Annabelle PRÖLSS,Annabelle PRÖLSS,Pair Skating,1,3,GER,A,,,,,not_checked,provisional_identity
+person_f11db492c3a49,Hayley Anne SACKS,Hayley Anne SACKS,Pair Skating,1,1,ISR,A,,,,,not_checked,provisional_identity
+person_b07efc0edfd73,Annika HOCKE,Annika HOCKE | HOCKE Annika,Pair Skating,1,2,GER,A,,,,,not_checked,multiple_display_names
+person_db9d6cf459ac3,Anthony PONOMARENKO,Anthony PONOMARENKO,Ice Dance,1,0,USA,B,,,,,not_checked,provisional_identity
+person_41180ec04567e,Julia ANTIPOVA,Julia ANTIPOVA,Pair Skating,1,2,RUS,A,,,,,not_checked,provisional_identity
+person_37690c951a874,Antoine DORSAZ,Antoine DORSAZ | DORSAZ Antoine,Pair Skating,1,5,SUI,B,,,,,not_checked,multiple_display_names
+person_6932bf6b6086c,Antonino SOUZA-KORDYERU,Antonino SOUZA-KORDYERU,Pair Skating,1,1,RUS,B,,,,,not_checked,provisional_identity
+person_8b3815d8cf33c,Antonio SOUZA-KORDEIRU,Antonio SOUZA-KORDEIRU,Pair Skating,1,2,CRO,B,,,,,not_checked,provisional_identity
+person_21403fcf7aa0c,Antonio SOUZA-KORDERU,Antonio SOUZA-KORDERU,Pair Skating,1,1,CRO,B,,,,,not_checked,provisional_identity
+person_6eccee2ca300b,Apollinariia PANFILOVA,Apollinariia PANFILOVA,Pair Skating,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_199240e124d8b,Patrice ARCHETTO,Patrice ARCHETTO,Pair Skating,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_c302565370004,Ariel Fay GAGNON,Ariel Fay GAGNON,Pair Skating,1,2,GRE,A,,,,,not_checked,provisional_identity
+person_5acdb74054598,Arina CHERNIAVSKAIA,Arina CHERNIAVSKAIA,Pair Skating,2,2,ISR; RUS,A,,,,,not_checked,provisional_identity
+person_91415bb478168,Arina USHAKOVA,Arina USHAKOVA,Ice Dance; Pair Skating,2,1,RUS,A,,,,,not_checked,multi_discipline
+person_091b337a56806,Aritz MAESTU,Aritz MAESTU,Pair Skating,3,3,ESP,B,,,,,not_checked,provisional_identity
+person_6b0bc7a6c604f,Arkadi SERGEEV,Arkadi SERGEEV,Ice Dance,1,2,RUS,B,,,,,not_checked,provisional_identity
+person_766f7b3884103,Arne HÖNLEIN,Arne HÖNLEIN,Ice Dance,1,1,GER,B,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_302e2c8bbd8c5,Sarah ARNOLD,Sarah ARNOLD,Ice Dance,2,2,CAN,A,,,,,not_checked,provisional_identity
+person_f2d7bd7ee4261,Arseni MARKOV,Arseni MARKOV,Ice Dance,1,5,CAN,B,,,,,not_checked,provisional_identity
+person_818abe499d527,Artem KNYAZEV,Artem KNYAZEV | KNYAZEV Artem,Pair Skating,1,9,UZB,B,,,,,not_checked,multiple_display_names
+person_fbfbd47590836,Aru TATENO,Aru TATENO,Ice Dance,1,1,JPN,B,,,,,not_checked,provisional_identity
+person_9989075d1a563,Asher HILL,Asher HILL,Ice Dance,1,7,CAN,B,,,,,not_checked,provisional_identity
+person_6ba5d57e40e04,Ashley CAIN,Ashley CAIN,Pair Skating,2,4,USA,A,,,,,not_checked,provisional_identity
+person_fa2416e2240ed,Kristina ASTAKHOVA,ASTAKHOVA Kristina | Kristina ASTAKHOVA,Pair Skating,1,10,OAR; RUS,A,,,,,not_checked,multiple_display_names
+person_8f0081ecafb14,Marien DE LA ASUNCION,Marien DE LA ASUNCION,Ice Dance,1,8,JPN,B,,,,,not_checked,provisional_identity
+person_a5431316613da,Attila ELEK,Attila ELEK | ELEK Attila,Ice Dance,1,9,HUN,B,,,,,not_checked,multiple_display_names
+person_ba0e28de5f14a,Eric NEUMANN-AUBICHON,Eric NEUMANN-AUBICHON,Ice Dance,1,2,GRE,B,,,,,not_checked,provisional_identity
+person_cb09210496518,Francis BOUDREAU-AUDET,Francis BOUDREAU AUDET | Francis BOUDREAU-AUDET,Pair Skating,1,7,JPN,B,,,,,not_checked,provisional_identity
+person_5ded6b3db47fe,Aurelija IPOLITO,Aurelija IPOLITO,Ice Dance,1,1,LAT,A,,,,,not_checked,provisional_identity
+person_011ab33bcaa1d,Aurimas RADISAUSKAS,Aurimas RADISAUSKAS,Ice Dance,1,1,LTU,B,,,,,not_checked,provisional_identity
+person_6f981afe28531,Avidan BROWN,Avidan BROWN,Ice Dance,1,1,AZE,B,,,,,not_checked,provisional_identity
+person_860c53e2e8a8f,Vazgen AZROJAN,AZROJAN Vazgen | Vazgen AZROJAN,Ice Dance,1,14,ARM,B,,,,,not_checked,multiple_display_names
+person_583a531ac382e,William BADAOUI,William BADAOUI,Ice Dance,1,3,AUS,B,,,,,not_checked,provisional_identity
+person_158cd54f0986f,Michael BAHORIC,Michael BAHORIC,Pair Skating,1,2,CRO,B,,,,,not_checked,provisional_identity
+person_4bb4a1acfce2a,Jea-Luc BAKER,Jea-Luc BAKER,Ice Dance,1,3,USA,B,,,,,not_checked,provisional_identity
+person_97436a6880df8,Jean-Luc BAKER,Jean-Luc BAKER,Ice Dance,1,7,USA,B,,,,,not_checked,provisional_identity
+person_c58ec1eafcbf2,Lubov BAKIROVA,Lubov BAKIROVA,Pair Skating,1,5,BLR,A,,,,,not_checked,provisional_identity
+person_ed1ff737bb360,Balazs MAJOR,Balazs MAJOR,Ice Dance,2,6,HUN,B,,,,,not_checked,provisional_identity
+person_52a4e2706721c,Don BALDWIN,Don BALDWIN,Pair Skating,1,3,USA,B,,,,,not_checked,provisional_identity
+person_31e233fefce6c,John BALDWIN,BALDWIN John | John BALDWIN,Pair Skating,1,17,USA,B,,,,,not_checked,multiple_display_names
+person_4abd3f50f7834,"John BALDWIN, Jr.","John BALDWIN, Jr. | John BALDWIN, jr.",Pair Skating,1,3,USA,B,,,,,not_checked,provisional_identity
+person_5aaa65505d93d,Daniil BARANTSEV,Daniil BARANTSEV,Ice Dance,1,3,USA,B,,,,,not_checked,provisional_identity
+person_cb832a48b6c69,FUSAR POLI Barbara,FUSAR POLI Barbara,Ice Dance,1,1,ITA,A,,,,,not_checked,provisional_identity
+person_a0a9a7347b450,Barbara HERZOG,Barbara HERZOG,Ice Dance,1,1,AUT,A,,,,,not_checked,provisional_identity
+person_2bfd79a00f9f2,Barbora SILNA,Barbora SILNA,Ice Dance,2,11,AUT,A,,,,,not_checked,provisional_identity
+person_5b41a59666457,Laura BARQUERO,Laura BARQUERO,Pair Skating,1,1,ESP,A,,,,,not_checked,provisional_identity
+person_455cd48c6d90e,Jeremy BARRETT,BARRETT Jeremy | Jeremy BARRETT,Pair Skating,1,8,USA,B,,,,,not_checked,multiple_display_names
+person_1eded82f66ff9,Krisztina BARTA,Krisztina BARTA,Ice Dance,1,2,HUN,A,,,,,not_checked,provisional_identity
+person_0705a75b1ea5c,Nathan BARTHOLOMAY,BARTHOLOMAY Nathan | Nathan BARTHOLOMAY,Pair Skating,2,7,USA,B,,,,,not_checked,multiple_display_names
+person_a29c874a678be,Evan BATES,BATES Evan | Evan BATES,Ice Dance,2,36,USA,B,,,,,not_checked,multiple_display_names
+person_3a72cdf41ff82,Vera BAZAROVA,BAZAROVA Vera | Vera BAZAROVA,Pair Skating,2,27,RUS,A,,,,,not_checked,multiple_display_names
+person_00913eb1a9f03,Egor BAZIN,Egor BAZIN,Ice Dance,1,1,RUS,B,,,,,not_checked,provisional_identity
+person_0412bc8203b0e,Laurence FOURNIER BEAUDRY,Laurence FOURNIER BEAUDRY,Ice Dance,1,14,DEN,A,,,,,not_checked,provisional_identity
+person_dc71c672d7bdf,Stuart BECKINGHAM,Stuart BECKINGHAM,Pair Skating,1,2,AUS,B,,,,,not_checked,provisional_identity
+person_61a8bf6a1cd5c,Christina BEIER,BEIER Christina | Christina BEIER,Ice Dance,1,8,GER,A,,,,,not_checked,multiple_display_names
+person_c4483e91f9f31,William BEIER,BEIER William | William BEIER,Ice Dance,1,8,GER,B,,,,,not_checked,multiple_display_names
+person_bbb5c02255259,Daria BEKLEMISHEVA,Daria BEKLEMISHEVA,Pair Skating,1,1,HUN,A,,,,,not_checked,provisional_identity
+person_4ae018754a5a1,Tanith BELBIN,BELBIN Tanith | Tanith BELBIN,Ice Dance,1,21,USA,A,,,,,not_checked,multiple_display_names
+person_1d325ad896208,Hayleigh BELL,Hayleigh BELL,Pair Skating,1,1,CAN,A,,,,,not_checked,provisional_identity
+person_3bc6e0ff79978,Julia BELOGLAZOVA,BELOGLAZOVA Julia | Julia BELOGLAZOVA,Pair Skating,1,5,UKR,A,,,,,not_checked,multiple_display_names
+person_c533095d6dd2b,Benjamin OKOLSKI,Benjamin OKOLSKI,Pair Skating,1,7,USA,B,,,,,not_checked,provisional_identity
+person_e88edcdb28cb5,Benjamin WESTENBERGER,Benjamin WESTENBERGER,Ice Dance,1,1,MEX,B,,,,,not_checked,provisional_identity
+person_abda99356ae40,Benoit RICHAUD,Benoit RICHAUD,Ice Dance,1,1,FRA,B,,,,,not_checked,provisional_identity
+person_58152fc50cfa0,Nora von BERGEN,Nora von BERGEN,Ice Dance,1,1,SUI,A,,,,,not_checked,provisional_identity
+person_17542c07494e3,Maciej BERNADOWSKI,Maciej BERNADOWSKI,Ice Dance,1,1,POL,B,,,,,not_checked,provisional_identity
+person_bf1b0d98187ab,Stefania BERTON,BERTON Stefania | Stefania BERTON,Pair Skating,1,17,ITA,A,,,,,not_checked,multiple_display_names
+person_de6ea31c5eecd,Jozef BESTANDIG,Jozef BESTANDIG,Pair Skating,1,1,SVK,B,,,,,not_checked,provisional_identity
+person_1ead92f835260,Olga BESTANDIGOVA,Olga BESTANDIGOVA,Pair Skating,1,1,SVK,A,,,,,not_checked,provisional_identity
+person_dce62351bb57f,Mary Beth MARLEY,Mary Beth MARLEY,Pair Skating,1,4,USA,A,,,,,not_checked,provisional_identity
+person_c0573f2e443b0,Betina POPOVA,Betina POPOVA,Ice Dance,1,1,RUS,A,,,,,not_checked,provisional_identity
+person_871663353a705,Konstantin BEZMATERNIKH,Konstantin BEZMATERNIKH,Pair Skating,1,2,RUS,B,,,,,not_checked,provisional_identity
+person_bdabdec33fb82,Bianca MANACORDA,Bianca MANACORDA,Pair Skating,1,1,ITA,A,,,,,not_checked,provisional_identity
+person_bc0571564b7e4,Martin BIDAR,BIDAR Martin | Martin BIDAR,Pair Skating,1,3,CZE,B,,,,,not_checked,multiple_display_names
+person_633b8813a40bd,Petr BIDAR,Petr BIDAR,Pair Skating,1,4,CZE,B,,,,,not_checked,provisional_identity
+person_b07bfbd6154b2,Yurii BIELIAIEV,Yurii BIELIAIEV,Ice Dance,1,13,BLR,B,,,,,not_checked,provisional_identity
+person_0cff662133718,Charlie BILODEAU,BILODEAU Charlie | Charlie BILODEAU,Pair Skating,1,11,CAN,B,,,,,not_checked,multiple_display_names
+person_f2b6b046793a6,Bin SUO,Bin SUO,Ice Dance,1,1,CHN,B,,,,,not_checked,provisional_identity
+person_ce3f8fb4d09b7,Zoe BLANC,Zoe BLANC,Ice Dance,2,8,FRA,A,,,,,not_checked,provisional_identity
+person_9218ede8b8222,Jerome BLANCHARD,Jerome BLANCHARD,Pair Skating,1,1,FRA,B,,,,,not_checked,provisional_identity
+person_3e9435a29fde1,Ruben BLOMMAERT,BLOMMAERT Ruben | Ruben BLOMMAERT,Pair Skating,3,9,GER,B,,,,,not_checked,multiple_display_names
+person_1f40de501ea6c,Ekaterina BOBROVA,BOBROVA Ekaterina | Ekaterina BOBROVA,Ice Dance,1,43,OAR; RUS,A,,,,,not_checked,multiple_display_names
+person_1524c319ffe88,Nikita BOCHKOV,Nikita BOCHKOV,Pair Skating,1,5,BLR,B,,,,,not_checked,provisional_identity
+person_e304f7c3120b9,Olga BOGUSLAVSKA,Olga BOGUSLAVSKA,Pair Skating,1,2,LAT,A,,,,,not_checked,provisional_identity
+person_b23f3ef10236e,Brent BOMMENTRE,BOMMENTRE Brent | Brent BOMMENTRE,Ice Dance,2,13,USA,B,,,,,not_checked,multiple_display_names
+person_cd41aa30bc64c,Trent NELSON-BOND,Trent NELSON-BOND,Ice Dance,1,4,AUS,B,,,,,not_checked,provisional_identity
+person_e020d0d878c85,Yannick BONHEUR,BONHEUR Yannick | Yannick BONHEUR,Pair Skating,3,18,FRA,B,,,,,not_checked,multiple_display_names
+person_ee9b2a372fc3b,Evgeni BOROUNOV,BOROUNOV Evgeni | Evgeni BOROUNOV,Ice Dance,1,6,AUS,B,,,,,not_checked,multiple_display_names
+person_1ee777b0c26f2,Maria BOROUNOV,BOROUNOV Maria | Maria BOROUNOV,Ice Dance,1,6,AUS,A,,,,,not_checked,multiple_display_names
+person_e695d930f8aac,Viktoria BORZENKOVA,Viktoria BORZENKOVA,Pair Skating,1,2,RUS,A,,,,,not_checked,provisional_identity
+person_3d2896f79d880,Pierre-Loup BOUQUET,Pierre-Loup BOUQUET,Ice Dance,1,2,FRA,B,,,,,not_checked,provisional_identity
+person_a6a1964e5434d,Pierre-Lup BOUQUET,Pierre-Lup BOUQUET,Ice Dance,1,6,FRA,B,,,,,not_checked,provisional_identity
+person_9b4f018696d0a,Fabian BOURZAT,BOURZAT Fabian | Fabian BOURZAT,Ice Dance,1,44,FRA,B,,,,,not_checked,multiple_display_names
+person_4f4fa9f05e283,Emilie DEMERS BOUTIN,Emilie DEMERS BOUTIN,Pair Skating,1,1,CAN,A,,,,,not_checked,provisional_identity
+person_bca1ed10c0725,Medhi BOUZZINE,Medhi BOUZZINE,Pair Skating,1,3,FRA,B,,,,,not_checked,provisional_identity
+person_b8e25eb04aa8f,Bowen SONG,Bowen SONG,Pair Skating,1,1,CHN,B,,,,,not_checked,provisional_identity
+person_a72ed884c8b52,Christopher BOYADJI,Christopher BOYADJI,Pair Skating,2,8,GBR,B,,,,,not_checked,provisional_identity
+person_bff4432429399,Bradley YAEGER,Bradley YAEGER,Ice Dance,2,4,CAN; GRE,B,,,,,not_checked,provisional_identity
+person_6361a8c782192,Michael BRAMANTE,Michael BRAMANTE,Ice Dance,1,1,FRA,B,,,,,not_checked,provisional_identity
+person_1820f4efa1629,Brandon FRAZIER,Brandon FRAZIER,Pair Skating,1,13,USA,B,,,,,not_checked,provisional_identity
+person_a02183c9e6005,Emma BRIEN,Emma BRIEN,Pair Skating,1,2,AUS,A,,,,,not_checked,provisional_identity
+person_57f3b24f18990,Britney SIMPSON,Britney SIMPSON,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_2b8036fd83e34,Brittany JONES,Brittany JONES,Pair Skating,2,3,CAN,A,,,,,not_checked,provisional_identity
+person_f8c3a29473063,Brittany VISE,Brittany VISE,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_883a43bef01db,Mylene BRODEUR,BRODEUR Mylene | Mylene BRODEUR,Pair Skating,1,10,CAN,A,,,,,not_checked,multiple_display_names
+person_4fd67c627e289,Brooke CASTILE,Brooke CASTILE,Pair Skating,1,7,USA,A,,,,,not_checked,provisional_identity
+person_80af25347fb97,Brooke Elizabeth FRIELING,Brooke Elizabeth FRIELING,Ice Dance,1,2,ISR,A,,,,,not_checked,provisional_identity
+person_8c71af1f2bd8d,Neil BROWN,Neil BROWN,Ice Dance,1,4,CZE,B,,,,,not_checked,provisional_identity
+person_71db2d8a8a463,Milica BROZOVIC,Milica BROZOVIC,Pair Skating,1,1,SVK,A,,,,,not_checked,provisional_identity
+person_4a074d2e69c2f,Collin BRUBAKER,Collin BRUBAKER,Ice Dance,1,1,USA,B,,,,,not_checked,provisional_identity
+person_0deaec30e5289,Rockne BRUBAKER,BRUBAKER Rockne | Rockne BRUBAKER,Pair Skating,3,16,USA,B,,,,,not_checked,multiple_display_names
+person_6bc242d67a4e6,Bruce PORTER,Bruce PORTER,Ice Dance,1,2,AZE,B,,,,,not_checked,provisional_identity
+person_5b8fa013a5ccc,Corenne BRUHNS,Corenne BRUHNS,Ice Dance,3,3,MEX,A,,,,,not_checked,provisional_identity
+person_0696c97bfa47d,Bruno MASSOT,Bruno MASSOT | MASSOT Bruno,Pair Skating,3,17,FRA; GER,B,,,,,not_checked,multiple_display_names
+person_0eccb04d84d8e,Bryce DAVISON,Bryce DAVISON | DAVISON Bryce,Pair Skating,1,19,CAN,B,,,,,not_checked,multiple_display_names
+person_1e07d8726e6fe,Bryna OI,Bryna OI,Ice Dance,1,1,JPN,A,,,,,not_checked,provisional_identity
+person_17106589be017,Natalie BUCK,Natalie BUCK,Ice Dance,1,4,AUS,A,,,,,not_checked,provisional_identity
+person_4135abd210494,Joseph BUCKLAND,Joseph BUCKLAND,Ice Dance,2,3,GBR,B,,,,,not_checked,provisional_identity
+person_65d9d09029ad8,Nicholas BUCKLAND,BUCKLAND Nicholas | Nicholas BUCKLAND,Ice Dance,1,27,GBR,B,,,,,not_checked,multiple_display_names
+person_5e9184079f956,Joanna BUDNER,Joanna BUDNER,Ice Dance,1,6,POL,A,,,,,not_checked,provisional_identity
+person_b75553a8682dd,Ivan BUKIN,Ivan BUKIN,Ice Dance,1,16,RUS,B,,,,,not_checked,provisional_identity
+person_e17843b472550,Katerina BUNINA,Katerina BUNINA,Ice Dance,1,2,EST,A,,,,,not_checked,provisional_identity
+person_5825759e35b29,Craig BUNTIN,BUNTIN Craig | Craig BUNTIN,Pair Skating,2,21,CAN,B,,,,,not_checked,multiple_display_names
+person_4427b3e3128fb,Vitali BUTIKOV,Vitali BUTIKOV,Ice Dance,1,7,RUS,B,,,,,not_checked,provisional_identity
+person_600be98411ccf,Goda BUTKUTE,Goda BUTKUTE,Pair Skating,1,5,LTU,A,,,,,not_checked,provisional_identity
+person_2d7f8b55e9e76,Volodymyr BYELIKOV,Volodymyr BYELIKOV,Ice Dance,1,1,UKR,B,,,,,not_checked,provisional_identity
+person_306f803f630c4,Caitlin MALLORY,Caitlin MALLORY,Ice Dance,2,5,EST,A,,,,,not_checked,provisional_identity
+person_0d6bafed2052d,Caitlin YANKOWSKAS,Caitlin YANKOWSKAS,Pair Skating,2,8,GBR; USA,A,,,,,not_checked,provisional_identity
+person_c9a250f8ae196,Jessica CALALANG,Jessica CALALANG,Pair Skating,1,3,USA,A,,,,,not_checked,provisional_identity
+person_87a1e62eca520,Camille RUEST,Camille RUEST,Pair Skating,1,2,CAN,A,,,,,not_checked,provisional_identity
+person_1f7243fcc63d5,Siobhan HEEKIN-CANEDY,HEEKIN-CANEDY Siobhan | Siobhan HEEKIN-CANEDY,Ice Dance,2,9,UKR,A,,,,,not_checked,multiple_display_names
+person_f0505ffb850b8,Isabella CANNUSCIO,Isabella CANNUSCIO,Ice Dance,1,3,USA,A,,,,,not_checked,provisional_identity
+person_9e22de1e862bb,Carlo RÖTHLISBERGER,Carlo RÖTHLISBERGER,Ice Dance,1,2,SUI,B,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_4b62514fcb460,Carolane SOUCISSE,Carolane SOUCISSE,Ice Dance,1,2,CAN,A,,,,,not_checked,provisional_identity
+person_e060261b3a826,Carolina GILLESPIE,Carolina GILLESPIE,Pair Skating,1,2,ITA,A,,,,,not_checked,provisional_identity
+person_884047d40b643,Carolina HERMANN,Carolina HERMANN,Ice Dance,1,6,GER,A,,,,,not_checked,provisional_identity
+person_3f22485fdfaff,Carolina MOSCHENI,Carolina MOSCHENI,Ice Dance,2,3,HUN,A,,,,,not_checked,provisional_identity
+person_59ad259468dd6,Quinn CARPENTER,Quinn CARPENTER,Ice Dance,1,2,USA,B,,,,,not_checked,provisional_identity
+person_9b2f641b9b149,Christina CARREIRA,Christina CARREIRA,Ice Dance,1,0,USA,A,,,,,not_checked,provisional_identity
+person_4bb7498f9189c,Pernelle CARRON,CARRON Pernelle | Pernelle CARRON,Ice Dance,3,30,FRA,A,,,,,not_checked,multiple_display_names
+person_6db7075cdd3ab,Carter Marie JONES,Carter Marie JONES,Ice Dance,1,1,GBR,A,,,,,not_checked,provisional_identity
+person_ad8d069fddd7f,Stefano CARUSO,CARUSO Stefano | Stefano CARUSO,Ice Dance,2,8,GER; ITA,B,,,,,not_checked,multiple_display_names
+person_99f7712755e65,Marissa CASTELLI,CASTELLI Marissa | Marissa CASTELLI,Pair Skating,2,20,USA,A,,,,,not_checked,multiple_display_names
+person_bb08919f9c0d2,Cathy REED,Cathy REED | REED Cathy,Ice Dance,1,25,JPN,A,,,,,not_checked,multiple_display_names
+person_3f126d7b82ec5,Caydee DENNEY,Caydee DENNEY | DENNEY Caydee,Pair Skating,2,16,USA,A,,,,,not_checked,multiple_display_names
+person_726a1b1db48ab,Cecile POSTIAUX,Cecile POSTIAUX,Ice Dance,1,1,BEL,A,,,,,not_checked,provisional_identity
+person_6ab1d93a9432f,Cecilia T��RN,Cecilia T��RN,Ice Dance,1,1,FIN,A,,,,,not_checked,possible_abbreviated_name; replacement_character
+person_2dac15620907e,Cecilia TÖRN,Cecilia TÖRN,Ice Dance,1,6,FIN,A,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_4f6ba0bedffc4,Celia ROBLEDO,Celia ROBLEDO,Ice Dance,1,3,ESP,A,,,,,not_checked,provisional_identity
+person_cf4aa3c04722f,Gabriela CERMANOVA,Gabriela CERMANOVA,Pair Skating,1,3,SVK,A,,,,,not_checked,provisional_identity
+person_30bf36c69c954,Michal CESKA,CESKA Michal | Michal CESKA,Ice Dance,2,6,CZE,B,,,,,not_checked,multiple_display_names
+person_0a43f4bbad271,Chad TSAGRIS,Chad TSAGRIS,Pair Skating,2,6,GRE,B,,,,,not_checked,provisional_identity
+person_f5d4f2fd65465,Galit CHAIT,CHAIT Galit | Galit CHAIT,Ice Dance,1,8,ISR,A,,,,,not_checked,multiple_display_names
+person_4d2be630cd2b1,Chantal LEFEBVRE,Chantal LEFEBVRE,Ice Dance,1,5,CAN,A,,,,,not_checked,provisional_identity
+person_45ea41341a802,Chantelle KERRY,Chantelle KERRY,Ice Dance,1,1,AUS,A,,,,,not_checked,provisional_identity
+person_619b95486d058,Charlene GUIGNARD,Charlene GUIGNARD | GUIGNARD Charlene,Ice Dance,1,25,ITA,A,,,,,not_checked,multiple_display_names
+person_622bb1c7e7dfc,Charlie WHITE,Charlie WHITE | WHITE Charlie,Ice Dance,1,37,USA,B,,,,,not_checked,multiple_display_names
+person_42d500cc54295,Charlotte LICHTMAN,Charlotte LICHTMAN,Ice Dance,1,1,USA,A,,,,,not_checked,provisional_identity
+person_c9723ce16278a,Melodie CHATAIGNER,Melodie CHATAIGNER,Pair Skating,1,3,FRA,A,,,,,not_checked,provisional_identity
+person_fdc0cb2313a7d,Chelsi GUILLEN,Chelsi GUILLEN,Pair Skating,1,1,USA,A,,,,,not_checked,provisional_identity
+person_2eed939983f12,Hong CHEN,Hong CHEN,Ice Dance,1,3,CHN,A,,,,,not_checked,provisional_identity
+person_7c3d14168230b,Chen WANG,Chen WANG | WANG Chen,Ice Dance,1,26,CHN,B,,,,,not_checked,multiple_display_names
+person_35fc6c813c94f,Cheng PENG,Cheng PENG | PENG Cheng,Pair Skating,2,25,CHN,A,,,,,not_checked,multiple_display_names
+person_ee0be289f0ed3,Christina CHITWOOD,Christina CHITWOOD,Ice Dance,1,2,GBR,A,,,,,not_checked,provisional_identity
+person_85ffde335eed7,Madison CHOCK,CHOCK Madison | Madison CHOCK,Ice Dance,2,35,USA,A,,,,,not_checked,multiple_display_names
+person_3be13ad3b3e87,Chongbo GAO,Chongbo GAO | GAO Chongbo,Ice Dance,2,3,CHN,B,,,,,not_checked,multiple_display_names
+person_a9fde44291bac,Chris KNIERIM,Chris KNIERIM | KNIERIM Chris,Pair Skating,2,20,USA,B,,,,,not_checked,multiple_display_names
+person_62b389855c897,Chris REED,Chris REED | REED Chris,Ice Dance,2,36,JPN,B,,,,,not_checked,multiple_display_names
+person_9e8170c551eae,Christa-Elizabeth GOULAKOS,Christa-Elizabeth GOULAKOS,Ice Dance,1,2,GRE,A,,,,,not_checked,provisional_identity
+person_521c20bb29b54,Christa GOULAKOS,Christa GOULAKOS,Ice Dance,1,1,GRE,A,,,,,not_checked,provisional_identity
+person_b42b71b5963b6,Christopher MIOR,Christopher MIOR,Ice Dance,1,2,ITA,B,,,,,not_checked,provisional_identity
+person_8773967b879bf,Christopher TREFIL,Christopher TREFIL,Pair Skating,1,1,HUN,B,,,,,not_checked,provisional_identity
+person_3a253aad12186,Mateusz CHRUSCINSKI,CHRUSCINSKI Mateusz | Mateusz CHRUSCINSKI,Pair Skating,1,5,POL,B,,,,,not_checked,multiple_display_names
+person_10391bb7a4789,Radoslaw CHRUSCINSKI,Radoslaw CHRUSCINSKI,Pair Skating,1,2,POL,B,,,,,not_checked,provisional_identity
+person_01d5445cd95bb,Ioulia CHTCHETININA,Ioulia CHTCHETININA,Pair Skating,2,4,SUI,A,,,,,not_checked,provisional_identity
+person_d0e1532dd3e05,Morgan CIPRES,CIPRES Morgan | Morgan CIPRES,Pair Skating,1,27,FRA,B,,,,,not_checked,multiple_display_names
+person_6ad5c63ded04f,Guillaume CIZERON,CIZERON Guillaume | Guillaume CIZERON,Ice Dance,1,21,FRA,B,,,,,not_checked,multiple_display_names
+person_1adeba8abf6c6,Clover ZATZMAN,Clover ZATZMAN,Ice Dance,1,1,LTU,A,,,,,not_checked,provisional_identity
+person_3ddb71ebdfdda,Cody HAY,Cody HAY | HAY Cody,Pair Skating,1,12,CAN,B,,,,,not_checked,multiple_display_names
+person_c604edf73517c,Maxima COIA,Maxima COIA,Pair Skating,1,2,FRA,B,,,,,not_checked,provisional_identity
+person_c9a9668632200,Maximin COIA,Maximin COIA,Pair Skating,1,8,FRA,B,,,,,not_checked,provisional_identity
+person_ca9bdcd0d74af,Colin MCMANUS,Colin MCMANUS,Ice Dance,1,6,USA,B,,,,,not_checked,provisional_identity
+person_8374bce3869ec,Cong HAN,Cong HAN | HAN Cong,Pair Skating,1,27,CHN,B,,,,,not_checked,multiple_display_names
+person_853112d80c05f,Yue CONG,Yue CONG,Ice Dance,1,1,CHN,A,,,,,not_checked,provisional_identity
+person_58dc85a046148,Paige CONNERS,CONNERS Paige | Paige CONNERS,Pair Skating,1,2,ISR,A,,,,,not_checked,multiple_display_names
+person_1f8dd73a6b2f1,Penny COOMES,COOMES Penny | Penny COOMES,Ice Dance,1,27,GBR,A,,,,,not_checked,multiple_display_names
+person_a16e28d21d107,Dean COPELY,Dean COPELY,Ice Dance,1,1,USA,B,,,,,not_checked,provisional_identity
+person_31049d4b22bd2,Katherine COPELY,Katherine COPELY,Ice Dance,1,10,LTU,A,,,,,not_checked,provisional_identity
+person_b7dd01d98dc76,Michael CORENO,Michael CORENO,Ice Dance,1,9,CAN,B,,,,,not_checked,provisional_identity
+person_003a7fd7f01ee,Cortney MANSOUR,Cortney MANSOUR,Ice Dance,2,5,CZE; KAZ,A,,,,,not_checked,provisional_identity
+person_688a8dc761563,Cortney MANSOUROVA,Cortney MANSOUROVA | MANSOUROVA Cortney,Ice Dance,1,2,CZE,A,,,,,not_checked,multiple_display_names
+person_330a3dcdead60,John COUGHLIN,John COUGHLIN,Pair Skating,2,15,USA,B,,,,,not_checked,provisional_identity
+person_9b04be46b6799,Sarah COWARD,Sarah COWARD,Ice Dance,1,1,BUL,A,,,,,not_checked,provisional_identity
+person_58b31f763c8b8,Jessica CRENSHAW,Jessica CRENSHAW,Pair Skating,1,4,GRE,A,,,,,not_checked,provisional_identity
+person_68badf0392417,Vanessa CRONE,CRONE Vanessa | Vanessa CRONE,Ice Dance,1,14,CAN,A,,,,,not_checked,multiple_display_names
+person_8d9bba31adcf9,Lukas CSOLLEY,CSOLLEY Lukas | Lukas CSOLLEY,Ice Dance,3,14,SVK,B,,,,,not_checked,multiple_display_names
+person_5029c1e56bf5c,Danny CURZON,Danny CURZON,Pair Skating,1,1,USA,B,,,,,not_checked,provisional_identity
+person_a207f83e8aaba,MOSCOVITCH D,MOSCOVITCH D,Pair Skating,1,1,CAN,B,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_401b215309824,STAGNIUNAS D,STAGNIUNAS D,Ice Dance,1,1,LTU,B,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_6bcf7a80ee9eb,SULNDRO-YANG D,SULNDRO-YANG D,Pair Skating,1,1,TPE,B,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_2b38cb3a0d539,Guoste DAMULEVICIUTE,Guoste DAMULEVICIUTE,Ice Dance,1,1,LTU,A,,,,,not_checked,provisional_identity
+person_9e39044d54aa1,Dan ZHANG,Dan ZHANG | ZHANG Dan,Pair Skating,1,30,CHN,A,,,,,not_checked,multiple_display_names
+person_025cc24a86be7,Daniel EATON,Daniel EATON,Ice Dance,1,5,USA,B,,,,,not_checked,provisional_identity
+person_0cda610c82f0e,Daniel HERMANN,Daniel HERMANN,Ice Dance,1,6,GER,B,,,,,not_checked,provisional_identity
+person_1c6d922dbd535,Daniel ILLES,Daniel ILLES,Ice Dance,1,1,HUN,B,,,,,not_checked,provisional_identity
+person_257fed1073de4,Daniel O SHEA,Daniel O SHEA,Pair Skating,1,6,USA,B,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_1230567f29a43,Daniel WENDE,Daniel WENDE | WENDE Daniel,Pair Skating,3,19,GER,B,,,,,not_checked,multiple_display_names
+person_23fb3740b615d,Daniela KELLER,Daniela KELLER,Ice Dance,1,1,SUI,A,,,,,not_checked,provisional_identity
+person_a98067812f0dd,Danielle MONTALBANO,Danielle MONTALBANO,Pair Skating,1,7,ISR,A,,,,,not_checked,provisional_identity
+person_7250511e58139,Danielle OBRIEN,Danielle OBRIEN | OBRIEN Danielle,Ice Dance,1,13,AUS,A,,,,,not_checked,multiple_display_names
+person_a06e6eeb14bb8,Tatiana DANILOVA,Tatiana DANILOVA,Pair Skating,1,4,BLR,A,,,,,not_checked,provisional_identity
+person_f185612973d29,Danny O'SHEA,Danny O'SHEA,Pair Skating,1,3,USA,B,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_690eb64ef9dde,Daria PAVLIUCHENKO,Daria PAVLIUCHENKO,Pair Skating,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_953ab275975c7,Daria POPOVA,Daria POPOVA,Pair Skating,1,7,FRA,A,,,,,not_checked,provisional_identity
+person_a512837cfb67e,Darryll SULNDRO-YANG,Darryll SULNDRO-YANG,Pair Skating,1,3,TPE,B,,,,,not_checked,provisional_identity
+person_c5fa21cd437d6,Darya POPOVA,Darya POPOVA,Ice Dance,1,1,UKR,A,,,,,not_checked,provisional_identity
+person_b39b001f69509,Daryn ZHUNUSSOV,Daryn ZHUNUSSOV,Ice Dance,3,4,KAZ,B,,,,,not_checked,provisional_identity
+person_c3e6016b4e9f0,David DeFAZIO,David DeFAZIO,Ice Dance,1,1,SUI,B,,,,,not_checked,provisional_identity
+person_54d037e3cf8f2,David KING,David KING | KING David,Pair Skating,1,27,GBR,B,,,,,not_checked,multiple_display_names
+person_e16dfdd6c7916,David MITCHELL,David MITCHELL,Ice Dance,1,1,USA,B,,,,,not_checked,provisional_identity
+person_dd13121177474,David VINCOUR,David VINCOUR | VINCOUR David,Ice Dance,1,11,CZE,B,,,,,not_checked,multiple_display_names
+person_655e30b5c57ac,Lindsay DAVIS,Lindsay DAVIS,Pair Skating,2,4,USA,A,,,,,not_checked,provisional_identity
+person_cbddcc249d4a0,Meryl DAVIS,DAVIS Meryl | Meryl DAVIS,Ice Dance,1,37,USA,A,,,,,not_checked,multiple_display_names
+person_5b9397c8fcd28,Simon DAZE,Simon DAZE,Ice Dance,1,1,BUL,B,,,,,not_checked,provisional_identity
+person_ab3dc51545e5e,Deanna STELLATO,Deanna STELLATO,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_ca78d17ecf6bf,Dee Dee LENG,Dee Dee LENG,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_df717f8bdb2ae,Federico DEGLI ESPOSTI,Federico DEGLI ESPOSTI,Pair Skating,1,3,ITA; WD,B,,,,,not_checked,provisional_identity
+person_bc766a2fafecc,Deividas KIZALA,Deividas KIZALA,Ice Dance,1,1,LTU,B,,,,,not_checked,provisional_identity
+person_07593d5af782b,Deividas STAGNIUNAS,Deividas STAGNIUNAS,Ice Dance,2,20,LTU,B,,,,,not_checked,provisional_identity
+person_37bc09a0c55f1,DELLA MONICA N,DELLA MONICA N,Pair Skating,1,1,ITA,A,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_a62686253f2fb,Nicole DELLA MONICA,DELLA MONICA Nicole | Nicole DELLA MONICA,Pair Skating,2,29,ITA,A,,,,,not_checked,multiple_display_names
+person_48a8bb14e7b3f,Isabelle DELOBEL,DELOBEL Isabelle | Isabelle DELOBEL,Ice Dance,1,22,FRA,A,,,,,not_checked,multiple_display_names
+person_17d6201e093fd,Luca DEMATTE,Luca DEMATTE,Pair Skating,1,2,ITA,B,,,,,not_checked,provisional_identity
+person_15c08386a59a4,Demid ROKACHEV,Demid ROKACHEV,Ice Dance,1,1,AUS,B,,,,,not_checked,provisional_identity
+person_b014121bf479f,Ina DEMIREVA,Ina DEMIREVA,Ice Dance,1,4,BUL,A,,,,,not_checked,provisional_identity
+person_273c3c147e2b7,Denis KHODYKIN,Denis KHODYKIN,Pair Skating,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_a6e7ba89c1704,Pascal DENIS,Pascal DENIS,Ice Dance,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_e9fe870bd5f49,Denis PETUKHOV,Denis PETUKHOV | PETUKHOV Denis,Ice Dance,1,11,USA,B,,,,,not_checked,multiple_display_names
+person_c8faaa8a6a345,Haven DENNEY,Haven DENNEY,Pair Skating,1,13,USA,A,,,,,not_checked,provisional_identity
+person_b4965683b0dab,Derek TRENT,Derek TRENT,Pair Skating,1,7,USA,B,,,,,not_checked,provisional_identity
+person_b750509010420,Maxime DESCHAMPS,Maxime DESCHAMPS,Pair Skating,2,6,CAN,B,,,,,not_checked,provisional_identity
+person_3483db8b9160f,Diana JANOSTAKOVA,Diana JANOSTAKOVA,Ice Dance,1,1,CZE,A,,,,,not_checked,provisional_identity
+person_4293d44b5b663,Diana RENNIK,Diana RENNIK | RENNIK Diana,Pair Skating,1,7,EST,A,,,,,not_checked,multiple_display_names
+person_e088f1df1bede,Tim DIECK,Tim DIECK,Ice Dance,1,1,GER,B,,,,,not_checked,provisional_identity
+person_36fa19684a41a,Dmitri DUN,DUN Dmitri | Dmitri DUN,Ice Dance,1,7,UKR,B,,,,,not_checked,multiple_display_names
+person_bd2971fe98837,Dmitri KHROMIN,Dmitri KHROMIN,Pair Skating,1,9,POL,B,,,,,not_checked,provisional_identity
+person_f1f82a5b9faed,Dmitri KISELEV,Dmitri KISELEV,Ice Dance,1,1,CZE,B,,,,,not_checked,provisional_identity
+person_f5ec1a26f9566,Dmitri MATSJUK,Dmitri MATSJUK,Ice Dance,3,9,AUT,B,,,,,not_checked,provisional_identity
+person_6fe57f415c255,Dmitri SOLOVIEV,Dmitri SOLOVIEV | SOLOVIEV Dmitri,Ice Dance,1,43,OAR; RUS,B,,,,,not_checked,multiple_display_names
+person_737472ebc0d42,Dmitri ZOBNIN,Dmitri ZOBNIN | ZOBNIN Dmitri,Pair Skating,1,4,UZB,B,,,,,not_checked,multiple_display_names
+person_4a0966345706c,Dmitrii KOZLOVSKII,Dmitrii KOZLOVSKII,Pair Skating,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_b62e58edbd756,Dmitry RYLOV,Dmitry RYLOV,Pair Skating,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_8ef5dca7bcaa6,Dmitry SOPOT,Dmitry SOPOT,Pair Skating,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_943dd806228fe,Dominika PIATKOWSKA,Dominika PIATKOWSKA,Pair Skating,1,9,POL,A,,,,,not_checked,provisional_identity
+person_5ed1c98b25ef4,Oksana DOMNINA,DOMNINA Oksana | Oksana DOMNINA,Ice Dance,1,24,RUS,A,,,,,not_checked,multiple_display_names
+person_fc0177e122640,Huibo DONG,DONG Huibo | Huibo DONG,Pair Skating,1,14,CHN,A,,,,,not_checked,multiple_display_names
+person_7254e8fe08865,Gretchen DONLAN,Gretchen DONLAN,Pair Skating,1,1,USA,A,,,,,not_checked,provisional_identity
+person_bfdc9cd273a06,Zachary DONOHUE,DONOHUE Zachary | Zachary DONOHUE,Ice Dance,1,25,USA,B,,,,,not_checked,multiple_display_names
+person_bde0e2a1abbfe,Dora TUROCZI,Dora TUROCZI,Ice Dance,1,5,HUN,A,,,,,not_checked,provisional_identity
+person_7e8f44ec75fa7,Dorota SIUDEK,Dorota SIUDEK,Pair Skating,1,5,POL,A,,,,,not_checked,provisional_identity
+person_e70285027598e,Dorota ZAGORSKA,Dorota ZAGORSKA | ZAGORSKA Dorota,Pair Skating,1,7,POL,A,,,,,not_checked,multiple_display_names
+person_c489384010c4f,Drew MEEKINS,Drew MEEKINS,Pair Skating,1,2,USA,B,,,,,not_checked,provisional_identity
+person_387ad5bfb1147,Margarita DROBIAZKO,DROBIAZKO Margarita | Margarita DROBIAZKO,Ice Dance,1,3,LTU,A,,,,,not_checked,multiple_display_names
+person_51ee616f0d121,Pavel DROZD,Pavel DROZD,Ice Dance,1,2,RUS,B,,,,,not_checked,provisional_identity
+person_d0c062aea18f6,Jessica DUBE,DUBE Jessica | Jessica DUBE,Pair Skating,2,23,CAN,A,,,,,not_checked,multiple_display_names
+person_240cf6bdaf631,Marie-France DUBREUIL,DUBREUIL Marie-France | Marie-France DUBREUIL,Ice Dance,1,12,CAN,A,,,,,not_checked,multiple_display_names
+person_c33e08d485182,Meagan DUHAMEL,DUHAMEL Meagan | Meagan DUHAMEL,Pair Skating,2,46,CAN,A,,,,,not_checked,multiple_display_names
+person_8cdef17f1c65d,Dylan MOSCOVITCH,Dylan MOSCOVITCH,Pair Skating,3,31,CAN,B,,,,,not_checked,provisional_identity
+person_dd05116c0a2d6,KRASNOPOLSKI E,KRASNOPOLSKI E,Pair Skating,1,1,ISR,B,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_fcb7fa433726f,Owen EDWARDS,Owen EDWARDS,Ice Dance,1,2,GBR,B,,,,,not_checked,provisional_identity
+person_2825734015a4c,Elena EFAIEVA,Elena EFAIEVA,Pair Skating,1,2,RUS,A,,,,,not_checked,provisional_identity
+person_90aa3e1c331b7,Egor MAISTROV,Egor MAISTROV,Ice Dance,1,3,BLR,B,,,,,not_checked,provisional_identity
+person_70efc4e01cb0c,Tobias EISENBAUER,Tobias EISENBAUER,Ice Dance,1,1,AUT,B,,,,,not_checked,provisional_identity
+person_057eefa5d598b,Ekaterina KOSTENKO,Ekaterina KOSTENKO | KOSTENKO Ekaterina,Pair Skating,1,5,UKR,A,,,,,not_checked,multiple_display_names
+person_ee568bc2888ba,Ekaterina PUSHKASH,Ekaterina PUSHKASH,Ice Dance,1,3,RUS,A,,,,,not_checked,provisional_identity
+person_9bd3b657abc84,Ekaterina RIAZANOVA,Ekaterina RIAZANOVA,Ice Dance,1,15,RUS,A,,,,,not_checked,provisional_identity
+person_c8d6ffc8d26e6,Ekaterina RUBLEVA,Ekaterina RUBLEVA,Ice Dance,1,13,RUS,A,,,,,not_checked,provisional_identity
+person_24a515f143103,Ekaterina SOKOLOVA,Ekaterina SOKOLOVA,Pair Skating,1,3,ISR,A,,,,,not_checked,provisional_identity
+person_95a650993538d,Ekaterina SOSINOVA,Ekaterina SOSINOVA,Pair Skating,2,2,AZE; ISR,A,,,,,not_checked,provisional_identity
+person_f07ee2bc54166,György ELEK,Gyorgy ELEK | György ELEK,Ice Dance,1,5,HUN,B,,,,,not_checked,provisional_identity
+person_996a2f08e6e62,Elena GRUSHINA,Elena GRUSHINA | GRUSHINA Elena,Ice Dance,1,7,UKR,A,,,,,not_checked,multiple_display_names
+person_ba9351de33698,Elena ILINYKH,Elena ILINYKH | ILINYKH Elena,Ice Dance,2,27,RUS,A,,,,,not_checked,multiple_display_names
+person_e3df11de912bc,Elena ROMANOVSKAYA,Elena ROMANOVSKAYA,Ice Dance,1,3,RUS,A,,,,,not_checked,provisional_identity
+person_9c27230b08d05,Elisabeth PARADIS,Elisabeth PARADIS,Ice Dance,1,5,CAN,A,,,,,not_checked,provisional_identity
+person_e7b8c2c84e6f8,Elizabeta MAKAROVA,Elizabeta MAKAROVA,Pair Skating,1,1,BUL,A,,,,,not_checked,provisional_identity
+person_01aac8c3828ef,Elizabeth PUTNAM,Elizabeth PUTNAM,Pair Skating,1,5,CAN,A,,,,,not_checked,provisional_identity
+person_0d5e46f68495c,Elizaveta MAKAROVA,Elizaveta MAKAROVA,Pair Skating,1,5,BUL,A,,,,,not_checked,provisional_identity
+person_c9f1f930d8911,Elizaveta TRETIAKOV,Elizaveta TRETIAKOV,Ice Dance,1,1,UZB,A,,,,,not_checked,provisional_identity
+person_0770a6bc417c0,Elliana POGREBINSKY,Elliana POGREBINSKY,Ice Dance,1,4,USA,A,,,,,not_checked,provisional_identity
+person_972d1d639c6a2,Ramona ELSENER,Ramona ELSENER,Ice Dance,1,6,SUI,A,,,,,not_checked,provisional_identity
+person_19c80703c29f9,Emese LASZLO,Emese LASZLO,Ice Dance,1,1,HUN,A,,,,,not_checked,provisional_identity
+person_69884f2ddc682,Emi HIRAI,Emi HIRAI,Ice Dance,1,8,JPN,A,,,,,not_checked,provisional_identity
+person_88145a0c8b7ad,Emilia SIMONEN,Emilia SIMONEN,Pair Skating,1,1,FIN,A,,,,,not_checked,provisional_identity
+person_ffb2e8638b8b6,Emily SAMUELSON,Emily SAMUELSON | SAMUELSON Emily,Ice Dance,2,9,USA,A,,,,,not_checked,multiple_display_names
+person_dda6502891275,Igor EREMENKO,Igor EREMENKO,Ice Dance,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_e7c2689855538,Yuri EREMENKO,Yuri EREMENKO,Ice Dance,1,2,SUI,B,,,,,not_checked,provisional_identity
+person_f929423d722eb,Eric RADFORD,Eric RADFORD | RADFORD Eric,Pair Skating,2,38,CAN,B,,,,,not_checked,multiple_display_names
+person_eefff20761807,Erica RISSEEUW,Erica RISSEEUW,Pair Skating,1,2,GBR,A,,,,,not_checked,provisional_identity
+person_a0e85dccd29b6,Nikita ERMOLAEV,Nikita ERMOLAEV,Pair Skating,1,5,LTU,B,,,,,not_checked,provisional_identity
+person_58e5995e25442,Lola ESBRAT,Lola ESBRAT,Pair Skating,1,5,FRA,A,,,,,not_checked,provisional_identity
+person_20fff20d06607,Eva-Maria FITZE,Eva-Maria FITZE | FITZE Eva-Maria,Pair Skating,1,4,GER,A,,,,,not_checked,multiple_display_names
+person_70cd5f46f5376,Sofia EVDOKIMOVA,Sofia EVDOKIMOVA,Ice Dance,1,1,RUS,A,,,,,not_checked,provisional_identity
+person_f90c28fae106f,Evgeni KRASNOPOLSKI,Evgeni KRASNOPOLSKI | KRASNOPOLSKI Evgeni,Pair Skating,5,13,ISR,B,,,,,not_checked,multiple_display_names
+person_ef589357aba21,Evgenia MELNIK,Evgenia MELNIK,Ice Dance,1,1,BLR,A,,,,,not_checked,provisional_identity
+person_ae0d0e4e529d9,Evgenia TARASOVA,Evgenia TARASOVA | TARASOVA Evgenia,Pair Skating,1,18,OAR; RUS,A,,,,,not_checked,multiple_display_names
+person_3d68235f2c80f,Marco FABBRI,FABBRI Marco | Marco FABBRI,Ice Dance,1,25,ITA,B,,,,,not_checked,multiple_display_names
+person_40a2d0ae6db0c,Fabian KELLER,Fabian KELLER,Ice Dance,1,1,SUI,B,,,,,not_checked,provisional_identity
+person_df3adde5bdc14,Minerva Fabienne HASE,Minerva Fabienne HASE,Pair Skating,1,3,GER,A,,,,,not_checked,provisional_identity
+person_b8019f5c504da,Federica FAIELLA,FAIELLA Federica | Federica FAIELLA,Ice Dance,1,27,ITA,A,,,,,not_checked,multiple_display_names
+person_781f0c5a9092e,Fang YANG,Fang YANG,Ice Dance,1,2,CHN,A,,,,,not_checked,provisional_identity
+person_77603d7a1a0f3,Lilah FEAR,Lilah FEAR,Ice Dance,1,2,GBR,A,,,,,not_checked,provisional_identity
+person_41f34b4165475,Jean-Sebastien FECTEAU,Jean-Sebastien FECTEAU,Pair Skating,1,6,CAN,B,,,,,not_checked,provisional_identity
+person_ce18e65631c98,Feder SOKOLOV,Feder SOKOLOV,Pair Skating,1,1,AZE,B,,,,,not_checked,provisional_identity
+person_995ddde735c31,Federica TESTA,Federica TESTA,Ice Dance,2,12,ITA; SVK,A,,,,,not_checked,provisional_identity
+person_62517d9c7c8ff,Fedor KLIMOV,Fedor KLIMOV | KLIMOV Fedor,Pair Skating,1,26,RUS,B,,,,,not_checked,multiple_display_names
+person_cf89616209aae,Fedor SOKOLOV,Fedor SOKOLOV,Pair Skating,2,4,ISR,B,,,,,not_checked,provisional_identity
+person_2e67920f1eaea,Fei MENG,Fei MENG,Ice Dance,1,3,CHN,B,,,,,not_checked,provisional_identity
+person_2cb22089c8fde,Mate FEJES,Mate FEJES,Ice Dance,2,5,HUN,B,,,,,not_checked,provisional_identity
+person_85ee04ac4313b,Felicia ZHANG,Felicia ZHANG | ZHANG Felicia,Pair Skating,2,7,USA,A,,,,,not_checked,multiple_display_names
+person_b0dafdfa87509,Luis FENERO,Luis FENERO,Ice Dance,1,3,ESP,B,,,,,not_checked,provisional_identity
+person_621e08c94e3ac,Mark FERNANDEZ,Mark FERNANDEZ,Pair Skating,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_4d0f618c3e893,Pavel FILCHENKOV,Pavel FILCHENKOV,Ice Dance,1,1,AZE,B,,,,,not_checked,provisional_identity
+person_d4dec7e2c9c6d,Filip ZALEVSKI,Filip ZALEVSKI,Pair Skating,2,5,BUL; UKR,B,,,,,not_checked,provisional_identity
+person_7570d1a2f87de,Terra FINDLAY,Terra FINDLAY,Ice Dance,1,1,FRA,A,,,,,not_checked,provisional_identity
+person_f5bce9a77f9be,Francesco FIORETTI,Francesco FIORETTI,Ice Dance,1,2,ITA,B,,,,,not_checked,provisional_identity
+person_2e7cfb2fc0062,Shane FIRUS,Shane FIRUS,Ice Dance,1,2,CAN,B,,,,,not_checked,provisional_identity
+person_c60fd5f24150c,Jeremie FLEMIN,Jeremie FLEMIN,Ice Dance,1,1,POL,B,,,,,not_checked,provisional_identity
+person_c08cc650b5ecb,Florian JUST,Florian JUST,Pair Skating,2,7,GER,B,,,,,not_checked,provisional_identity
+person_0f7747a27054c,Florian ROOST,Florian ROOST,Ice Dance,1,6,SUI,B,,,,,not_checked,provisional_identity
+person_7aec8fc30cef3,Mikhail FOMICHEV,Mikhail FOMICHEV,Pair Skating,1,1,BLR,B,,,,,not_checked,provisional_identity
+person_72e52f12609d3,Francois-Xavier OUELLETTE,Francois-Xavier OUELLETTE,Ice Dance,1,5,CAN,B,,,,,not_checked,provisional_identity
+person_94114fc1a22dd,Kristin FRASER,FRASER Kristin | Kristin FRASER,Ice Dance,1,17,AZE,A,,,,,not_checked,multiple_display_names
+person_b377c5e4b68ff,Matilda FRIEND,Matilda FRIEND,Ice Dance,1,3,AUS,A,,,,,not_checked,provisional_identity
+person_475d72ffd5265,Stefanie FROHBERG,Stefanie FROHBERG,Ice Dance,1,2,GER,A,,,,,not_checked,provisional_identity
+person_e90c2804a74a8,Nadezhda FROLENKOVA,Nadezhda FROLENKOVA,Ice Dance,1,2,UKR,A,,,,,not_checked,provisional_identity
+person_946d0fab71d10,German FROLOV,German FROLOV,Ice Dance,1,2,EST,B,,,,,not_checked,provisional_identity
+person_a66add1a02084,Rikako FUKASE,Rikako FUKASE,Ice Dance,1,1,JPN,A,,,,,not_checked,provisional_identity
+person_e8b3b1caf17e1,Vladimir FUTAS,Vladimir FUTAS,Pair Skating,1,1,SVK,B,,,,,not_checked,provisional_identity
+person_afcd4625fe594,Gabriela KUBOVA,Gabriela KUBOVA,Ice Dance,2,2,CZE,A,,,,,not_checked,provisional_identity
+person_bc0adb69b1391,Gabriella PAPADAKIS,Gabriella PAPADAKIS | PAPADAKIS Gabriella,Ice Dance,1,21,FRA,A,,,,,not_checked,multiple_display_names
+person_623610c68be8c,Romain LE GAC,Romain LE GAC | le GAC Romain,Ice Dance,1,8,FRA,B,,,,,not_checked,multiple_display_names
+person_3f070bcb6f6fb,Keith GAGNON,Keith GAGNON,Ice Dance,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_57350c825a5d9,Valeria GAISTRUK,Valeria GAISTRUK,Ice Dance,1,1,UKR,A,,,,,not_checked,provisional_identity
+person_a180a981457de,Loren GALLER-RABINOWITZ,Loren GALLER-RABINOWITZ,Ice Dance,1,1,USA,A,,,,,not_checked,provisional_identity
+person_0f76b4af5be34,Hamish GAMAN,Hamish GAMAN,Pair Skating,1,1,GBR,B,,,,,not_checked,provisional_identity
+person_ff4d9ef519950,Yumeng GAO,Yumeng GAO,Pair Skating,1,0,CHN,A,,,,,not_checked,provisional_identity
+person_f2a9da13ac23f,Tina GARABEDIAN,Tina GARABEDIAN,Ice Dance,1,5,ARM,A,,,,,not_checked,provisional_identity
+person_d4e7f4c2c0882,Garrett LUCASH,Garrett LUCASH,Pair Skating,2,4,USA,B,,,,,not_checked,provisional_identity
+person_f684997c8f593,Kurtis GASKELL,Kurtis GASKELL,Pair Skating,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_34605f3f5490b,Kira GEIL,Kira GEIL,Ice Dance,2,3,AUT,A,,,,,not_checked,provisional_identity
+person_7a16c9128dd5e,Georgi KENCHADZE,Georgi KENCHADZE,Ice Dance,1,1,BUL,B,,,,,not_checked,provisional_identity
+person_f8a6598e92070,Nikki GEORGIADIS,Nikki GEORGIADIS,Ice Dance,1,2,GRE,A,,,,,not_checked,provisional_identity
+person_8aadec53a9ba4,Peter GERBER,Peter GERBER,Ice Dance,1,3,POL,B,,,,,not_checked,provisional_identity
+person_08890140e165b,Katarina GERBOLDT,Katarina GERBOLDT,Pair Skating,1,3,RUS,A,,,,,not_checked,provisional_identity
+person_6b93f4bb3b140,Guillame GFELLER,Guillame GFELLER,Ice Dance,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_114daf2f6aa66,Guillaume GFELLER,Guillaume GFELLER,Ice Dance,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_fc1bde1e6b7b3,Rebecca GHILARDI,Rebecca GHILARDI,Pair Skating,1,1,ITA,A,,,,,not_checked,provisional_identity
+person_c273277f9c780,Lewis GIBSON,Lewis GIBSON,Ice Dance,1,2,GBR,B,,,,,not_checked,provisional_identity
+person_d2ef15863f519,Katharina GIEROK,Katharina GIEROK,Pair Skating,1,1,GER,A,,,,,not_checked,provisional_identity
+person_8db267092d343,Tim GIESEN,Tim GIESEN,Ice Dance,1,2,GER,B,,,,,not_checked,provisional_identity
+person_46b442e097843,Piper GILLES,GILLES Piper | Piper GILLES,Ice Dance,1,24,CAN,A,,,,,not_checked,multiple_display_names
+person_6aeab1c8d65f0,Todd GILLES,Todd GILLES,Ice Dance,3,6,USA,B,,,,,not_checked,provisional_identity
+person_da36d2979ce23,Mylene GIRARD,Mylene GIRARD,Ice Dance,1,3,CAN,A,,,,,not_checked,provisional_identity
+person_b2bfca2840c33,Leif GISLASON,Leif GISLASON,Ice Dance,1,4,CAN,B,,,,,not_checked,provisional_identity
+person_091bec9ac861e,Logan GIULIETTI-SCHMITT,Logan GIULIETTI-SCHMITT,Ice Dance,1,5,USA,B,,,,,not_checked,provisional_identity
+person_8c1d1fbe8ce98,Ilja GLEBOV,GLEBOV Ilja | Ilja GLEBOV,Pair Skating,1,9,EST,B,,,,,not_checked,multiple_display_names
+person_32c694f386335,Julia GOLOVINA,GOLOVINA Julia | Julia GOLOVINA,Ice Dance,1,6,UKR,A,,,,,not_checked,multiple_display_names
+person_42b7e41630a2a,Ruslan GONCHAROV,GONCHAROV Ruslan | Ruslan GONCHAROV,Ice Dance,1,7,UKR,B,,,,,not_checked,multiple_display_names
+person_e3bbf33572eaf,Katelyn GOOD,Katelyn GOOD,Ice Dance,1,2,DEN,A,,,,,not_checked,provisional_identity
+person_e9a221be7ba0c,Kristina GORSHKOVA,Kristina GORSHKOVA,Ice Dance,1,7,RUS,A,,,,,not_checked,provisional_identity
+person_848756f93cd4a,Graham HOCKLEY,Graham HOCKLEY,Ice Dance,1,2,GRE,B,,,,,not_checked,provisional_identity
+person_f28ce8cdbb74f,Phillipa TOWLER-GREEN,Phillipa TOWLER-GREEN,Ice Dance,1,4,GBR,A,,,,,not_checked,provisional_identity
+person_44b34631bd0d5,Greg ZUERLEIN,Greg ZUERLEIN,Ice Dance,1,7,USA,B,,,,,not_checked,provisional_identity
+person_056b9c284c187,Melissa GREGORY,GREGORY Melissa | Melissa GREGORY,Ice Dance,1,11,USA,A,,,,,not_checked,multiple_display_names
+person_2f1c4216829c9,Gregory MERRIMAN,Gregory MERRIMAN | MERRIMAN Gregory,Ice Dance,1,13,AUS,B,,,,,not_checked,multiple_display_names
+person_d014ec4a468bf,Vanessa GRENIER,Vanessa GRENIER,Pair Skating,1,4,CAN,A,,,,,not_checked,provisional_identity
+person_aa2c4700d4c7d,Grethe GRUENBERG,Grethe GRUENBERG,Ice Dance,1,2,EST,A,,,,,not_checked,provisional_identity
+person_1662ec4706a97,Veronica GRIGORIEVA,Veronica GRIGORIEVA,Pair Skating,1,1,ESP,A,,,,,not_checked,provisional_identity
+person_cb416a687802b,Grigory SMIRNOV,Grigory SMIRNOV,Ice Dance,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_169432683c255,Xueting GUAN,Xueting GUAN,Ice Dance,1,3,CHN,A,,,,,not_checked,provisional_identity
+person_67f36397d119b,Guangyao XIANG,Guangyao XIANG,Ice Dance,1,1,CHN,B,,,,,not_checked,provisional_identity
+person_2f786bdcf70e5,GUARISE M,GUARISE M,Pair Skating,1,1,ITA,B,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_abcd91a47b39e,Matteo GUARISE,GUARISE Matteo | Matteo GUARISE,Pair Skating,1,23,ITA,B,,,,,not_checked,multiple_display_names
+person_6c8de5dc7e814,Natalia GUDINA,Natalia GUDINA,Ice Dance,1,2,ISR,A,,,,,not_checked,provisional_identity
+person_8fcdecead39bb,Jonathan GUERREIRO,GUERREIRO Jonathan | Jonathan GUERREIRO,Ice Dance,3,8,OAR; RUS,B,,,,,not_checked,multiple_display_names
+person_2a2875c2b8f50,Jiameimei GUO,Jiameimei GUO,Ice Dance,1,3,CHN,A,,,,,not_checked,provisional_identity
+person_37b450684dbdd,Kamila HAJKOVA,HAJKOVA Kamila | Kamila HAJKOVA,Ice Dance,1,11,CZE,A,,,,,not_checked,multiple_display_names
+person_e5f0f6cfc48af,Haley SALES,Haley SALES,Ice Dance,1,1,CAN,A,,,,,not_checked,provisional_identity
+person_89a30f473d8b3,Rudy HALMAERT,Rudy HALMAERT,Pair Skating,1,1,CZE,B,,,,,not_checked,provisional_identity
+person_a9f03b8b2ebb3,Rebecca HANDKE,Rebecca HANDKE,Pair Skating,1,4,GER,A,,,,,not_checked,provisional_identity
+person_2e725ad398c3c,Hanna JAKUCS,Hanna JAKUCS,Ice Dance,1,1,HUN,A,,,,,not_checked,provisional_identity
+person_15e58c235700e,Mark HANRETTY,Mark HANRETTY,Ice Dance,1,2,GBR,B,,,,,not_checked,provisional_identity
+person_dc676b75b7979,Martin HANULAK,Martin HANULAK,Pair Skating,1,3,SVK,B,,,,,not_checked,provisional_identity
+person_0daf18e5fa380,Hao ZHANG,Hao ZHANG | ZHANG Hao,Pair Skating,3,57,CHN,B,,,,,not_checked,multiple_display_names
+person_0e4a27a3d5cb7,Harley WINDSOR,Harley WINDSOR,Pair Skating,1,3,AUS,B,,,,,not_checked,provisional_identity
+person_8e5de361f2c35,Tarrah HARVEY,Tarrah HARVEY,Ice Dance,1,1,CAN,A,,,,,not_checked,provisional_identity
+person_21c147e7ea455,Judith HAUNSTETTER,Judith HAUNSTETTER,Ice Dance,1,1,GER,A,,,,,not_checked,provisional_identity
+person_bccbf2833596b,Maylin HAUSCH,HAUSCH Maylin | Maylin HAUSCH,Pair Skating,1,12,GER,A,,,,,not_checked,multiple_display_names
+person_8b4c4c9ba8988,Kaitlin HAWAYEK,Kaitlin HAWAYEK,Ice Dance,2,10,USA,A,,,,,not_checked,provisional_identity
+person_9429f08b0af56,Victoria HECHT,Victoria HECHT,Pair Skating,1,1,HUN,A,,,,,not_checked,provisional_identity
+person_f12cfe59b0eeb,Henna LINDHOLM,Henna LINDHOLM,Ice Dance,1,2,FIN,A,,,,,not_checked,provisional_identity
+person_9f1d9c7a72fe1,Kimberley HEW-LOW,Kimberley HEW-LOW,Ice Dance,1,1,AUS,A,,,,,not_checked,provisional_identity
+person_e1f432e82e28c,Marcy HINZMANN,HINZMANN Marcy | Marcy HINZMANN,Pair Skating,1,4,USA,A,,,,,not_checked,multiple_display_names
+person_1f9542f08a6c4,Ho Jung LEE,Ho Jung LEE,Ice Dance,1,1,KOR,A,,,,,not_checked,provisional_identity
+person_e4aea1072691c,Nora HOFFMANN,HOFFMANN Nora | Nora HOFFMANN,Ice Dance,2,17,HUN,A,,,,,not_checked,multiple_display_names
+person_b7f1b84b6c37c,Niklas HOGNER,Niklas HOGNER,Pair Skating,1,5,SWE,B,,,,,not_checked,provisional_identity
+person_1e36e2fd7bde0,Hojung LEE,Hojung LEE,Ice Dance,1,1,KOR,A,,,,,not_checked,provisional_identity
+person_659af76b790c4,Kaleigh HOLE,Kaleigh HOLE,Pair Skating,1,1,CAN,A,,,,,not_checked,provisional_identity
+person_91de9236c506d,Hongbo ZHAO,Hongbo ZHAO | ZHAO Hongbo,Pair Skating,1,12,CHN,B,,,,,not_checked,multiple_display_names
+person_bdd84050a7bb2,Sally HOOLIN,Sally HOOLIN,Pair Skating,2,2,GBR,A,,,,,not_checked,provisional_identity
+person_d0a2c4b143ac1,Virginiya HOPTMAN,Virginiya HOPTMAN,Ice Dance,1,1,AZE,A,,,,,not_checked,provisional_identity
+person_1622230aed80e,Ondrej HOTAREK,HOTAREK Ondrej | Ondrej HOTAREK,Pair Skating,3,38,ITA,B,,,,,not_checked,multiple_display_names
+person_686aa850d2e94,Xintong HUANG,HUANG Xintong | Xintong HUANG,Ice Dance,1,26,CHN,A,,,,,not_checked,multiple_display_names
+person_18f21b0c63a2b,Keiffer HUBBELL,Keiffer HUBBELL,Ice Dance,1,5,USA,B,,,,,not_checked,provisional_identity
+person_f55e338577683,Madison HUBBELL,HUBBELL Madison | Madison HUBBELL,Ice Dance,2,30,USA,A,,,,,not_checked,multiple_display_names
+person_3d831df57f061,James HUNT,James HUNT,Pair Skating,1,1,GBR,B,,,,,not_checked,provisional_identity
+person_77bfa0b4630c0,Jessica HUOT,Jessica HUOT,Ice Dance,1,1,FIN,A,,,,,not_checked,provisional_identity
+person_d208c96a37e81,Sara HURTADO,HURTADO Sara | Sara HURTADO,Ice Dance,2,17,ESP,A,,,,,not_checked,multiple_display_names
+person_ac3e903dd3c31,Ji Hyang RI,Ji Hyang RI,Pair Skating,1,1,PRK,A,,,,,not_checked,provisional_identity
+person_f229a49a4191b,Hye Min KIM,Hye Min KIM,Ice Dance,1,1,KOR,A,,,,,not_checked,provisional_identity
+person_63a3f00346624,Sun Hye YU,Sun Hye YU,Ice Dance,1,2,UZB,A,,,,,not_checked,provisional_identity
+person_121570cb3d68f,JONG Yong Hyok,JONG Yong Hyok,Pair Skating,1,1,PRK,B,,,,,not_checked,provisional_identity
+person_8c8112cadaa07,Won Hyok THAE,Won Hyok THAE,Pair Skating,1,1,PRK,B,,,,,not_checked,provisional_identity
+person_02e2ac47aaddb,Hyungtae KIM,Hyungtae KIM,Pair Skating,1,1,KOR,B,,,,,not_checked,provisional_identity
+person_fec591ed8600c,TOBIAS I,TOBIAS I,Ice Dance,1,1,LTU,A,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_707fd5a2dd313,Ian LORELLO,Ian LORELLO,Ice Dance,1,3,USA,B,,,,,not_checked,provisional_identity
+person_e2a8adcdcb332,Ian MORAM,Ian MORAM,Pair Skating,1,4,CAN,B,,,,,not_checked,provisional_identity
+person_1e9da17724e8a,Laureano IBARRA,Laureano IBARRA,Pair Skating,1,2,USA,B,,,,,not_checked,provisional_identity
+person_0d4206e4e1d17,Shoya ICHIHASHI,Shoya ICHIHASHI,Pair Skating,1,1,JPN,B,,,,,not_checked,provisional_identity
+person_94e5e35d8b956,Igor LUKANIN,Igor LUKANIN | LUKANIN Igor,Ice Dance,1,17,AZE,B,,,,,not_checked,multiple_display_names
+person_a03fbc840f48a,Ilia SPIRIDONOV,Ilia SPIRIDONOV,Pair Skating,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_2f9abe4755428,Ilia TKACHENKO,Ilia TKACHENKO,Ice Dance,2,21,ISR; RUS,B,,,,,not_checked,provisional_identity
+person_a34cc3563255b,Lubov ILIUSHECHKINA,Lubov ILIUSHECHKINA,Pair Skating,2,14,CAN; RUS,A,,,,,not_checked,provisional_identity
+person_9ab326510e11c,Liubov ILYUSHECHKINA,Liubov ILYUSHECHKINA,Pair Skating,1,7,CAN,A,,,,,not_checked,provisional_identity
+person_b20711a54ddf0,Richard Kang In KAM,Richard Kang In KAM,Ice Dance,2,2,KOR,B,,,,,not_checked,provisional_identity
+person_fb5ad0cec9815,Rena INOUE,INOUE Rena | Rena INOUE,Pair Skating,2,20,USA,A,,,,,not_checked,multiple_display_names
+person_85802f48ef012,Irina SHTORK,Irina SHTORK | SHTORK Irina,Ice Dance,1,10,EST,A,,,,,not_checked,multiple_display_names
+person_48273676c42f3,Isabella PAJARDI,Isabella PAJARDI,Ice Dance,1,2,ITA,A,,,,,not_checked,provisional_identity
+person_5f6c0ff90222c,Isabella TOBIAS,Isabella TOBIAS,Ice Dance,2,16,ISR; LTU,A,,,,,not_checked,provisional_identity
+person_92b3ba914c356,Mitchell ISLAM,ISLAM Mitchell | Mitchell ISLAM,Ice Dance,1,15,CAN,B,,,,,not_checked,multiple_display_names
+person_8ce4627b1ad64,Ivan SHEFER,Ivan SHEFER,Ice Dance,1,13,RUS,B,,,,,not_checked,provisional_identity
+person_ada1b07316132,Nina IVANOVA,Nina IVANOVA,Pair Skating,1,4,BUL,A,,,,,not_checked,provisional_identity
+person_d70fc84ed7f29,Marie-Jade LAURIAULT,LAURIAULT Marie-Jade | Marie-Jade LAURIAULT,Ice Dance,1,8,FRA,A,,,,,not_checked,multiple_display_names
+person_6ded574671a61,Jakub SAFRANEK,Jakub SAFRANEK,Pair Skating,1,1,GBR,B,,,,,not_checked,provisional_identity
+person_222bcf81264d2,Olga JAKUSHINA,Olga JAKUSHINA,Ice Dance,1,6,LAT,A,,,,,not_checked,provisional_identity
+person_6a26bc3ddbfe6,Vanessa JAMES,JAMES Vanessa | Vanessa JAMES,Pair Skating,2,35,FRA,A,,,,,not_checked,multiple_display_names
+person_8b0a6b926d830,Jamie SILVERSTEIN,Jamie SILVERSTEIN | SILVERSTEIN Jamie,Ice Dance,1,3,USA,A,,,,,not_checked,multiple_display_names
+person_16d25badd9c9b,Jan MOSCICKI,Jan MOSCICKI,Ice Dance,1,6,POL,B,,,,,not_checked,provisional_identity
+person_4c7624918bd23,Jana KHOKHLOVA,Jana KHOKHLOVA | KHOKHLOVA Jana,Ice Dance,1,25,RUS,A,,,,,not_checked,multiple_display_names
+person_a73717d3eed71,Jane SUMMERSETT,Jane SUMMERSETT,Ice Dance,1,3,USA,A,,,,,not_checked,provisional_identity
+person_c89030855b27e,Janusz KARWETA,Janusz KARWETA,Pair Skating,1,1,POL,B,,,,,not_checked,provisional_identity
+person_c3a599130a76b,Otar JAPARIDZE,JAPARIDZE Otar | Otar JAPARIDZE,Ice Dance,2,8,GEO,B,,,,,not_checked,multiple_display_names
+person_4ce283f19c42a,Jasmine TESSARI,Jasmine TESSARI,Ice Dance,1,2,ITA,A,,,,,not_checked,provisional_identity
+person_24944b94a114e,Jenette MAITZ,Jenette MAITZ,Ice Dance,1,1,TUR,A,,,,,not_checked,provisional_identity
+person_0f96d0165da8b,Jennifer URBAN,Jennifer URBAN,Ice Dance,1,1,GER,A,,,,,not_checked,provisional_identity
+person_c12a4e7b0b3b6,Jennifer WESTER,Jennifer WESTER,Ice Dance,1,3,USA,A,,,,,not_checked,provisional_identity
+person_d7d0cf1d451ee,Jessica MILLER,Jessica MILLER,Pair Skating,1,4,CAN,A,,,,,not_checked,provisional_identity
+person_beafd9bd39584,Jessica PFUND,Jessica PFUND,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_851b195569746,Minji JI,Minji JI,Pair Skating,1,1,KOR,A,,,,,not_checked,provisional_identity
+person_8f48ec678164b,Jian TONG,Jian TONG | TONG Jian,Pair Skating,1,42,CHN,B,,,,,not_checked,multiple_display_names
+person_0cadf71d63d15,Jiankun XU,Jiankun XU,Pair Skating,1,6,CHN,B,,,,,not_checked,provisional_identity
+person_af0ce9694f83c,Jiaqi LI,Jiaqi LI,Pair Skating,1,6,CHN,A,,,,,not_checked,provisional_identity
+person_fa4e6a21d905f,WANG Jiayue,WANG Jiayue,Ice Dance,1,1,CHN,A,,,,,not_checked,provisional_identity
+person_d5db76c06f47b,Yang JIN,JIN Yang | Yang JIN,Pair Skating,2,16,CHN,B,,,,,not_checked,multiple_display_names
+person_c35ef4aed6654,Jiri PROCHAZKA,Jiri PROCHAZKA,Ice Dance,1,1,CZE,B,,,,,not_checked,provisional_identity
+person_6b79fa040a1c0,Joanna SULEJ,Joanna SULEJ | SULEJ Joanna,Pair Skating,1,5,POL,A,,,,,not_checked,multiple_display_names
+person_2560ac0956a5f,John KERR,John KERR | KERR John,Ice Dance,1,26,GBR,B,,,,,not_checked,multiple_display_names
+person_e29c2bf1142fa,John MATTATALL,John MATTATALL | MATTATALL John,Pair Skating,1,10,CAN,B,,,,,not_checked,multiple_display_names
+person_699f578290b4b,Pierre-Philippe JONCAS,Pierre-Philippe JONCAS,Pair Skating,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_09b740b3dce91,Lloyd JONES,JONES Lloyd | Lloyd JONES,Ice Dance,1,19,FRA,B,,,,,not_checked,multiple_display_names
+person_cef3abb54807f,Malcolm JONES,Malcolm JONES,Ice Dance,1,1,LAT,B,,,,,not_checked,provisional_identity
+person_aa6f24cc518b9,Zoe JONES,Zoe JONES,Pair Skating,1,3,GBR,A,,,,,not_checked,provisional_identity
+person_2c03ad3520ca4,Josee PICHE,Josee PICHE,Ice Dance,1,1,CAN,A,,,,,not_checked,provisional_identity
+person_4f45a4bf1f334,Josh WHIDBORNE,Josh WHIDBORNE,Ice Dance,1,1,GBR,B,,,,,not_checked,provisional_identity
+person_df988ddd2c5b6,Joshua McGRATH,Joshua McGRATH,Ice Dance,1,2,CAN,B,,,,,not_checked,provisional_identity
+person_a02b1e4144329,Joshua REAGAN,Joshua REAGAN,Pair Skating,2,3,CAN; USA,B,,,,,not_checked,provisional_identity
+person_d2bb80ae39b82,Joshua SANTILLAN,Joshua SANTILLAN,Pair Skating,1,2,USA,B,,,,,not_checked,provisional_identity
+person_4e0aaf2c1a79c,Mathieu JOST,Mathieu JOST,Ice Dance,1,9,FRA,B,,,,,not_checked,provisional_identity
+person_f896c47366d07,Matthieu JOST,Matthieu JOST,Ice Dance,1,2,FRA,B,,,,,not_checked,provisional_identity
+person_34047016e66cc,Joti POLIZOAKIS,Joti POLIZOAKIS | POLIZOAKIS Joti,Ice Dance,1,4,GER,B,,,,,not_checked,multiple_display_names
+person_55ed4ce0443ce,Ju Sik KIM,Ju Sik KIM | KIM Ju Sik,Pair Skating,1,4,PRK,B,,,,,not_checked,multiple_display_names
+person_68c10d0f147c8,Juha VALKAMA,Juha VALKAMA,Ice Dance,1,1,FIN,B,,,,,not_checked,provisional_identity
+person_6eda13b166adc,Julia LAVRENTIEVA,Julia LAVRENTIEVA | LAVRENTIEVA Julia,Pair Skating,1,4,UKR,A,,,,,not_checked,multiple_display_names
+person_487fff2948ff0,Julia OBERTAS,Julia OBERTAS | OBERTAS Julia,Pair Skating,1,11,RUS,A,,,,,not_checked,multiple_display_names
+person_3d0966104a800,Julia SHAPIRO,Julia SHAPIRO,Pair Skating,1,2,ISR,A,,,,,not_checked,provisional_identity
+person_d36dac0d32fd1,Julia VLASSOV,Julia VLASSOV,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_677e0aacde763,Julia ZLOBINA,Julia ZLOBINA | ZLOBINA Julia,Ice Dance,1,12,AZE; RUS,A,,,,,not_checked,multiple_display_names
+person_c9e9fd1acfd50,Julianne SEGUIN,Julianne SEGUIN | SEGUIN Julianne,Pair Skating,1,11,CAN,A,,,,,not_checked,multiple_display_names
+person_1814035df8330,Juri KURAKIN,Juri KURAKIN,Ice Dance,2,9,AUT; BUL,B,,,,,not_checked,provisional_identity
+person_e9ce30b973387,Jussiville PARTANEN,Jussiville PARTANEN,Ice Dance,2,7,FIN,B,,,,,not_checked,provisional_identity
+person_b6d27a3ce7369,Justin TROJEK,Justin TROJEK,Ice Dance,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_142b935fcddd2,Justyna PLUTOWSKA,Justyna PLUTOWSKA,Ice Dance,2,4,POL,A,,,,,not_checked,provisional_identity
+person_1cbc05faffdfb,MOORE-TOWERS K,MOORE-TOWERS K,Pair Skating,1,1,CAN,A,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_e2eb7e6bf3a73,Klara KADLECOVA,Klara KADLECOVA,Pair Skating,1,4,CZE,A,,,,,not_checked,provisional_identity
+person_48ff2da5937a4,Kaige ZHAO,Kaige ZHAO,Ice Dance,1,1,CHN,B,,,,,not_checked,provisional_identity
+person_e36dc264da624,Kaitlyn WEAVER,Kaitlyn WEAVER | WEAVER Kaitlyn,Ice Dance,1,47,CAN,A,,,,,not_checked,multiple_display_names
+person_2f67d327081d4,Natalia KALISZEK,KALISZEK Natalia | Natalia KALISZEK,Ice Dance,2,12,POL,A,,,,,not_checked,multiple_display_names
+person_5e4122292ebe0,Mikalai KAMIANCHUK,Mikalai KAMIANCHUK,Pair Skating,2,9,BLR,B,,,,,not_checked,provisional_identity
+person_dcbe7cf461c7b,Kana MURAMOTO,Kana MURAMOTO | MURAMOTO Kana,Ice Dance,1,11,JPN,A,,,,,not_checked,multiple_display_names
+person_937711579e7bc,Ossi KANERVO,Ossi KANERVO,Ice Dance,1,2,FIN,B,,,,,not_checked,provisional_identity
+person_0f21cc1315e1c,Sofiya KARAGODINA,Sofiya KARAGODINA,Pair Skating,1,1,AZE,A,,,,,not_checked,provisional_identity
+person_5673a189cdd9b,Siobhan KARAM,Siobhan KARAM,Ice Dance,1,2,CAN,A,,,,,not_checked,provisional_identity
+person_d4919e0d58113,Karel STEFL,Karel STEFL,Pair Skating,1,1,CZE,B,,,,,not_checked,provisional_identity
+person_4b0afbef3eb05,Sergei KAREV,Sergei KAREV,Pair Skating,1,1,RUS,B,,,,,not_checked,provisional_identity
+person_32cbff911cd0c,Karina UZUROVA,Karina UZUROVA,Ice Dance,1,1,KAZ,A,,,,,not_checked,provisional_identity
+person_29bdbda412664,Olesia KARMI,Olesia KARMI,Ice Dance,1,3,FIN,A,,,,,not_checked,provisional_identity
+person_f15d6b11bc869,Mikhail KASALO,Mikhail KASALO,Ice Dance,1,2,UKR,B,,,,,not_checked,provisional_identity
+person_e0b4e8675bfe4,Katarina PAICE,Katarina PAICE,Ice Dance,1,2,SUI,A,,,,,not_checked,provisional_identity
+person_ca029607a077f,Katharina MÜLLER,Katharina MÜLLER,Ice Dance,1,1,GER,A,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_1426331dec572,Kathryn ORSCHER,Kathryn ORSCHER,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_9e07606251890,Kati WINKLER,Kati WINKLER,Ice Dance,1,1,GER,A,,,,,not_checked,provisional_identity
+person_96864ba283839,Katie ORSCHER,Katie ORSCHER,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_6723961365e6f,Nikita KATSALAPOV,KATSALAPOV Nikita | Nikita KATSALAPOV,Ice Dance,2,29,RUS,B,,,,,not_checked,multiple_display_names
+person_ed95d2e2eed2e,Yuko KAVAGUTI,KAVAGUTI Yuko | Yuko KAVAGUTI,Pair Skating,1,30,RUS,A,,,,,not_checked,multiple_display_names
+person_5cde363b817dd,Viktoria KAVALIOVA,Viktoria KAVALIOVA,Ice Dance,1,13,BLR,A,,,,,not_checked,provisional_identity
+person_d3cd154b92b37,Kavita LORENZ,Kavita LORENZ | LORENZ Kavita,Ice Dance,2,6,GER,A,,,,,not_checked,multiple_display_names
+person_5c08e068b24ab,Yuko KAWAGUCHI,Yuko KAWAGUCHI,Pair Skating,1,11,RUS,A,,,,,not_checked,provisional_identity
+person_4ac8dc4b92833,Tarah KAYNE,Tarah KAYNE,Pair Skating,2,9,USA,A,,,,,not_checked,provisional_identity
+person_2616ded770f18,McLAUGHLIN Keauna,Keauna MCLAUGHLIN | Keauna McLAUGHLIN | McLAUGHLIN Keauna,Pair Skating,1,10,USA,A,,,,,not_checked,multiple_display_names
+person_9d12d499ef042,Stacey KEMP,KEMP Stacey | Stacey KEMP,Pair Skating,1,27,GBR,A,,,,,not_checked,multiple_display_names
+person_8d4215ee1d3b5,Leri KENCHADZE,Leri KENCHADZE,Pair Skating,3,7,BUL,B,,,,,not_checked,provisional_identity
+person_595b99b598855,Kendra MOYLE,Kendra MOYLE,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_5a9a1fc3a5c40,Kenji MIYAMOTO,Kenji MIYAMOTO,Ice Dance,1,3,JPN,B,,,,,not_checked,provisional_identity
+person_1d4da06f45ab1,Sinead KERR,KERR Sinead | Sinead KERR,Ice Dance,1,26,GBR,A,,,,,not_checked,multiple_display_names
+person_4adec489fd106,Kirill KHALIAVIN,KHALIAVIN Kirill | Kirill KHALIAVIN,Ice Dance,2,12,ESP; RUS,B,,,,,not_checked,multiple_display_names
+person_537cedaa2e8bb,Petr KHARCHENKO,Petr KHARCHENKO,Pair Skating,1,1,UKR,B,,,,,not_checked,provisional_identity
+person_0ed230a52d4b7,Kharis RALPH,Kharis RALPH,Ice Dance,1,7,CAN,A,,,,,not_checked,provisional_identity
+person_0a67eb372be6d,Sasha PALOM��KI,Sasha PALOM��KI,Ice Dance,1,1,FIN,B,,,,,not_checked,replacement_character
+person_3497f35eb4a6b,Severin KIEFER,KIEFER Severin | Severin KIEFER,Pair Skating,2,23,AUT,B,,,,,not_checked,multiple_display_names
+person_967154be15bee,Ryuichi KIHARA,KIHARA Ryuichi | Ryuichi KIHARA,Pair Skating,2,12,JPN,B,,,,,not_checked,multiple_display_names
+person_817b1aaab65c7,Kyueun KIM,KIM Kyueun | Kyueun KIM,Pair Skating,1,2,KOR,A,,,,,not_checked,multiple_display_names
+person_aeccba4a1676f,Min Woo KIM,Min Woo KIM,Ice Dance,1,1,KOR,B,,,,,not_checked,provisional_identity
+person_7c95a9a7b6851,Rebeka KIM,Rebeka KIM,Ice Dance,1,7,KOR,A,,,,,not_checked,provisional_identity
+person_dd1c7274a3e37,Su Yeon KIM,Su Yeon KIM,Pair Skating,1,1,KOR,A,,,,,not_checked,provisional_identity
+person_66ded212ca79d,Kimberley NAVARRO,Kimberley NAVARRO,Ice Dance,1,1,USA,A,,,,,not_checked,provisional_identity
+person_e200737d78844,Kimberly NAVARRO,Kimberly NAVARRO | NAVARRO Kimberly,Ice Dance,1,12,USA,A,,,,,not_checked,multiple_display_names
+person_583b51dba168a,Kirill MINOV,Kirill MINOV,Ice Dance,1,7,KOR,B,,,,,not_checked,provisional_identity
+person_5f1cbd2120144,Rachel KIRKLAND,Rachel KIRKLAND,Pair Skating,1,1,CAN,A,,,,,not_checked,provisional_identity
+person_dc0d5f017e017,Kirsten MOORE-TOWERS,Kirsten MOORE-TOWERS | MOORE-TOWERS Kirsten,Pair Skating,3,28,CAN,A,,,,,not_checked,multiple_display_names
+person_07d4bf748150f,Kristina KIUDMAA,Kristina KIUDMAA,Ice Dance,1,2,EST,A,,,,,not_checked,provisional_identity
+person_600fe3e22c075,Magdalena KLATKA,Magdalena KLATKA,Pair Skating,1,2,POL,A,,,,,not_checked,provisional_identity
+person_6d092bb3d632f,Krystyna KLIMCZAK,Krystyna KLIMCZAK,Pair Skating,1,1,POL,A,,,,,not_checked,provisional_identity
+person_b5307c679c3e3,Oksana KLIMOVA,Oksana KLIMOVA,Ice Dance,2,2,FIN,A,,,,,not_checked,provisional_identity
+person_a5c226db15044,Yannick KOCON,KOCON Yannick | Yannick KOCON,Pair Skating,1,6,ITA,B,,,,,not_checked,multiple_display_names
+person_15341472b4ff2,Tanja KOLBE,KOLBE Tanja | Tanja KOLBE,Ice Dance,1,6,GER,A,,,,,not_checked,multiple_display_names
+person_59572ecbcfc38,Nicholas KOLE,Nicholas KOLE,Pair Skating,1,2,USA,B,,,,,not_checked,provisional_identity
+person_2431ac0d4737d,Tim KOLETO,Tim KOLETO,Ice Dance,1,1,JPN,B,,,,,not_checked,provisional_identity
+person_6cbe40b096dfc,Timothy KOLETO,Timothy KOLETO,Ice Dance,2,2,JPN; KOR,B,,,,,not_checked,provisional_identity
+person_691334bfeb2d5,Sydney KOLODZIEJ,Sydney KOLODZIEJ,Pair Skating,1,2,CAN,A,,,,,not_checked,provisional_identity
+person_96759c3743eb6,Misato KOMATSUBARA,Misato KOMATSUBARA,Ice Dance,3,4,ITA; JPN,A,,,,,not_checked,provisional_identity
+person_1f493638f478d,Peter KONGKASEM,Peter KONGKASEM,Ice Dance,1,2,THA,B,,,,,not_checked,provisional_identity
+person_810a93e9bd1f1,Ksenia KOROBKOVA,Ksenia KOROBKOVA,Ice Dance,1,1,KAZ,A,,,,,not_checked,provisional_identity
+person_367530d03cb69,Roman KOSTOMAROV,KOSTOMAROV Roman | Roman KOSTOMAROV,Ice Dance,1,7,RUS,B,,,,,not_checked,multiple_display_names
+person_3a17e4b4faf87,Viktor KOVALENKO,Viktor KOVALENKO,Ice Dance,2,4,UZB,B,,,,,not_checked,provisional_identity
+person_95e924d6841b0,Tatiana KOZMAVA,Tatiana KOZMAVA,Ice Dance,2,3,GEO,A,,,,,not_checked,provisional_identity
+person_0a8f447d5b1e2,Leonie KRAIL,Leonie KRAIL,Ice Dance,1,5,SUI,A,,,,,not_checked,provisional_identity
+person_ba8fecbd219fb,Ksenia KRASILNIKOVA,Ksenia KRASILNIKOVA,Pair Skating,1,2,RUS,A,,,,,not_checked,provisional_identity
+person_20979403f3156,Lynn KRIENGKRAIRUT,Lynn KRIENGKRAIRUT,Ice Dance,1,5,USA,A,,,,,not_checked,provisional_identity
+person_dfe394b582f1f,Kristian RAND,Kristian RAND,Ice Dance,2,4,EST,B,,,,,not_checked,provisional_identity
+person_1630bdc244c07,Kristjan RAND,Kristjan RAND,Ice Dance,1,3,EST,B,,,,,not_checked,provisional_identity
+person_251d3e8301d49,Oleg KRUPEN,Oleg KRUPEN,Ice Dance,2,2,BLR,B,,,,,not_checked,provisional_identity
+person_f93aa9e06871f,Ksenia MONKO,Ksenia MONKO,Ice Dance,1,9,RUS,A,,,,,not_checked,provisional_identity
+person_bbaa3c5db8ce1,Ksenia OZEROVA,Ksenia OZEROVA,Pair Skating,1,3,RUS,A,,,,,not_checked,provisional_identity
+person_84bea9f885055,Ksenia SHMIRINA,Ksenia SHMIRINA,Ice Dance,2,4,BLR,A,,,,,not_checked,provisional_identity
+person_afa8ca1b0afbc,Ksenia STOLBOVA,Ksenia STOLBOVA | STOLBOVA Ksenia,Pair Skating,1,26,RUS,A,,,,,not_checked,multiple_display_names
+person_121f2f6aa3aec,Sergei KULBACH,Sergei KULBACH,Pair Skating,1,2,EST,B,,,,,not_checked,provisional_identity
+person_9caedf42ff1d7,Svetlana KULIKOVA,Svetlana KULIKOVA,Ice Dance,1,2,RUS,A,,,,,not_checked,provisional_identity
+person_45695154d91f2,Nicole KUZMICHOVA,Nicole KUZMICHOVA,Ice Dance,1,3,CZE,A,,,,,not_checked,provisional_identity
+person_ed7beeb3fe563,Mikhail KUZNETSOV,Mikhail KUZNETSOV,Pair Skating,1,1,RUS,B,,,,,not_checked,provisional_identity
+person_e1dde3a01e805,Mark LADWIG,LADWIG Mark | Mark LADWIG,Pair Skating,2,18,USA,B,,,,,not_checked,multiple_display_names
+person_82bbcd09209d5,Zachary LAGHA,Zachary LAGHA,Ice Dance,1,0,CAN,B,,,,,not_checked,provisional_identity
+person_79966c4f7731a,Marjorie LAJOIE,Marjorie LAJOIE,Ice Dance,1,0,CAN,A,,,,,not_checked,provisional_identity
+person_0d01c5bffdd29,Mylene LAMOUREUX,Mylene LAMOUREUX,Ice Dance,1,1,CAN,A,,,,,not_checked,provisional_identity
+person_64c965b9c81ce,Lana PETRANOVIC,Lana PETRANOVIC,Pair Skating,2,3,CRO,A,,,,,not_checked,provisional_identity
+person_5612c423e41cc,Luca LANOTTE,LANOTTE Luca | Luca LANOTTE,Ice Dance,1,52,ITA,B,,,,,not_checked,multiple_display_names
+person_84d460bc87e0e,Yuri LARIONOV,LARIONOV Yuri | Yuri LARIONOV,Pair Skating,1,23,RUS,B,,,,,not_checked,multiple_display_names
+person_07b9de59b8352,Laura MAGITTERI,Laura MAGITTERI,Pair Skating,1,7,ITA,A,,,,,not_checked,provisional_identity
+person_d165a24728b44,Laura MUNANA,Laura MUNANA,Ice Dance,1,6,MEX,A,,,,,not_checked,provisional_identity
+person_8b963ddd8fbc8,Lauren SENFT,Lauren SENFT,Ice Dance,1,4,CAN,A,,,,,not_checked,provisional_identity
+person_14b068da96216,Patrice LAUZON,LAUZON Patrice | Patrice LAUZON,Ice Dance,1,12,CAN,B,,,,,not_checked,multiple_display_names
+person_6ae7095fbb35b,Paige LAWRENCE,LAWRENCE Paige | Paige LAWRENCE,Pair Skating,1,13,CAN,A,,,,,not_checked,multiple_display_names
+person_37c533cbf8f47,Pavel LEBEDEV,Pavel LEBEDEV,Pair Skating,1,2,RUS,B,,,,,not_checked,provisional_identity
+person_082971fe18b16,Marcelina LECH,Marcelina LECH,Pair Skating,1,1,ESP,A,,,,,not_checked,provisional_identity
+person_5896d47a783e8,Timothy LEDUC,Timothy LEDUC,Pair Skating,1,3,USA,B,,,,,not_checked,provisional_identity
+person_868ee6739b983,Timothy LEEMANN,Timothy LEEMANN,Pair Skating,1,2,SUI,B,,,,,not_checked,provisional_identity
+person_2434eadb08961,Sabrina LEFRANCOIS,Sabrina LEFRANCOIS,Pair Skating,1,1,FRA,A,,,,,not_checked,provisional_identity
+person_d7cf631a2efc0,Themistocles LEFTHERIS,Themistocles LEFTHERIS,Pair Skating,2,3,KOR; USA,B,,,,,not_checked,provisional_identity
+person_f8351c5c9fbc1,Lei WANG,Lei WANG,Pair Skating,2,17,CHN,B,,,,,not_checked,provisional_identity
+person_8cc84564a68a7,Leonardo MAEKAWA,Leonardo MAEKAWA,Ice Dance,1,2,MEX,B,,,,,not_checked,provisional_identity
+person_d1d5b9236fa2e,Leonardo MAEKAWA MORENO,Leonardo MAEKAWA MORENO,Ice Dance,1,1,MEX,B,,,,,not_checked,provisional_identity
+person_748067a470bf3,Sevan LERCHE,Sevan LERCHE,Ice Dance,1,1,GER,B,,,,,not_checked,provisional_identity
+person_9c6a306049c6a,Lesia VALADZENKAVA,Lesia VALADZENKAVA,Ice Dance,1,1,BLR,A,,,,,not_checked,provisional_identity
+person_59dfad4fd78a0,Lesia VOLODENKOVA,Lesia VOLODENKOVA,Ice Dance,1,1,BLR,A,,,,,not_checked,provisional_identity
+person_995044d0eef11,Xibei LI,Xibei LI,Ice Dance,1,1,CHN,A,,,,,not_checked,provisional_identity
+person_614135e031adc,Max LINDHOLM,Max LINDHOLM,Ice Dance,1,3,FIN,B,,,,,not_checked,provisional_identity
+person_8ce17d33a7f02,Linshu SONG,Linshu SONG,Ice Dance,1,3,CHN,A,,,,,not_checked,provisional_identity
+person_667a3cb4548de,Lionel RUMI,Lionel RUMI,Ice Dance,1,2,ISR,B,,,,,not_checked,provisional_identity
+person_839886e2bfeec,Lu LIU,Lu LIU,Ice Dance,1,1,CHN,A,,,,,not_checked,provisional_identity
+person_171ec139dfe4e,Xinyu LIU,LIU Xinyu | Xinyu LIU,Ice Dance,1,16,CHN,B,,,,,not_checked,multiple_display_names
+person_fc21bd32cea76,Rene LOHSE,Rene LOHSE,Ice Dance,1,1,GER,B,,,,,not_checked,provisional_identity
+person_ba80e2b6229dd,Lorraine MCNAMARA,Lorraine MCNAMARA,Ice Dance,1,2,USA,A,,,,,not_checked,provisional_identity
+person_e022b88f34e34,Louis THAURON,Louis THAURON,Ice Dance,1,3,FRA,B,,,,,not_checked,provisional_identity
+person_14a309a314d6c,Louise WALDEN,Louise WALDEN,Ice Dance,1,2,GBR,A,,,,,not_checked,provisional_identity
+person_81a58758beb4a,Lucie MYSLIVECKOVA,Lucie MYSLIVECKOVA | MYSLIVECKOVA Lucie,Ice Dance,3,15,CZE; SVK,A,,,,,not_checked,multiple_display_names
+person_b0434edfdfa27,Luke MUNANA,Luke MUNANA,Ice Dance,1,6,MEX,B,,,,,not_checked,provisional_identity
+person_05349b07c26fe,Niccolo MACII,Niccolo MACII,Pair Skating,1,1,ITA,B,,,,,not_checked,provisional_identity
+person_2e07abd4982cb,Pilar MAEKAWA MORENO,Pilar MAEKAWA MORENO,Ice Dance,1,1,MEX,A,,,,,not_checked,provisional_identity
+person_1097ee9227556,Pilar MAEKAWA,Pilar MAEKAWA,Ice Dance,1,2,MEX,A,,,,,not_checked,provisional_identity
+person_5a137e35ede75,Sergei MAGEROVSKI,Sergei MAGEROVSKI,Ice Dance,1,1,USA,B,,,,,not_checked,provisional_identity
+person_433e9a80887c6,Mark MAGYAR,Mark MAGYAR,Pair Skating,3,3,HUN,B,,,,,not_checked,provisional_identity
+person_a4eeb4c4ccbe3,Maia SHIBUTANI,Maia SHIBUTANI | SHIBUTANI Maia,Ice Dance,1,36,USA,A,,,,,not_checked,multiple_display_names
+person_e9170f17f50b0,Yahor MAISTROV,Yahor MAISTROV,Ice Dance,1,1,BLR,B,,,,,not_checked,provisional_identity
+person_c427554310155,Nodari MAISURADZE,Nodari MAISURADZE,Pair Skating,2,10,RUS,B,,,,,not_checked,provisional_identity
+person_c382a052588aa,Maksim SPODIREV,Maksim SPODIREV,Ice Dance,1,4,POL,B,,,,,not_checked,provisional_identity
+person_a558dada03e4f,Maksym SPODYRIEV,Maksym SPODYRIEV | SPODYRIEV Maksym,Ice Dance,1,8,POL,B,,,,,not_checked,multiple_display_names
+person_7f2d0180ae229,Malin MALMBERG,Malin MALMBERG,Ice Dance,1,1,SWE,A,,,,,not_checked,provisional_identity
+person_26be257fa54fb,Victoria MANNI,Victoria MANNI,Ice Dance,1,2,SUI,A,,,,,not_checked,provisional_identity
+person_ea64b57aae405,Valentina MARCHEI,MARCHEI Valentina | Valentina MARCHEI,Pair Skating,1,14,ITA,A,,,,,not_checked,multiple_display_names
+person_fa93cb73df09d,Valerie MARCOUX,MARCOUX Valerie | Valerie MARCOUX,Pair Skating,1,12,CAN,A,,,,,not_checked,multiple_display_names
+person_a284d17379eaa,MARGAGLIO Maurizio,MARGAGLIO Maurizio,Ice Dance,1,1,ITA,B,,,,,not_checked,provisional_identity
+person_0ccb66e7581bc,Margaret PURDY,Margaret PURDY,Pair Skating,1,3,CAN,A,,,,,not_checked,provisional_identity
+person_290ff64e9492c,Mari VARTMANN,Mari VARTMANN,Pair Skating,3,20,GER,A,,,,,not_checked,provisional_identity
+person_b96c5e4fb9cca,Maria MUKHORTOVA,MUKHORTOVA Maria | Maria MUKHORTOVA,Pair Skating,1,21,RUS,A,,,,,not_checked,multiple_display_names
+person_b5856d089c742,Maria PALIAKOVA,Maria PALIAKOVA,Pair Skating,2,6,BLR,A,,,,,not_checked,provisional_identity
+person_2e1365454dbc4,Maria PETROVA,Maria PETROVA | PETROVA Maria,Pair Skating,1,13,RUS,A,,,,,not_checked,multiple_display_names
+person_87ea84db84d14,Maria SERGEJEVA,Maria SERGEJEVA | SERGEJEVA Maria,Pair Skating,1,9,EST,A,,,,,not_checked,multiple_display_names
+person_d4c21b41155c2,Marika ZANFORLIN,Marika ZANFORLIN,Pair Skating,1,3,ITA; WD,A,,,,,not_checked,provisional_identity
+person_e26aaed0271d1,MARINARO,MARINARO,Pair Skating,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_d5c46680cd54c,Michael MARINARO,Michael MARINARO,Pair Skating,2,12,CAN,B,,,,,not_checked,provisional_identity
+person_3a7b7a80d0a19,Maxim MARININ,MARININ Maxim | Maxim MARININ,Pair Skating,1,7,RUS,B,,,,,not_checked,multiple_display_names
+person_9965ff90ea1a4,Mariusz SIUDEK,Mariusz SIUDEK | SIUDEK Mariusz,Pair Skating,2,12,POL,B,,,,,not_checked,multiple_display_names
+person_3283a8c44ae82,Teodora MARKOVA,Teodora MARKOVA,Ice Dance,1,1,BUL,A,,,,,not_checked,provisional_identity
+person_4926096f57568,Stina MARTINI,Stina MARTINI,Pair Skating,1,4,AUT,A,,,,,not_checked,provisional_identity
+person_a0dbe44bed070,Marylin PLA,Marylin PLA | PLA Marylin,Pair Skating,1,8,FRA,A,,,,,not_checked,multiple_display_names
+person_53d47dcb34260,Massimo SCALI,Massimo SCALI | SCALI Massimo,Ice Dance,1,27,ITA,B,,,,,not_checked,multiple_display_names
+person_233ada932e8db,Matej NOVAK,Matej NOVAK,Ice Dance,2,9,CZE,B,,,,,not_checked,provisional_identity
+person_e508fd0e9a88d,Matthew PENASSE,Matthew PENASSE,Pair Skating,1,1,FIN,B,,,,,not_checked,provisional_identity
+person_0fd4f12feae73,Morgan MATTHEWS,Morgan MATTHEWS,Ice Dance,1,6,USA,A,,,,,not_checked,provisional_identity
+person_ea1b289f8371f,Max SETTLAGE,Max SETTLAGE,Pair Skating,1,2,USA,B,,,,,not_checked,provisional_identity
+person_922d8827858fe,Maxim NEKRASOV,Maxim NEKRASOV,Ice Dance,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_b5302d44cf3aa,Maxim NIKITIN,Maxim NIKITIN | NIKITIN Maxim,Ice Dance,1,10,UKR,B,,,,,not_checked,multiple_display_names
+person_44c4c86dc85d9,Maxim SHABALIN,Maxim SHABALIN | SHABALIN Maxim,Ice Dance,1,24,RUS,B,,,,,not_checked,multiple_display_names
+person_14266c2d8e11d,Maxim STAVISKI,Maxim STAVISKI | STAVISKI Maxim,Ice Dance,1,10,BUL,B,,,,,not_checked,multiple_display_names
+person_7e94f26f65179,Maxim TRANKOV,Maxim TRANKOV | TRANKOV Maxim,Pair Skating,2,40,RUS,B,,,,,not_checked,multiple_display_names
+person_b02f2a6ec2a11,Maxim ZAVOZIN,Maxim ZAVOZIN | ZAVOZIN Maxim,Ice Dance,2,14,HUN; USA,B,,,,,not_checked,multiple_display_names
+person_e68abc646a320,Maylin WENDE,Maylin WENDE | WENDE Maylin,Pair Skating,1,3,GER,A,,,,,not_checked,multiple_display_names
+person_e20119b68e832,Timothy MCKERNAN,Timothy MCKERNAN,Ice Dance,1,1,AUS,B,,,,,not_checked,provisional_identity
+person_f1bdd33dee3df,Ryan O'MEARA,O'MEARA Ryan | Ryan O'MEARA,Ice Dance,1,3,USA,B,,,,,not_checked,multiple_display_names; possible_abbreviated_name
+person_bff1a6b2801fd,Michael MEE,Michael MEE,Ice Dance,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_8859087f30f7a,Meeran TROMBLEY,Meeran TROMBLEY,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_f6fbd82a6b83b,Megan WING,Megan WING | WING Megan,Ice Dance,1,6,CAN,A,,,,,not_checked,multiple_display_names
+person_b6c8ab7d3d1fa,Meng WANG,Meng WANG,Ice Dance,1,3,CHN,B,,,,,not_checked,provisional_identity
+person_7080e925162b9,Mervin TRAN,Mervin TRAN,Pair Skating,3,20,CAN; JPN; USA,B,,,,,not_checked,provisional_identity
+person_6e096dd0b4279,Michael PARSONS,Michael PARSONS,Ice Dance,1,3,USA,B,,,,,not_checked,provisional_identity
+person_8ac293300e471,Michael STEWART,Michael STEWART,Pair Skating,1,2,CAN,B,,,,,not_checked,provisional_identity
+person_664726b7ca739,Michal ZYCH,Michal ZYCH | ZYCH Michal,Ice Dance,1,7,POL,B,,,,,not_checked,multiple_display_names
+person_da32597ece425,Mikhail ZHIRNOV,Mikhail ZHIRNOV,Ice Dance,1,1,AZE,B,,,,,not_checked,provisional_identity
+person_6139b3b33b7e0,Natalia MIKHAILOVA,Natalia MIKHAILOVA,Ice Dance,1,2,RUS,A,,,,,not_checked,provisional_identity
+person_f3720be1e6430,Nathan MILLER,Nathan MILLER,Pair Skating,1,2,USA,B,,,,,not_checked,provisional_identity
+person_f52edf72a8aae,Yura MIN,MIN Yura | Yura MIN,Ice Dance,2,7,KOR,A,,,,,not_checked,multiple_display_names
+person_2c04c93182fd8,Mingyang ZHANG,Mingyang ZHANG,Pair Skating,1,1,CHN,A,,,,,not_checked,provisional_identity
+person_05b2651b83490,Miriam ZIEGLER,Miriam ZIEGLER | ZIEGLER Miriam,Pair Skating,1,19,AUT,A,,,,,not_checked,multiple_display_names
+person_a6361627b2604,Vladislav MIRZOEV,Vladislav MIRZOEV,Pair Skating,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_fa3aa4b842033,Miu SUZAKI,Miu SUZAKI | SUZAKI Miu,Pair Skating,1,4,JPN,A,,,,,not_checked,multiple_display_names
+person_60bf1e2299583,Riku MIURA,Riku MIURA,Pair Skating,1,1,JPN,A,,,,,not_checked,provisional_identity
+person_c1f9e16c5b7cc,Taiyo MIZUTANI,Taiyo MIZUTANI,Ice Dance,1,1,JPN,B,,,,,not_checked,provisional_identity
+person_c7038105f7ec7,Scott MOIR,MOIR Scott | Scott MOIR,Ice Dance,1,42,CAN,B,,,,,not_checked,multiple_display_names
+person_3d52b02d67faa,Monica PISOTTA,Monica PISOTTA,Pair Skating,1,2,CAN,A,,,,,not_checked,provisional_identity
+person_a228f875594c9,Stanislav MOROZOV,MOROZOV Stanislav | Stanislav MOROZOV,Pair Skating,1,18,UKR,B,,,,,not_checked,multiple_display_names
+person_fa3fb5aaccb1c,Vladimir MOROZOV,MOROZOV Vladimir | Vladimir MOROZOV,Pair Skating,1,18,OAR; RUS,B,,,,,not_checked,multiple_display_names
+person_765447e1b5ed9,Sergey MOZGOV,Sergey MOZGOV,Ice Dance,2,3,RUS,B,,,,,not_checked,provisional_identity
+person_c870038cbe5b0,PHYO Yong Myong,PHYO Yong Myong,Pair Skating,1,1,PRK,A,,,,,not_checked,provisional_identity
+person_8662d5cfc8234,Zsuzsanna NAGY,Zsuzsanna NAGY,Ice Dance,2,9,HUN,A,,,,,not_checked,provisional_identity
+person_a7bef3806bd34,Nakako TSUZUKI,Nakako TSUZUKI,Ice Dance,1,3,JPN,A,,,,,not_checked,provisional_identity
+person_f426e1f62e313,Naomi Nari NAM,Naomi NARI NAM | Naomi Nari NAM,Pair Skating,1,2,USA,A,,,,,not_checked,provisional_identity
+person_c8a5214d6f45f,Nan WU,Nan WU,Ice Dance,1,5,CHN,B,,,,,not_checked,provisional_identity
+person_afbd5b56f0880,Narumi TAKAHASHI,Narumi TAKAHASHI | TAKAHASHI Narumi,Pair Skating,2,19,JPN,A,,,,,not_checked,multiple_display_names
+person_93a7a0e82af3d,Natalia SHESTAKOVA,Natalia SHESTAKOVA,Pair Skating,1,2,RUS,A,,,,,not_checked,provisional_identity
+person_78fb862092084,Natalia ZABIIAKO,Natalia ZABIIAKO | ZABIIAKO Natalia,Pair Skating,1,9,OAR; RUS,A,,,,,not_checked,multiple_display_names
+person_01b98dab04852,Natalja ZABIJAKO,Natalja ZABIJAKO,Pair Skating,3,5,EST; RUS,A,,,,,not_checked,provisional_identity
+person_d531ff8715108,Natasha PURICH,Natasha PURICH,Pair Skating,3,4,CAN,A,,,,,not_checked,provisional_identity
+person_78a36d4a7c21c,Nathalie PECHALAT,Nathalie PECHALAT | PECHALAT Nathalie,Ice Dance,1,44,FRA,A,,,,,not_checked,multiple_display_names
+person_0672dc54c42e1,Ryan VAN NATTEN,Ryan VAN NATTEN,Ice Dance,1,1,MEX,B,,,,,not_checked,provisional_identity
+person_fb3ee76b69510,Tatiana NAVKA,NAVKA Tatiana | Tatiana NAVKA,Ice Dance,1,7,RUS,A,,,,,not_checked,multiple_display_names
+person_62c6ff68cafc8,Nelli ZHIGANSHINA,Nelli ZHIGANSHINA | ZHIGANSHINA Nelli,Ice Dance,1,24,GER,A,,,,,not_checked,multiple_display_names
+person_7fa31e4593d37,Nicolas ROULET,Nicolas ROULET,Pair Skating,1,1,SUI,B,,,,,not_checked,provisional_identity
+person_bd7bfc02a46ab,Nicole ORFORD,Nicole ORFORD,Ice Dance,1,6,CAN,A,,,,,not_checked,provisional_identity
+person_8d210a1100f45,Nikita VOLODIN,Nikita VOLODIN,Pair Skating,1,0,RUS,B,,,,,not_checked,provisional_identity
+person_5f0e12d9842e4,Nikola VISNOVA,Nikola VISNOVA,Ice Dance,1,1,SVK,A,,,,,not_checked,provisional_identity
+person_7d09869bcd3e2,Nikolaj SORENSEN,Nikolaj SORENSEN,Ice Dance,2,16,DEN,B,,,,,not_checked,provisional_identity
+person_f8ba0edad4d31,Nikolas WAMSTEEKER,Nikolas WAMSTEEKER,Ice Dance,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_33dd246db006e,Noah SCHERER,Noah SCHERER,Pair Skating,1,3,SUI,B,,,,,not_checked,provisional_identity
+person_e98e58dabd358,Nolan SEEGERT,Nolan SEEGERT,Pair Skating,1,3,GER,B,,,,,not_checked,provisional_identity
+person_3c54784630e28,Thomas NORDAHL,Thomas NORDAHL,Ice Dance,1,1,SWE,B,,,,,not_checked,provisional_identity
+person_a1b12627a6338,Tatiana NOVIK,Tatiana NOVIK,Pair Skating,1,1,RUS,A,,,,,not_checked,provisional_identity
+person_245cb41127f7d,Vitali NOVIKOV,Vitali NOVIKOV,Ice Dance,2,3,RUS,B,,,,,not_checked,provisional_identity
+person_bec63a95fe939,Sergei NOVITSKI,NOVITSKI Sergei | Sergei NOVITSKI,Ice Dance,1,25,RUS,B,,,,,not_checked,multiple_display_names
+person_a6bff45364fd0,Nozomi WATANABE,Nozomi WATANABE | WATANABE Nozomi,Ice Dance,1,9,JPN,A,,,,,not_checked,multiple_display_names
+person_20366ee819599,Vavara OGLOBLINA,Vavara OGLOBLINA,Ice Dance,1,1,AZE,A,,,,,not_checked,provisional_identity
+person_e9f872ec81d21,Peroline OJARDIAS,Peroline OJARDIAS,Ice Dance,1,1,FRA,A,,,,,not_checked,provisional_identity
+person_db620dae9d7f0,Tae Ok RYOM,RYOM Tae Ok | Tae Ok RYOM,Pair Skating,1,4,PRK,A,,,,,not_checked,multiple_display_names
+person_e1d1a1d2ecb33,Oleg VOIKO,Oleg VOIKO | VOIKO Oleg,Ice Dance,1,6,UKR,B,,,,,not_checked,multiple_display_names
+person_fa108ffb61d7b,Olga ORLOVA,Olga ORLOVA,Ice Dance,1,1,RUS,A,,,,,not_checked,provisional_identity
+person_7056df362f6e7,Olga PROKURONOVA,Olga PROKURONOVA,Pair Skating,1,1,CZE,A,,,,,not_checked,provisional_identity
+person_617d87db873ab,Olivia SMART,Olivia SMART,Ice Dance,2,4,ESP; GBR,A,,,,,not_checked,provisional_identity
+person_1069391e0f32f,Olivier SCHOENFELDER,Olivier SCHOENFELDER | SCHOENFELDER Olivier,Ice Dance,1,22,FRA,B,,,,,not_checked,multiple_display_names
+person_397e540ec74d4,Oscar PETER,Oscar PETER,Ice Dance,1,5,SUI,B,,,,,not_checked,provisional_identity
+person_d2c6910cc11d8,Sasha PALOMAKI,Sasha PALOMAKI,Ice Dance,1,1,FIN,B,,,,,not_checked,provisional_identity
+person_bdfe547663d8c,Panagiotis POLIZOAKIS,Panagiotis POLIZOAKIS,Ice Dance,1,2,GER,B,,,,,not_checked,provisional_identity
+person_f83750319da54,Qing PANG,PANG Qing | Qing PANG,Pair Skating,1,42,CHN,A,,,,,not_checked,multiple_display_names
+person_83ec6e54b0e3d,Rachel PARSONS,Rachel PARSONS,Ice Dance,1,3,USA,A,,,,,not_checked,provisional_identity
+person_15f446828a13a,Paul POIRIER,POIRIER Paul | Paul POIRIER,Ice Dance,2,38,CAN,B,,,,,not_checked,multiple_display_names
+person_52a3a11c33972,Robert PAXTON,Robert PAXTON,Pair Skating,1,2,GBR,B,,,,,not_checked,provisional_identity
+person_4feb75e44a990,Phillip POOLE,Phillip POOLE,Ice Dance,1,4,GBR,B,,,,,not_checked,provisional_identity
+person_ff9354b9fd146,Pierre SOUQUET,Pierre SOUQUET,Ice Dance,1,4,FRA,B,,,,,not_checked,provisional_identity
+person_c04201b7f77ba,Sofia POLISHCHUK,Sofia POLISHCHUK,Ice Dance,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_42294678d8217,Richard POSTIAUX,Richard POSTIAUX,Ice Dance,1,1,BEL,B,,,,,not_checked,provisional_identity
+person_abcc0c357f884,Povilas VANAGAS,Povilas VANAGAS | VANAGAS Povilas,Ice Dance,1,3,LTU,B,,,,,not_checked,multiple_display_names
+person_b4ce5cd02ea5e,Trina PRATT,Trina PRATT,Ice Dance,1,2,USA,A,,,,,not_checked,provisional_identity
+person_94de53f95e3ec,Simon PROULX-SENECAL,Simon PROULX SENECAL | Simon PROULX-SENECAL,Ice Dance,1,5,ARM,B,,,,,not_checked,provisional_identity
+person_c2eaa380d0408,ZHIGANSHIN R,ZHIGANSHIN R,Ice Dance,1,1,RUS,B,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_c771528dbb72f,Rachel TIBBETTS,Rachel TIBBETTS,Ice Dance,1,1,USA,A,,,,,not_checked,provisional_identity
+person_5bc2a697f141a,Ramil SARKULOV,Ramil SARKULOV,Ice Dance,1,2,UZB,B,,,,,not_checked,provisional_identity
+person_e0656a6ac93cb,Taavi RAND,RAND Taavi | Taavi RAND,Ice Dance,1,10,EST,B,,,,,not_checked,multiple_display_names
+person_3b1416b46a9b3,Raymond SCHULTZ,Raymond SCHULTZ,Pair Skating,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_7ae3e9f522cd4,Rico REX,REX Rico | Rico REX,Pair Skating,1,4,GER,B,,,,,not_checked,multiple_display_names
+person_8bae016b2d48f,Richard SHARPE,Richard SHARPE,Ice Dance,1,1,GBR,B,,,,,not_checked,provisional_identity
+person_d06dd295fabd7,Robert SCHULTZ,Robert SCHULTZ,Pair Skating,1,1,CAN,B,,,,,not_checked,provisional_identity
+person_e9a275321363e,Robin SZOLKOWY,Robin SZOLKOWY | SZOLKOWY Robin,Pair Skating,1,49,GER,B,,,,,not_checked,multiple_display_names
+person_a62e69b705bd9,Robynne TWEEDALE,Robynne TWEEDALE,Ice Dance,1,1,GBR,A,,,,,not_checked,provisional_identity
+person_2a3cd5bda517a,Vasili ROGOV,Vasili ROGOV,Ice Dance,1,6,ISR,B,,,,,not_checked,provisional_identity
+person_1778b63c2256c,Roman TALAN,Roman TALAN | TALAN Roman,Pair Skating,1,5,UKR,B,,,,,not_checked,multiple_display_names
+person_9da0f5ddd5f66,Roman ZARETSKI,Roman ZARETSKI | ZARETSKI Roman,Ice Dance,1,19,ISR,B,,,,,not_checked,multiple_display_names
+person_742722e78338e,Roman ZARETSKY,Roman ZARETSKY | ZARETSKY Roman,Ice Dance,1,3,ISR,B,,,,,not_checked,multiple_display_names
+person_719fbd622a9a1,Ronald ZILBERBERG,Ronald ZILBERBERG | ZILBERBERG Ronald,Ice Dance,1,3,ISR,B,,,,,not_checked,multiple_display_names
+person_120045d82442f,Rudi SWIEGERS,Rudi SWIEGERS | SWIEGERS Rudi,Pair Skating,2,14,CAN,B,,,,,not_checked,multiple_display_names
+person_3ee22c6de08bb,Yuri RUDYK,RUDYK Yuri | Yuri RUDYK,Pair Skating,1,4,UKR,B,,,,,not_checked,multiple_display_names
+person_471db95bc0b3a,Rumiana SPASSOVA,Rumiana SPASSOVA | SPASSOVA Rumiana,Pair Skating,1,8,BUL,A,,,,,not_checked,multiple_display_names
+person_219841a2a3389,Ruslan ZHIGANSHIN,Ruslan ZHIGANSHIN,Ice Dance,2,14,RUS,B,,,,,not_checked,provisional_identity
+person_864a589af9926,Sergei SAKHNOVSKI,SAKHNOVSKI Sergei | Sergei SAKHNOVSKI,Ice Dance,1,8,ISR,B,,,,,not_checked,multiple_display_names
+person_a2249a19c7ed9,Sean WIRTZ,Sean WIRTZ,Pair Skating,1,5,CAN,B,,,,,not_checked,provisional_identity
+person_d2ad4ba98ee19,Sebastien WOLFE,Sebastien WOLFE,Pair Skating,1,4,CAN,B,,,,,not_checked,provisional_identity
+person_eb2cda2a9f7d3,Semyon STEPANOV,Semyon STEPANOV,Pair Skating,1,1,AZE,B,,,,,not_checked,provisional_identity
+person_2a6de4995e9aa,Sergei SLAVNOV,SLAVNOV Sergei | Sergei SLAVNOV,Pair Skating,1,11,RUS,B,,,,,not_checked,multiple_display_names
+person_9fbb22132cd64,Sergei VERBILLO,Sergei VERBILLO | VERBILLO Sergei,Ice Dance,1,19,UKR,B,,,,,not_checked,multiple_display_names
+person_32ee22de795e9,Xue SHEN,SHEN Xue | Xue SHEN,Pair Skating,1,12,CHN,A,,,,,not_checked,multiple_display_names
+person_61abfdfaf513c,Sofia SHEVCHENKO,Sofia SHEVCHENKO,Ice Dance,1,0,RUS,A,,,,,not_checked,provisional_identity
+person_5b0a700252794,Shiyue WANG,Shiyue WANG | WANG Shiyue,Ice Dance,1,16,CHN,A,,,,,not_checked,multiple_display_names
+person_b6404f206a316,Simon SHNAPIR,SHNAPIR Simon | Simon SHNAPIR,Pair Skating,2,15,USA,B,,,,,not_checked,multiple_display_names
+person_746dd4d05a035,Zack SIDHU,Zack SIDHU,Pair Skating,1,3,USA,B,,,,,not_checked,provisional_identity
+person_e5e9039a088ff,Simone VATURI,Simone VATURI,Ice Dance,1,5,ITA,B,,,,,not_checked,provisional_identity
+person_ca6c1ebdbb268,SINITSINA V,SINITSINA V,Ice Dance,1,1,RUS,A,,,,,not_checked,possible_abbreviated_name; provisional_identity
+person_27cf8c02314db,Victoria SINITSINA,Victoria SINITSINA,Ice Dance,2,16,RUS,A,,,,,not_checked,provisional_identity
+person_ee57d792b8748,Stanimir TODOROV,Stanimir TODOROV | TODOROV Stanimir,Pair Skating,1,8,BUL,B,,,,,not_checked,multiple_display_names
+person_871b8dee3375b,Taylor STEELE,Taylor STEELE,Pair Skating,1,1,CAN,A,,,,,not_checked,provisional_identity
+person_7f4ff4ff81704,Tiffany STIEGLER,Tiffany STIEGLER,Ice Dance,1,1,USA,A,,,,,not_checked,provisional_identity
+person_9ad7f16526c12,Wenjing SUI,SUI Wenjing | Wenjing SUI,Pair Skating,1,27,CHN,A,,,,,not_checked,multiple_display_names
+person_d6e800c435e37,Sumire SUTO,Sumire SUTO,Pair Skating,1,7,JPN,A,,,,,not_checked,provisional_identity
+person_f363f661fd59b,Zhuoming SUN,Zhuoming SUN,Ice Dance,2,4,CHN,B,,,,,not_checked,provisional_identity
+person_e8b4570fc58ad,Tatiana TOTMIANINA,TOTMIANINA Tatiana | Tatiana TOTMIANINA,Pair Skating,1,7,RUS,A,,,,,not_checked,multiple_display_names
+person_dd84704cd342a,Tatiana VOLOSOZHAR,Tatiana VOLOSOZHAR | VOLOSOZHAR Tatiana,Pair Skating,3,38,RUS; UKR,A,,,,,not_checked,multiple_display_names
+person_67ff809c094c1,Taylor TOTH,Taylor TOTH,Pair Skating,1,2,USA,B,,,,,not_checked,provisional_identity
+person_9e33ae673b662,Taylor TRAN,Taylor TRAN,Ice Dance,1,4,LTU,A,,,,,not_checked,provisional_identity
+person_f95ec22a6f7c4,Tessa VIRTUE,Tessa VIRTUE | VIRTUE Tessa,Ice Dance,1,42,CAN,A,,,,,not_checked,multiple_display_names
+person_b6c6c230e1643,Thomas WILLIAMS,Thomas WILLIAMS,Ice Dance,2,7,CAN,B,,,,,not_checked,provisional_identity
+person_8383ee85dcfc8,Tiffani ZAGORSKI,Tiffani ZAGORSKI | ZAGORSKI Tiffani,Ice Dance,1,4,OAR; RUS,A,,,,,not_checked,multiple_display_names
+person_7b713d8caf4d0,Tiffany VISE,Tiffany VISE,Pair Skating,2,10,USA,A,,,,,not_checked,provisional_identity
+person_5edc38f01b30e,Tiffany ZAHORSKI,Tiffany ZAHORSKI,Ice Dance,1,1,RUS,A,,,,,not_checked,provisional_identity
+person_1c750d6521da3,Utako WAKAMATSU,Utako WAKAMATSU,Pair Skating,1,6,CAN,A,,,,,not_checked,provisional_identity
+person_f0a60989797e6,Vitali VAKUNOV,Vitali VAKUNOV,Ice Dance,2,2,BLR,B,,,,,not_checked,provisional_identity
+person_7d995fe712e86,Vladimir ZUEV,Vladimir ZUEV,Ice Dance,1,7,UKR,B,,,,,not_checked,provisional_identity
+person_45f96180cb285,Wenting WANG,Wenting WANG,Pair Skating,1,3,CHN,A,,,,,not_checked,provisional_identity
+person_e17d764ce38c8,Xiaotong WANG,Xiaotong WANG,Ice Dance,1,1,CHN,A,,,,,not_checked,provisional_identity
+person_08424140e09e1,Xuehan WANG,Xuehan WANG,Pair Skating,1,8,CHN,A,,,,,not_checked,provisional_identity
+person_14e429d5bb930,WINDSOR,WINDSOR,Pair Skating,1,1,AUS,B,,,,,not_checked,provisional_identity
+person_db470e9faab44,Yiming WU,WU Yiming | Yiming WU,Pair Skating,1,14,CHN,B,,,,,not_checked,multiple_display_names
+person_8013548baf5d3,Xiaoyang YU,Xiaoyang YU | YU Xiaoyang,Ice Dance,1,26,CHN,A,,,,,not_checked,multiple_display_names
+person_567e3cdd6d606,Xiaoyu YU,Xiaoyu YU | YU Xiaoyu,Pair Skating,2,18,CHN,A,,,,,not_checked,multiple_display_names
+person_2c1838bbdf52a,Zhong XIE,Zhong XIE,Pair Skating,1,0,CHN,B,,,,,not_checked,provisional_identity
+person_7f83de5e115fa,Xun ZHENG,Xun ZHENG | ZHENG Xun,Ice Dance,2,29,CHN,B,,,,,not_checked,multiple_display_names
+person_8a94cca9c5ae1,Yan ZHANG,Yan ZHANG,Pair Skating,1,3,CHN,B,,,,,not_checked,provisional_identity
+person_be8ddabea049e,Yan ZHAO,Yan ZHAO,Ice Dance,1,3,CHN,B,,,,,not_checked,provisional_identity
+person_04925f42e7721,Yiyi ZHANG,Yiyi ZHANG,Ice Dance,1,5,CHN,A,,,,,not_checked,provisional_identity
+person_5d04917d02569,Yue ZHANG,Yue ZHANG,Pair Skating,1,9,CHN,A,,,,,not_checked,provisional_identity
+person_bd020f1fb08a0,Yue ZHAO,Yue ZHAO,Ice Dance,1,3,CHN,A,,,,,not_checked,provisional_identity

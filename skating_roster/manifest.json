@@ -1,0 +1,35 @@
+{
+  "generated_utc": "2026-10-17T03:48:27.727073+00:00",
+  "scope": "ice dance and pair skating; people and team discovery only; NO BaZi",
+  "coverage_warning": "Historical repository covers selected major ISU competitions (2005-06 to 2017-18). Public couples index is an independently aggregated catalog and may include domestic, novice, inaccurate or duplicate entries. Neither alone guarantees every person who ever competed worldwide.",
+  "identity_warning": "Provisional exact-name normalization only; transliteration/homonyms and reversed sex/partner order require manual review. DOB and birthplace deliberately blank until verified.",
+  "total_observation_rows": 287,
+  "distinct_couples_provisional": 229,
+  "distinct_person_names_provisional": 434,
+  "couples_by_discipline": {
+    "Ice Dance": 129,
+    "Pair Skating": 100
+  },
+  "sources_ok": {
+    "pilot_worlds": 1,
+    "extra_seed": 1
+  },
+  "source_failures": [
+    [
+      "github",
+      "all",
+      "error",
+      0,
+      "download failed https://api.github.com/repos/mengyazhu96/figure-skating-analysis/git/trees/master?recursive=1: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/mengyazhu96/figure-skating-analysis/git/trees/master?recursive=1 (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))",
+      "https://api.github.com/repos/mengyazhu96/figure-skating-analysis/git/trees/master?recursive=1"
+    ],
+    [
+      "fsresults_catalog",
+      "all",
+      "error",
+      0,
+      "download failed https://fsresults.info/couples?page=1: HTTPSConnectionPool(host='fsresults.info', port=443): Max retries exceeded with url: /couples?page=1 (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))",
+      "https://fsresults.info/couples"
+    ]
+  ]
+}

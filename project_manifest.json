@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-10-17T07:31:18.352440+00:00",
+  "project": "doubles",
+  "independent_repo_name": "agenhcx/doubles",
+  "baseline_checks": {
+    "data/historic/observations.csv": {
+      "rows": 3426,
+      "bytes": 913685,
+      "sha256": "b047bdbd7fd127d2f32ecaadbb527e3f3bafbf13d5446b93793c3574490395b6"
+    },
+    "data/historic/v4/athletes_v4.csv": {
+      "rows": 910,
+      "bytes": 107158,
+      "sha256": "d69b4181ea931e4878c27527b84b259fed67c43ebfaca47b92cceff83a70e88e"
+    },
+    "data/historic/v4/couples_v4.csv": {
+      "rows": 553,
+      "bytes": 187824,
+      "sha256": "a64f26299d6fa66355e41ecd3faf80544d0fc92d4e431050fa82494161647a47"
+    },
+    "data/historic/v4/pair_events_v4.csv": {
+      "rows": 3237,
+      "bytes": 1335783,
+      "sha256": "ef808cdda120612f5c6606f6edcfd08779cfccd3c65966817aa4dce9f1cfebfb"
+    }
+  },
+  "data_scope": "Ice Dance and Pair Skating roster audit. Birth date/place not populated. No BaZi.",
+  "source_gap": "2018-19 onward ISU season rankings are collected locally by scripts/run_all.py; files not yet fetched in this artifact",
+  "testing": "Synthetic HTML parsing fixtures and real v4 dataset merge tests pass; network scraping needs local verification"
+}

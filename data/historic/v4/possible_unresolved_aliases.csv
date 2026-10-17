@@ -1,0 +1,26 @@
+﻿discipline,pair1_id,pair2_id,shared_person_id,name_variant1,name_variant2,string_similarity,auto_merged,action
+Pair Skating,pair_7460c2a805e14,pair_b0e1e2fb741de,person_64c965b9c81ce,Antonio SOUZA-KORDEIRU,Antonio SOUZA-KORDERU,0.977,NO,manual_review_only
+Ice Dance,pair_2254e786a6d68,pair_a5372329687c6,person_ce3f8fb4d09b7,Pierre-Loup BOUQUET,Pierre-Lup BOUQUET,0.973,NO,manual_review_only
+Ice Dance,pair_032059d534b44,pair_de648c85d7cde,person_b1f3649d410fa,Guillame GFELLER,Guillaume GFELLER,0.97,NO,manual_review_only
+Ice Dance,pair_18a9f08e6902b,pair_5ff647ab2f733,person_b23f3ef10236e,Kimberley NAVARRO,Kimberly NAVARRO,0.97,NO,manual_review_only
+Ice Dance,pair_931189f53fc04,pair_da15394c51c0d,person_8b4c4c9ba8988,Jea-Luc BAKER,Jean-Luc BAKER,0.963,NO,manual_review_only
+Ice Dance,pair_d019220215266,pair_e29c61e159631,person_4bb7498f9189c,Mathieu JOST,Matthieu JOST,0.96,NO,manual_review_only
+Ice Dance,pair_53ae5d0febd32,pair_de71f5bd3d010,person_b20711a54ddf0,Ho Jung LEE,Hojung LEE,0.952,NO,manual_review_only
+Pair Skating,pair_1673d85e7935f,pair_19350ad093912,person_8d4215ee1d3b5,Elizabeta MAKAROVA,Elizaveta MAKAROVA,0.944,NO,manual_review_only
+Pair Skating,pair_5cf6b5209b158,pair_a8a74c01f236a,person_0696c97bfa47d,Aliona SAVCHENKO,Aljona SAVCHENKO,0.938,NO,manual_review_only
+Ice Dance,pair_3613fb81212f4,pair_a70268465a67f,person_306f803f630c4,Kristian RAND,Kristjan RAND,0.923,NO,manual_review_only
+Pair Skating,pair_6e07d344c92c6,pair_d44b590dad7bf,person_95a650993538d,Feder SOKOLOV,Fedor SOKOLOV,0.923,NO,manual_review_only
+Pair Skating,pair_624926cab97d9,pair_9a32299e318ae,person_8cdef17f1c65d,Lubov ILIUSHECHKINA,Liubov ILYUSHECHKINA,0.923,NO,manual_review_only
+Ice Dance,pair_7986de2766890,pair_a1ef64422a706,person_30bf36c69c954,Cortney MANSOUR,Cortney MANSOUROVA,0.909,NO,manual_review_only
+Pair Skating,pair_79b99aa38104b,pair_dfb389015b30f,person_fb5ad0cec9815,John BALDWIN,"John BALDWIN, Jr.",0.889,NO,manual_review_only
+Pair Skating,pair_2d72017a96f2b,pair_fde0d05a61d4a,person_9ed4bbd568fbf,Maxima COIA,Maximin COIA,0.87,NO,manual_review_only
+Ice Dance,pair_91be218100b42,pair_a7cb25339c40a,person_96759c3743eb6,Tim KOLETO,Timothy KOLETO,0.833,NO,manual_review_only
+Ice Dance,pair_6a01e38a4ba5b,pair_9554dc9e0fdd3,person_e9ce30b973387,Cecilia T��RN,Cecilia TÖRN,0.833,NO,manual_review_only
+Pair Skating,pair_d44b590dad7bf,pair_ee69a9b51970a,person_cf89616209aae,Ekaterina SOKOLOVA,Ekaterina SOSINOVA,0.833,NO,manual_review_only
+Pair Skating,pair_1b5021e8cb036,pair_1c7bbbbd33127,person_09ff9c24536ec,Yuko KAVAGUTI,Yuko KAWAGUCHI,0.815,NO,manual_review_only
+Pair Skating,pair_4fd01f7534b8f,pair_d0fd2ddc7ed64,person_4ac8dc4b92833,Daniel O SHEA,Danny O'SHEA,0.8,NO,manual_review_only
+Ice Dance,pair_34354aa5e327f,pair_35cf626889990,person_f0a60989797e6,Lesia VALADZENKAVA,Lesia VOLODENKOVA,0.8,NO,manual_review_only
+Ice Dance,pair_43ba529399386,pair_879f77e554f5e,person_b5307c679c3e3,Sasha PALOM��KI,Sasha PALOMAKI,0.786,NO,manual_review_only
+Pair Skating,pair_9d0cbd679aaa8,pair_b6f5227b794ba,person_d4e7f4c2c0882,Kathryn ORSCHER,Katie ORSCHER,0.786,NO,manual_review_only
+Ice Dance,pair_31c8d1e4721e4,pair_f1edc9179d0e2,person_d3cd154b92b37,Joti POLIZOAKIS,Panagiotis POLIZOAKIS,0.778,NO,manual_review_only
+Pair Skating,pair_70e339c014666,pair_7b784e45cacb0,person_a9fde44291bac,Alexa SCIMECA KNIERIM,Alexa SCIMECA,0.765,NO,manual_review_only

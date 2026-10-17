@@ -1,0 +1,5 @@
+﻿source,source_path_or_page,status,parsed_rows,error,url
+pilot_worlds,.\ice_dance_pairs_seed_2004_2005.csv,ok,98,,.\ice_dance_pairs_seed_2004_2005.csv
+extra_seed,.\figure_skating_extra_seed_2014_2016_2017.tsv,ok,189,,.\figure_skating_extra_seed_2014_2016_2017.tsv
+github,all,error,0,"download failed https://api.github.com/repos/mengyazhu96/figure-skating-analysis/git/trees/master?recursive=1: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/mengyazhu96/figure-skating-analysis/git/trees/master?recursive=1 (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))",https://api.github.com/repos/mengyazhu96/figure-skating-analysis/git/trees/master?recursive=1
+fsresults_catalog,all,error,0,"download failed https://fsresults.info/couples?page=1: HTTPSConnectionPool(host='fsresults.info', port=443): Max retries exceeded with url: /couples?page=1 (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))",https://fsresults.info/couples

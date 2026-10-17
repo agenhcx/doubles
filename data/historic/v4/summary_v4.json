@@ -1,0 +1,51 @@
+{
+  "scope": "Ice Dance / Pair Skating roster and competition audit; no BaZi",
+  "source_observation_rows": 3426,
+  "source_rows_by_type": {
+    "pilot_worlds": 98,
+    "isu_worlds_2014": 56,
+    "buzzfeed_2016_2017_aggregated": 133,
+    "gh_historic_event": 3139
+  },
+  "valid_raw_observations": 3426,
+  "repaired_observations": 1,
+  "excluded_malformed_observations": 0,
+  "provisional_unique_athletes": 910,
+  "provisional_unique_couples": 553,
+  "athletes_with_2plus_partners_provisional": 164,
+  "athletes_with_3plus_partners_provisional": 29,
+  "athlete_discipline_entries_with_2plus_partners": 162,
+  "athlete_discipline_entries_2partners_each_with_2plus_events": 101,
+  "athlete_discipline_entries_2partners_each_with_5plus_events": 45,
+  "unique_event_ids_including_discipline": 270,
+  "unique_tournament_instances_across_disciplines": 135,
+  "identified_pair_event_records": 3237,
+  "cross_source_duplicate_pair_event_groups": 56,
+  "pairs_only_with_aggregate_seed_no_individual_event": 15,
+  "by_discipline": {
+    "Ice Dance": {
+      "pairs": 302,
+      "identified_pair_event_rows": 1812,
+      "pairs_at_least_1_event": 295,
+      "pairs_at_least_2_events": 203,
+      "pairs_at_least_5_events": 110,
+      "pairs_at_least_10_events": 53,
+      "pairs_at_least_5_ranked_events": 108
+    },
+    "Pair Skating": {
+      "pairs": 251,
+      "identified_pair_event_rows": 1425,
+      "pairs_at_least_1_event": 243,
+      "pairs_at_least_2_events": 179,
+      "pairs_at_least_5_events": 95,
+      "pairs_at_least_10_events": 41,
+      "pairs_at_least_5_ranked_events": 92
+    }
+  },
+  "first_covered_season": "2003-2004",
+  "last_covered_season": "2017-2018",
+  "coverage_warning": "Only the available major competitions 2004 Worlds, 2005 Worlds, 2005-06 through 2017-18 selected ISU competitions. No broad 2018-19 onward harvest. Not all entrants worldwide.",
+  "event_count_definition": "distinct (discipline,season,event) competition entries for a couple; WD included in event count, numeric_rank_count separate; grouped BuzzFeed seed excluded from per-event counts.",
+  "identity_warning": "Order-insensitive exact same name tokens only. Similar spellings and distinct homonyms NOT adjudicated. Empty DOB/location by design.",
+  "raw_scores_comparability_warning": "Do not pool historical total scores across seasons and scoring regimes without standardization."
+}

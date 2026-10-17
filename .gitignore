@@ -1,0 +1,20 @@
+# Runtime material: no giant historical source trees in this repo
+__pycache__/
+*.py[cod]
+.venv/
+.vscode/
+.idea/
+.pytest_cache/
+.env
+*.log
+cache/
+output/
+external/
+local/
+*.zip
+*.pkl
+*.pickle
+*.sqlite
+*.sqlite3
+.DS_Store
+Thumbs.db

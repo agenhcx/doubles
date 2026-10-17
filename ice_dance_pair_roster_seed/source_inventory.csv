@@ -1,0 +1,3 @@
+﻿source,source_path_or_page,status,parsed_rows,error,url
+pilot_worlds,/mnt/data/ice_dance_pairs_seed_2004_2005.csv,ok,98,,/mnt/data/ice_dance_pairs_seed_2004_2005.csv
+extra_seed,/mnt/data/figure_skating_extra_seed_2014_2016_2017.tsv,ok,189,,/mnt/data/figure_skating_extra_seed_2014_2016_2017.tsv

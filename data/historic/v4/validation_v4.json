@@ -1,0 +1,28 @@
+{
+  "checks": {
+    "people_count": true,
+    "couple_count": true,
+    "pair_events_count": true,
+    "pair_event_unique_keys": true,
+    "pair_events_valid_pair": true,
+    "pair_events_valid_event": true,
+    "couples_valid_athlete_ids": true,
+    "partner_links_valid": true,
+    "partner_links_count": true,
+    "event_sum_matches_couples": true,
+    "unique_event_registry": true,
+    "switch_audit_count": true,
+    "malformed_repair_tracked": true,
+    "observation_mapping_complete": true,
+    "cross_source_duplicates_expected": true
+  },
+  "passed": true,
+  "counts": {
+    "people": 910,
+    "couples": 553,
+    "pair_events": 3237,
+    "switch_candidates": 162,
+    "unique_competitions_per_discipline": 270,
+    "duplicates": 56
+  }
+}
