@@ -79,6 +79,24 @@ python .\scripts\run_all.py
 python .\scripts\run_all.py --proxy http://127.0.0.1:10808
 ```
 
+**2026-10-17 代理修复：** 显式使用 `--proxy` 时，程序自动忽略环境变量 `HTTP_PROXY`/`HTTPS_PROXY`，防止系统 HTTPS 代理覆盖本地 HTTP 端口；连接失败会快速停止，并在 `manifest.json` 写入未尝试页面数。
+
+首次建议先抓 **一季的两张成年组表**，确认网络正常后再运行完整8个赛季：
+
+```powershell
+python .\scripts\run_all.py --season-start 2025 --season-end 2025 --level senior --proxy http://127.0.0.1:10808
+```
+
+如果仍失败，检查本机10808端口是否在监听，以及 HTTP 代理能否访问ISU：
+
+```powershell
+Test-NetConnection 127.0.0.1 -Port 10808
+```
+
+```powershell
+curl.exe --proxy http://127.0.0.1:10808 --max-time 15 -I https://results.isu.org/ws/wr2025-26/wrdance.htm
+```
+
 如果使用系统代理导致SSL握手失败，可尝试本地直连：
 
 ```powershell
