@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Run data collection and roster merge with one command; stop if source pages fail."""
 import argparse
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -27,6 +28,15 @@ def main():
     rc=run(base)
     # Partial outputs are still useful, but must not be called complete.
     file=Path("output/isu/isu_season_roster.csv")
+    manifest=Path("output/isu/manifest.json")
+    if manifest.exists():
+        try:
+            summary=json.loads(manifest.read_text(encoding="utf-8"))
+            if summary.get("source_pages_ok", 0) == 0:
+                print("[SKIP] No ISU page succeeded; historic v4 base remains unchanged.", flush=True)
+                return rc or 2
+        except (ValueError, OSError):
+            pass
     if file.exists():
         rc2=run([sys.executable,str(Path(__file__).parent/"build_master_roster.py")])
         if rc2:return rc2
