@@ -283,9 +283,9 @@ class HistoricCumulativeDobCoverageTests(unittest.TestCase):
         pairs = {r["pair_id"]: r for r in
                  read_csv(ROOT / "data/historic/v4/couples_v4.csv")}
         evidence = read_csv(ROOT /
-            "data/adjudications/isu_historic_priority_dob_sources_v2.csv")
-        self.assertEqual(len(evidence), 50)
-        self.assertEqual(len({r["historic_person_id"] for r in evidence}), 50)
+            "data/adjudications/isu_historic_priority_dob_sources_v3.csv")
+        self.assertEqual(len(evidence), 51)
+        self.assertEqual(len({r["historic_person_id"] for r in evidence}), 51)
         for item in evidence:
             self.assertIn(item["historic_person_id"], original)
             self.assertEqual(item["historic_name"],
@@ -335,6 +335,59 @@ class HistoricCumulativeDobCoverageTests(unittest.TestCase):
                   read_csv(self.out / "historic_dob_coverage_people_v1.csv")}
         self.assertEqual(people["h6"]["date_of_birth_primary_candidate"], "1990-01-04")
         self.assertIn("ec2008", people["h6"]["source_urls"])
+
+    def test_verified_older_isu_partner_bio_is_allowed_as_corroboration(self):
+        row = self.source_priority()
+        row["corroborating_source_url"] = (
+            "https://www.isuresults.com/bios/isufs00009336.htm"
+        )
+        save(self.priority, [row])
+        report = self.audit_priority()
+        self.assertEqual(report["official_primary_dob_candidates"], 6)
+        self.assertEqual(report["source_dob_conflict_holds"], 0)
+        people = {p["audit_person_id"]: p for p in
+                  read_csv(self.out / "historic_dob_coverage_people_v1.csv")}
+        self.assertIn("isufs00009336", people["h6"]["source_urls"])
+        self.assertEqual(people["h6"]["date_of_birth_primary_candidate"], "1990-01-04")
+
+    def test_untrusted_or_malformed_partner_biography_corroboration_rejected(self):
+        invalid_urls = [
+            "https://www.isuresults.com/bios/arbitrary.htm",
+            "https://www.isuresults.com/bios/isufs00009336.pdf",
+            "https://www.isuresults.com/bios/isufs00009336.htm?redirect=1",
+            "https://fake.isuresults.com/bios/isufs00009336.htm",
+            "http://www.isuresults.com/bios/isufs00009336.htm",
+        ]
+        for bad in invalid_urls:
+            with self.subTest(bad=bad):
+                row = self.source_priority()
+                row["corroborating_source_url"] = bad
+                save(self.priority, [row])
+                with self.assertRaisesRegex(
+                    ValueError, "Invalid official source corroborating"
+                ):
+                    self.audit_priority()
+
+    def test_final_jong_primary_bio_record_preserves_earlier_secondary_lead(self):
+        priority = read_csv(ROOT /
+            "data/adjudications/isu_historic_priority_dob_sources_v3.csv")
+        jong = [r for r in priority if
+                r["historic_person_id"] == "person_121570cb3d68f"]
+        self.assertEqual(len(jong), 1)
+        self.assertEqual(jong[0]["date_of_birth"], "1988-01-03")
+        self.assertEqual(jong[0]["official_observed_name"], "Yong Hyok JONG")
+        self.assertIn("isufs00007318", jong[0]["source_url"])
+        self.assertIn("isufs00009336", jong[0]["corroborating_source_url"])
+        self.assertEqual(jong[0]["historic_partner_name"], "PHYO Yong Myong")
+        secondary = read_csv(ROOT /
+            "data/adjudications/isu_historic_external_dob_leads_v1.csv")
+        jong_sec = [r for r in secondary if
+                    r["historic_person_id"] == "person_121570cb3d68f"]
+        self.assertEqual(len(jong_sec), 1)
+        self.assertEqual(jong_sec[0]["date_of_birth_lead"],
+                         jong[0]["date_of_birth"])
+        self.assertEqual(jong_sec[0]["source_tier"],
+                         "independent_historical_secondary")
 
     def test_real_historic_source_has_expected_schema_and_source_tiers(self):
         p = ROOT / "data/adjudications/isu_historic_external_dob_leads_v1.csv"

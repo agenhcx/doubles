@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -296,14 +297,21 @@ def coverage(
         other_url = r.get("corroborating_source_url", "").strip()
         if other_url:
             other = urlsplit(other_url)
-            # A second independent ISU event/start-list reference supports
-            # identity and partner chronology; it is not a DOB source unless
-            # specifically listed in the primary source_url field.
+            # A separate ISU event record OR a distinct earlier official
+            # pair biography may corroborate an athlete's identity and
+            # partner change. The corroborating URL never supplies the
+            # accepted DOB; that remains the reviewed primary source_url.
+            official_result_path = other.path.startswith(("/results/", "/events/"))
+            official_partner_bio = (
+                re.fullmatch(r"/bios/isufs[0-9]+[.]htm", other.path, re.I)
+                is not None
+                and other_url != r["source_url"]
+            )
             if (other.scheme != "https" or not src_is_official(other_url)
                     or other.hostname not in {
                         "www.isuresults.com", "results.isu.org"
                     }
-                    or not other.path.startswith(("/results/", "/events/"))):
+                    or not (official_result_path or official_partner_bio)):
                 raise ValueError("Invalid official source corroborating the priority identity")
         register(original_id, "official", r["date_of_birth"],
                  r["source_url"], r["discipline"],
@@ -528,7 +536,7 @@ def main():
     p.add_argument("--out", default="output/historic_dob/coverage")
     p.add_argument(
         "--priority-sources",
-        default="data/adjudications/isu_historic_priority_dob_sources_v2.csv"
+        default="data/adjudications/isu_historic_priority_dob_sources_v3.csv"
     )
     args = p.parse_args()
     coverage(args.athletes, args.pairs, args.direct, args.aliases, args.seed,
