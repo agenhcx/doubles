@@ -95,7 +95,7 @@ def coverage(
             "historic_person_id", "historic_name", "date_of_birth",
             "official_observed_name", "source_url", "historic_pair_id",
             "historic_partner_name", "discipline", "identity_basis",
-            "evidence_status", "review_note"
+            "evidence_status", "review_note", "corroborating_source_url"
         ), "reviewed historical priority DOBs")
     else:
         priority_rows = []
@@ -282,12 +282,36 @@ def coverage(
                 or not r["review_note"].strip()):
             raise ValueError("Priority DOB source lacks reviewed official identity context")
         url = urlsplit(r["source_url"])
+        # A historical ISU European-Championship media guide is an official
+        # primary roster with date-level skater DOBs. Whitelist that single
+        # reviewed PDF, rather than allowing arbitrary PDFs or hosts.
+        official_bio_path = url.path.startswith(("/bios/", "/en/", "/ja/"))
+        specific_official_pdf = (
+            url.hostname == "www.isuresults.com"
+            and url.path == "/events/EC10_MediaGuide.pdf"
+        )
         if (url.scheme != "https" or not src_is_official(r["source_url"])
-                or not url.path.startswith(("/bios/", "/en/", "/ja/"))):
-            raise ValueError("Priority DOB source not a trusted official ISU biography")
+                or not (official_bio_path or specific_official_pdf)):
+            raise ValueError("Priority DOB source not a trusted official ISU biography or approved event PDF")
+        other_url = r.get("corroborating_source_url", "").strip()
+        if other_url:
+            other = urlsplit(other_url)
+            # A second independent ISU event/start-list reference supports
+            # identity and partner chronology; it is not a DOB source unless
+            # specifically listed in the primary source_url field.
+            if (other.scheme != "https" or not src_is_official(other_url)
+                    or other.hostname not in {
+                        "www.isuresults.com", "results.isu.org"
+                    }
+                    or not other.path.startswith(("/results/", "/events/"))):
+                raise ValueError("Invalid official source corroborating the priority identity")
         register(original_id, "official", r["date_of_birth"],
                  r["source_url"], r["discipline"],
                  "historic_priority_official_verified", historic_pair)
+        if other_url:
+            resolved = resolve(original_id, r["discipline"])
+            if resolved:
+                slots[resolved]["urls"].add(other_url)
 
     for r in external:
         if not r["date_of_birth_lead"]:
@@ -504,7 +528,7 @@ def main():
     p.add_argument("--out", default="output/historic_dob/coverage")
     p.add_argument(
         "--priority-sources",
-        default="data/adjudications/isu_historic_priority_dob_sources_v1.csv"
+        default="data/adjudications/isu_historic_priority_dob_sources_v2.csv"
     )
     args = p.parse_args()
     coverage(args.athletes, args.pairs, args.direct, args.aliases, args.seed,

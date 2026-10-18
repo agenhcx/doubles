@@ -217,7 +217,8 @@ class HistoricCumulativeDobCoverageTests(unittest.TestCase):
             historic_partner_name="Sergei KAREV", discipline="Pair Skating",
             identity_basis="official_same_pair_biography",
             evidence_status="source_corroborated_official",
-            review_note="Direct official birthdate with same pair context"
+            review_note="Direct official birthdate with same pair context",
+            corroborating_source_url=""
         )
 
     def audit_priority(self):
@@ -282,9 +283,9 @@ class HistoricCumulativeDobCoverageTests(unittest.TestCase):
         pairs = {r["pair_id"]: r for r in
                  read_csv(ROOT / "data/historic/v4/couples_v4.csv")}
         evidence = read_csv(ROOT /
-            "data/adjudications/isu_historic_priority_dob_sources_v1.csv")
-        self.assertEqual(len(evidence), 43)
-        self.assertEqual(len({r["historic_person_id"] for r in evidence}), 43)
+            "data/adjudications/isu_historic_priority_dob_sources_v2.csv")
+        self.assertEqual(len(evidence), 50)
+        self.assertEqual(len({r["historic_person_id"] for r in evidence}), 50)
         for item in evidence:
             self.assertIn(item["historic_person_id"], original)
             self.assertEqual(item["historic_name"],
@@ -298,6 +299,42 @@ class HistoricCumulativeDobCoverageTests(unittest.TestCase):
                 pair["person_a_id"] else pair["person_a_name"])
             self.assertTrue(item["source_url"].startswith("https://"))
             self.assertTrue(valid_date(item["date_of_birth"]))
+
+    def test_isu_2010_media_guide_exact_pdf_whitelisted_for_birthday(self):
+        row = self.source_priority()
+        row["source_url"] = "https://www.isuresults.com/events/EC10_MediaGuide.pdf"
+        row["corroborating_source_url"] = "https://results.isu.org/results/wjc2009/CAT004EN.HTM"
+        save(self.priority, [row])
+        result = self.audit_priority()
+        self.assertEqual(result["priority_official_source_records"], 1)
+        self.assertEqual(result["official_primary_dob_candidates"], 6)
+        people = {r["audit_person_id"]: r for r in
+                  read_csv(self.out / "historic_dob_coverage_people_v1.csv")}
+        self.assertIn("EC10_MediaGuide.pdf", people["h6"]["source_urls"])
+        self.assertIn("wjc2009", people["h6"]["source_urls"])
+
+    def test_unlisted_pdf_and_unapproved_secondary_reference_rejected(self):
+        row = self.source_priority()
+        row["source_url"] = "https://www.isuresults.com/events/unrelated.pdf"
+        save(self.priority, [row])
+        with self.assertRaisesRegex(ValueError, "not a trusted official ISU"):
+            self.audit_priority()
+        row["source_url"] = "https://results.isu.org/bios/isufs00012345.htm"
+        row["corroborating_source_url"] = "https://notisu.example/results/start.htm"
+        save(self.priority, [row])
+        with self.assertRaisesRegex(ValueError, "Invalid official source corroborating"):
+            self.audit_priority()
+
+    def test_second_source_provenance_never_modifies_original_date(self):
+        row = self.source_priority()
+        row["corroborating_source_url"] = "https://results.isu.org/results/ec2008/SEG005.HTM"
+        save(self.priority, [row])
+        report = self.audit_priority()
+        self.assertEqual(report["source_dob_conflict_holds"], 0)
+        people = {x["audit_person_id"]: x for x in
+                  read_csv(self.out / "historic_dob_coverage_people_v1.csv")}
+        self.assertEqual(people["h6"]["date_of_birth_primary_candidate"], "1990-01-04")
+        self.assertIn("ec2008", people["h6"]["source_urls"])
 
     def test_real_historic_source_has_expected_schema_and_source_tiers(self):
         p = ROOT / "data/adjudications/isu_historic_external_dob_leads_v1.csv"
