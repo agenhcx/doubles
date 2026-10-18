@@ -19,11 +19,17 @@ from audit_isu_identities import digest, norm, read_csv, valid_date, write_csv
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_RULES = ROOT / "data" / "adjudications" / "isu_historic_homonym_splits_v1.csv"
+DEFAULT_NAME_VARIANTS = ROOT / "data" / "adjudications" / "isu_historic_name_variants_v1.csv"
+REVIEW_NAME_STATUSES = {
+    "dob_bound_to_rotated_name_review",
+    "dob_bound_to_punctuation_variant_review",
+}
 LINK_FIELDS = [
     "audit_person_id", "historic_person_id", "profile_id",
     "side_on_profile", "discipline", "historic_name",
     "observed_name", "source_dob", "parse_status", "identity_status",
-    "source_url", "review_reason"
+    "source_url", "review_reason", "name_variant_review_status",
+    "name_variant_review_url"
 ]
 PERSON_FIELDS = [
     "audit_person_id", "original_historic_person_ids", "disciplines",
@@ -75,6 +81,39 @@ def read_rules(path):
     return rules, split_people
 
 
+
+def load_name_variant_rules(path):
+    """Review-only source claims keyed to an actual profile/person position.
+
+    Unlike general similarity matching, this list is limited to six known
+    official biography rows whose printed full names differ in order or
+    punctuation. No other athlete inherits these normalization rules.
+    """
+    if path is None:
+        return {}
+    rules = {}
+    for row in checked_rows(path, "Name variant adjudications"):
+        key = (row["historic_person_id"], row["profile_id"].lower(),
+               row["side_on_profile"])
+        if key in rules or key[2] not in {"1", "2"}:
+            raise ValueError("Duplicate or invalid source name variant rule")
+        if row["evidence_status"] != "source_corroborated":
+            raise ValueError("Name variant not source reviewed")
+        if row["expected_parse_status"] not in REVIEW_NAME_STATUSES:
+            raise ValueError("Unsupported name variant parse status")
+        if not valid_date(row["expected_dob"]):
+            raise ValueError("Invalid reviewed name variant DOB")
+        for field in ("historic_name", "official_observed_name", "partner_context"):
+            if not row[field].strip():
+                raise ValueError("Incomplete reviewed name variant evidence")
+        official = urlsplit(row["official_source_url"])
+        if (official.hostname not in OFFICIAL_HOSTS
+                or Path(official.path).stem.lower() != key[1]):
+            raise ValueError("Invalid ISU name variant source URL")
+        rules[key] = row
+    return rules
+
+
 def pair_sources(path):
     pairs = {}
     for row in checked_rows(path, "Historic pairs"):
@@ -89,15 +128,21 @@ def audit(
     pairs_path="data/historic/v4/couples_v4.csv",
     rules_path=DEFAULT_RULES,
     out_dir="output/historic_dob/identity",
+    name_variants_path=None,
 ):
     paths = [Path(candidates_path), Path(pairs_path), Path(rules_path)]
+    if name_variants_path is not None:
+        paths.append(Path(name_variants_path))
     sources = checked_rows(paths[0], "Historic source observations")
     pairs = pair_sources(paths[1])
     rules, split_people = read_rules(paths[2])
+    name_rules = load_name_variant_rules(name_variants_path)
 
     links, seen_slots = [], set()
     covered_rules = set()
     observed_rules = set()
+    observed_name_rules = set()
+    approved_name_rules = set()
     for source in sources:
         original, profile, side = (
             source["historic_person_id"], source["profile_id"].lower(),
@@ -156,7 +201,24 @@ def audit(
                 audit_id = rule["audit_person_id"]
                 identity_state = "source_reviewed_homonym_split"
 
-        if source["parse_status"] != "dob_explicitly_bound_to_expected_name":
+        review_state, review_url = "", ""
+        variant_rule = name_rules.get(key)
+        if variant_rule:
+            observed_name_rules.add(key)
+            if (source["parse_status"] == variant_rule["expected_parse_status"]
+                    and source["historic_name"] == variant_rule["historic_name"]
+                    and source["observed_name"] == variant_rule["official_observed_name"]
+                    and dob == variant_rule["expected_dob"]
+                    and source.get("seed_consistency") != "conflict_with_primary_seed"
+                    and not identity_state.startswith("homonym_")):
+                approved_name_rules.add(key)
+                review_state = "source_corroborated_name_variant"
+                review_url = variant_rule["official_source_url"]
+            else:
+                review_state = "name_variant_adjudication_mismatch"
+                reasons.append(review_state)
+        if (source["parse_status"] != "dob_explicitly_bound_to_expected_name"
+                and review_state != "source_corroborated_name_variant"):
             reasons.append(source["parse_status"])
         if source.get("seed_consistency") == "conflict_with_primary_seed":
             reasons.append("source_conflicts_with_seed")
@@ -171,6 +233,8 @@ def audit(
             "identity_status": identity_state,
             "source_url": source["source_url"],
             "review_reason": "; ".join(sorted(set(reasons))),
+            "name_variant_review_status": review_state,
+            "name_variant_review_url": review_url,
         })
 
     not_observed = set(rules) - observed_rules
@@ -180,6 +244,8 @@ def audit(
             + repr(sorted(not_observed)[:3])
         )
 
+    if set(name_rules) - observed_name_rules:
+        raise ValueError("Reviewed name variant source rows absent from audit")
     members = defaultdict(list)
     for row in links:
         members[row["audit_person_id"]].append(row)
@@ -189,8 +255,11 @@ def audit(
         dates = sorted({x["source_dob"] for x in observations if x["source_dob"]})
         bad_identity = any(x["identity_status"].startswith("homonym_")
                            for x in observations)
-        name_variants = any(x["parse_status"] != "dob_explicitly_bound_to_expected_name"
-                            for x in observations)
+        name_variants = any(
+            x["parse_status"] != "dob_explicitly_bound_to_expected_name"
+            and x["name_variant_review_status"] != "source_corroborated_name_variant"
+            for x in observations
+        )
         if bad_identity:
             status, accept = "identity_split_unresolved", ""
         elif len(dates) > 1:
@@ -261,6 +330,9 @@ def audit(
         "official_homonym_split_original_ids": len(split_people),
         "official_homonym_split_profiles": len(covered_rules),
         "homonym_split_evidence_mismatches": len(observed_rules - covered_rules),
+        "name_variant_rules_loaded": len(name_rules),
+        "name_variant_rules_approved": len(approved_name_rules),
+        "name_variant_rules_mismatched": len(observed_name_rules - approved_name_rules),
         "identities_with_agreeing_dobs": stat["consistent_source_candidate"],
         "identities_with_source_conflicts": stat["source_dob_conflict"],
         "identities_needing_name_review": stat["name_variant_requires_review"],
@@ -272,7 +344,7 @@ def audit(
         "limitations": [
             "Reviewed homonym mappings are profile/side specific and do not alter raw historic IDs",
             "A consistent official-profile date is a candidate pending broader roster QA",
-            "Name punctuation/order variants are held for explicit review",
+            "Name punctuation/order variants require exact profile/side/DOB source-reviewed adjudication",
             "No dates inferred from a missing field, a nationality or another athlete",
             "Other homonyms without contradictory DOBs may still exist",
             "No astrology features, performance selection, or master edits",
@@ -290,9 +362,10 @@ def main():
     p.add_argument("--candidates", default="output/historic_dob/biographies/historic_isu_bio_candidates.csv")
     p.add_argument("--pairs", default="data/historic/v4/couples_v4.csv")
     p.add_argument("--homonyms", default=str(DEFAULT_RULES))
+    p.add_argument("--name-variants", default=str(DEFAULT_NAME_VARIANTS))
     p.add_argument("--out", default="output/historic_dob/identity")
     a = p.parse_args()
-    audit(a.candidates, a.pairs, a.homonyms, a.out)
+    audit(a.candidates, a.pairs, a.homonyms, a.out, a.name_variants)
 
 
 if __name__ == "__main__":

@@ -98,6 +98,66 @@ class HistoricHomonymAuditTests(unittest.TestCase):
         self.assertEqual(rows["maxim"]["source_dob_values"], "2000-09-27")
         self.assertEqual(s["review_source_rows"], 1)
 
+    def test_source_reviewed_name_rotation_can_be_accepted_without_fuzzy_matching(self):
+        variants = self.output.parent / "name_variants.csv"
+        self.source_rows[1]["parse_status"] = "dob_bound_to_rotated_name_review"
+        self.source_rows[1]["observed_name"] = "KAREV Sergei"
+        self.save_all()
+        save(variants, [dict(
+            historic_person_id="sergei", profile_id="isufs00008744",
+            side_on_profile="2", historic_name="Sergei KAREV",
+            official_observed_name="KAREV Sergei", expected_dob="1986-03-31",
+            expected_parse_status="dob_bound_to_rotated_name_review",
+            official_source_url="https://results.isu.org/bios/isufs00008744.htm",
+            partner_context="Arina USHAKOVA",
+            evidence_status="source_corroborated",
+        )])
+        result = audit(self.candidates, self.pairs, self.rules, self.output, variants)
+        self.assertEqual(result["name_variant_rules_approved"], 1)
+        self.assertEqual(result["identities_needing_name_review"], 0)
+        self.assertEqual(result["review_source_rows"], 0)
+        people = {r["audit_person_id"]: r for r in
+                  read_csv(self.output / "historic_audited_people.csv")}
+        self.assertEqual(people["sergei"]["date_of_birth_candidate"], "1986-03-31")
+        links = read_csv(self.output / "historic_source_identity_links.csv")
+        matched = next(r for r in links if r["historic_person_id"] == "sergei")
+        self.assertEqual(matched["name_variant_review_status"],
+                         "source_corroborated_name_variant")
+        self.assertIn("isufs00008744", matched["name_variant_review_url"])
+        self.assertEqual(self.source_rows[1]["date_of_birth"], "1986-03-31")
+
+    def test_reviewed_name_variant_dob_mismatch_stays_unaccepted(self):
+        variants = self.output.parent / "name_variants.csv"
+        self.source_rows[1]["parse_status"] = "dob_bound_to_rotated_name_review"
+        self.source_rows[1]["observed_name"] = "KAREV Sergei"
+        self.save_all()
+        save(variants, [dict(
+            historic_person_id="sergei", profile_id="isufs00008744",
+            side_on_profile="2", historic_name="Sergei KAREV",
+            official_observed_name="KAREV Sergei", expected_dob="1986-03-30",
+            expected_parse_status="dob_bound_to_rotated_name_review",
+            official_source_url="https://results.isu.org/bios/isufs00008744.htm",
+            partner_context="Arina USHAKOVA", evidence_status="source_corroborated",
+        )])
+        result = audit(self.candidates, self.pairs, self.rules, self.output, variants)
+        self.assertEqual(result["name_variant_rules_mismatched"], 1)
+        self.assertEqual(result["identities_needing_name_review"], 1)
+        self.assertEqual(result["review_source_rows"], 1)
+        rows = {r["audit_person_id"]: r for r in
+                read_csv(self.output / "historic_audited_people.csv")}
+        self.assertEqual(rows["sergei"]["date_of_birth_candidate"], "")
+
+    def test_real_name_variant_adjudications_are_six_source_scoped_records(self):
+        path = ROOT / "data/adjudications/isu_historic_name_variants_v1.csv"
+        rows = read_csv(path)
+        self.assertEqual(len(rows), 6)
+        self.assertEqual(len({(r["historic_person_id"], r["profile_id"],
+                               r["side_on_profile"]) for r in rows}), 6)
+        self.assertEqual(len([r for r in rows
+                              if r["expected_parse_status"] == "dob_bound_to_rotated_name_review"]), 4)
+        self.assertEqual(len([r for r in rows
+                              if r["expected_parse_status"] == "dob_bound_to_punctuation_variant_review"]), 2)
+
     def test_unreviewed_homonym_date_cannot_be_promoted(self):
         self.source_rows[2]["date_of_birth"] = "2002-06-28"
         self.save_all()
