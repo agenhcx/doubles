@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 from audit_historic_dob_coverage import coverage
-from audit_isu_identities import read_csv
+from audit_isu_identities import read_csv, valid_date
 
 
 def save(path, rows):
@@ -38,6 +38,7 @@ class HistoricCumulativeDobCoverageTests(unittest.TestCase):
         self.pending = root / "pending.csv"
         self.collisions = root / "collisions.csv"
         self.out = root / "out"
+        self.priority = root / "priority_official.csv"
         self.ath = [
             dict(person_id="h1", name_display="Arina USHAKOVA",
                  disciplines="Ice Dance; Pair Skating"),
@@ -206,6 +207,96 @@ class HistoricCumulativeDobCoverageTests(unittest.TestCase):
         self.save_all()
         with self.assertRaisesRegex(ValueError, "Duplicate or blank original"):
             self.audit()
+
+    def source_priority(self, dob="1990-01-04"):
+        return dict(
+            historic_person_id="h6", historic_name="Andrew CALENDAR",
+            date_of_birth=dob, official_observed_name="Andrew CALENDAR",
+            source_url="https://results.isu.org/bios/isufs00012345.htm",
+            historic_pair_id="pair-calendar",
+            historic_partner_name="Sergei KAREV", discipline="Pair Skating",
+            identity_basis="official_same_pair_biography",
+            evidence_status="source_corroborated_official",
+            review_note="Direct official birthdate with same pair context"
+        )
+
+    def audit_priority(self):
+        return coverage(
+            self.athletes, self.pairs, self.direct, self.aliases,
+            self.seed, self.external, self.oldlinks, self.pending,
+            self.collisions, self.out, self.priority
+        )
+
+    def test_priority_official_dob_promotes_matching_ranked_candidate(self):
+        save(self.priority, [self.source_priority()])
+        snapshot = self.athletes.read_bytes()
+        report = self.audit_priority()
+        self.assertEqual(report["priority_official_source_records"], 1)
+        self.assertEqual(report["priority_official_unique_historic_ids"], 1)
+        self.assertEqual(report["official_primary_dob_candidates"], 6)
+        self.assertEqual(report["ranked_same_pair_only_candidates_not_promoted"], 0)
+        self.assertEqual(report["missing_primary_dob_slots"], 1)
+        self.assertEqual(report["pairs_with_both_primary_dobs"], 4)
+        self.assertEqual(snapshot, self.athletes.read_bytes())
+        people = {x["audit_person_id"]: x for x in
+                  read_csv(self.out / "historic_dob_coverage_people_v1.csv")}
+        self.assertEqual(people["h6"]["date_of_birth_primary_candidate"], "1990-01-04")
+        self.assertIn("isufs00012345", people["h6"]["source_urls"])
+
+    def test_priority_official_date_disagreement_is_a_conflict_not_an_overwrite(self):
+        save(self.priority, [self.source_priority("1990-01-05")])
+        report = self.audit_priority()
+        self.assertEqual(report["source_dob_conflict_holds"], 1)
+        self.assertEqual(report["missing_primary_dob_slots"], 2)
+        conflict = read_csv(self.out / "historic_dob_source_conflicts_v1.csv")
+        self.assertEqual(len(conflict), 1)
+        self.assertEqual(conflict[0]["audit_person_id"], "h6")
+
+    def test_priority_pair_member_or_partner_identity_mismatch_rejected(self):
+        row = self.source_priority()
+        row["historic_partner_name"] = "Different PARTNER"
+        save(self.priority, [row])
+        with self.assertRaisesRegex(ValueError, "partnership/discipline mismatch"):
+            self.audit_priority()
+        row["historic_partner_name"] = "Sergei KAREV"
+        row["historic_person_id"] = "h5"
+        save(self.priority, [row])
+        with self.assertRaisesRegex(ValueError, "not in referenced historic pair"):
+            self.audit_priority()
+
+    def test_priority_untrusted_official_domain_and_repeated_id_rejected(self):
+        row = self.source_priority()
+        row["source_url"] = "https://results.isu.org.evil.example/bios/isufs00012345.htm"
+        save(self.priority, [row])
+        with self.assertRaisesRegex(ValueError, "not a trusted official ISU"):
+            self.audit_priority()
+        row["source_url"] = "https://results.isu.org/bios/isufs00012345.htm"
+        save(self.priority, [row, dict(row)])
+        with self.assertRaisesRegex(ValueError, "Duplicated reviewed priority"):
+            self.audit_priority()
+
+    def test_reviewed_priority_catalog_uses_real_historic_ids_and_official_urls(self):
+        original = {r["person_id"]: r for r in
+                    read_csv(ROOT / "data/historic/v4/athletes_v4.csv")}
+        pairs = {r["pair_id"]: r for r in
+                 read_csv(ROOT / "data/historic/v4/couples_v4.csv")}
+        evidence = read_csv(ROOT /
+            "data/adjudications/isu_historic_priority_dob_sources_v1.csv")
+        self.assertEqual(len(evidence), 43)
+        self.assertEqual(len({r["historic_person_id"] for r in evidence}), 43)
+        for item in evidence:
+            self.assertIn(item["historic_person_id"], original)
+            self.assertEqual(item["historic_name"],
+                             original[item["historic_person_id"]]["name_display"])
+            self.assertIn(item["historic_pair_id"], pairs)
+            pair = pairs[item["historic_pair_id"]]
+            self.assertIn(item["historic_person_id"], {
+                pair["person_a_id"], pair["person_b_id"]})
+            self.assertEqual(item["historic_partner_name"],
+                pair["person_b_name"] if item["historic_person_id"] ==
+                pair["person_a_id"] else pair["person_a_name"])
+            self.assertTrue(item["source_url"].startswith("https://"))
+            self.assertTrue(valid_date(item["date_of_birth"]))
 
     def test_real_historic_source_has_expected_schema_and_source_tiers(self):
         p = ROOT / "data/adjudications/isu_historic_external_dob_leads_v1.csv"

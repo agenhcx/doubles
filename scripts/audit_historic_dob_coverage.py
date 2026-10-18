@@ -76,6 +76,7 @@ def coverage(
     unresolved_path="output/historic_dob/alias_pair_identity/historic_alias_unresolved_pair_review.csv",
     collisions_path="output/historic_dob/alias_pair_identity/historic_alias_profile_side_collisions.csv",
     out_dir="output/historic_dob/coverage",
+    priority_path=None,
 ):
     paths = [Path(x) for x in (
         athletes_path, pairs_path, direct_path, alias_path, seed_path,
@@ -84,6 +85,20 @@ def coverage(
     original, pairs, direct, aliases, seeds, external, oldlinks, pending, collisions = [
         read_csv(path) for path in paths
     ]
+    # An opt-in source-vetted supplement. Existing callers continue to run
+    # without it; the CLI defaults to the reviewed, versioned CSV.
+    if priority_path is not None:
+        priority_path = Path(priority_path)
+        paths.append(priority_path)
+        priority_rows = read_csv(priority_path)
+        fields(priority_rows, (
+            "historic_person_id", "historic_name", "date_of_birth",
+            "official_observed_name", "source_url", "historic_pair_id",
+            "historic_partner_name", "discipline", "identity_basis",
+            "evidence_status", "review_note"
+        ), "reviewed historical priority DOBs")
+    else:
+        priority_rows = []
     fields(original, ("person_id", "name_display", "disciplines"), "historic athletes")
     fields(pairs, ("pair_id", "person_a_id", "person_b_id", "discipline",
                    "person_a_name", "person_b_name"), "historic pair roster")
@@ -231,6 +246,48 @@ def coverage(
             raise ValueError("Official primary seed is not reviewed")
         register(r["historic_person_id"], "official", r["date_of_birth"],
                  r["source_url"], source_marker="official_primary_seed")
+
+    # Review these birthdates as direct official source evidence but do not
+    # alter the original historical name or provisional identity.
+    # An individual official profile is admissible only if its historical
+    # pair/person/partner attribution is explicitly present in the evidence.
+    accepted_basis = {
+        "official_same_pair_biography",
+        "official_individual_with_partner_history"
+    }
+    priority_seen = set()
+    for r in priority_rows:
+        original_id, historic_pair = r["historic_person_id"], r["historic_pair_id"]
+        if original_id in priority_seen:
+            raise ValueError("Duplicated reviewed priority historical person ID")
+        priority_seen.add(original_id)
+        if original_id not in original_by_id or historic_pair not in pair_by_id:
+            raise ValueError("Unknown historic person/pair in reviewed priority source")
+        historical = original_by_id[original_id]
+        pair_rec = pair_by_id[historic_pair]
+        if historical["name_display"] != r["historic_name"]:
+            raise ValueError("Priority source historic person name does not match v4")
+        if pair_rec["person_a_id"] == original_id:
+            partner = pair_rec["person_b_name"]
+        elif pair_rec["person_b_id"] == original_id:
+            partner = pair_rec["person_a_name"]
+        else:
+            raise ValueError("Priority DOB source person not in referenced historic pair")
+        if (partner != r["historic_partner_name"]
+                or pair_rec["discipline"] != r["discipline"]):
+            raise ValueError("Priority DOB source partnership/discipline mismatch")
+        if (r["evidence_status"] != "source_corroborated_official"
+                or r["identity_basis"] not in accepted_basis
+                or not r["official_observed_name"].strip()
+                or not r["review_note"].strip()):
+            raise ValueError("Priority DOB source lacks reviewed official identity context")
+        url = urlsplit(r["source_url"])
+        if (url.scheme != "https" or not src_is_official(r["source_url"])
+                or not url.path.startswith(("/bios/", "/en/", "/ja/"))):
+            raise ValueError("Priority DOB source not a trusted official ISU biography")
+        register(original_id, "official", r["date_of_birth"],
+                 r["source_url"], r["discipline"],
+                 "historic_priority_official_verified", historic_pair)
 
     for r in external:
         if not r["date_of_birth_lead"]:
@@ -380,6 +437,8 @@ def coverage(
         "historical_audit_identity_slots_before_alias_merges": len(slots),
         "confirmed_homonym_splits_extra_slots": len(slots) - len(original_by_id),
         "historical_pairs": len(pairs_output),
+        "priority_official_source_records": len(priority_rows),
+        "priority_official_unique_historic_ids": len(priority_seen),
         "identity_coverage_counts": dict(sorted(stat.items())),
         "official_primary_dob_candidates": stat["official_source_linked"],
         "ranked_same_pair_only_candidates_not_promoted": stat[
@@ -407,6 +466,7 @@ def coverage(
         "limitations": [
             "910 original historical IDs are not 910 independently verified people",
             "Cross-era name+same-pair links are candidates, not primary DOBs",
+            "Priority official DOB source leads are limited to reviewed pair/person IDs and retain their URLs",
             "Secondary sources are leads, not accepted primary DOBs",
             "A reviewed homonym split increases audit slots while candidate alias duplicates remain unmerged",
             "Unresolved pair identity links do not imply missing birthdays",
@@ -442,9 +502,14 @@ def main():
     p.add_argument("--unresolved", default="output/historic_dob/alias_pair_identity/historic_alias_unresolved_pair_review.csv")
     p.add_argument("--collisions", default="output/historic_dob/alias_pair_identity/historic_alias_profile_side_collisions.csv")
     p.add_argument("--out", default="output/historic_dob/coverage")
+    p.add_argument(
+        "--priority-sources",
+        default="data/adjudications/isu_historic_priority_dob_sources_v1.csv"
+    )
     args = p.parse_args()
     coverage(args.athletes, args.pairs, args.direct, args.aliases, args.seed,
-             args.external, args.historic_links, args.unresolved, args.collisions, args.out)
+             args.external, args.historic_links, args.unresolved, args.collisions,
+             args.out, args.priority_sources)
 
 
 if __name__ == "__main__":
