@@ -1,0 +1,25 @@
+canonical_person_id,roster_name,date_of_birth,official_observed_name,evidence_status,source_url,identity_basis,evidence_note
+person_0681480f7f42d,Karina AKAPOVA,2003-06-16,Karina AKOPOVA,official_isu_checked,https://www.isuresults.com/bios/isufs00107342.htm,same_pair_name_variant,AKAPOVA in ranking; AKOPOVA in ISU biography with Maksim SHAGALOV
+person_273c802dfbbee,Alena KERR,2008-03-05,Alena KERR,official_isu_checked,https://results.isu.org/bios/isufs00124700.htm,same_pair,Alena KERR / Sam HERBERT
+person_3214f1155f99e,Sam HERBERT,2006-03-08,Sam HERBERT,official_isu_checked,https://results.isu.org/bios/isufs00124700.htm,same_pair,Alena KERR / Sam HERBERT
+person_350d6a0415d94,Frida HERRMANN,2010-12-13,Frida HERRMANN,official_isu_checked,https://www.isuresults.com/bios/isufs00125636.htm,same_pair,Frida HERRMANN / Hugo Willi HERRMANN
+person_3a205150073f6,Nicholas Sebastian YING,2007-08-20,Nicholas Sebastian YING,official_isu_checked,https://results.isu.org/bios/isufs00125881.htm,same_pair,Anna BODRONE / Nicholas Sebastian YING
+person_920e4c05f0265,Maksim SHAGALOV,1999-12-10,Maksim SHAGALOV,official_isu_checked,https://www.isuresults.com/bios/isufs00107342.htm,same_pair,Karina AKOPOVA / Maksim SHAGALOV
+person_d549ec3dad9b1,Hugo Willi HERRMANN,2008-01-05,Hugo Willi HERRMANN,official_isu_checked,https://www.isuresults.com/bios/isufs00125636.htm,same_pair,Frida HERRMANN / Hugo Willi HERRMANN
+person_db13b8c5bb032,Anna BODRONE,2006-10-18,Anna BODRONE,official_isu_checked,https://results.isu.org/bios/isufs00125881.htm,same_pair,Anna BODRONE / Nicholas Sebastian YING
+person_17c164e0d000d,Giulia FORESTI,1999-04-07,Giulia FORESTI,official_isu_checked,https://results.isu.org/bios/isufs00106724.htm,same_pair,Giulia FORESTI / Edoardo CAPUTO
+person_1cad53c090e53,Anatoliy BELOVODCHENKO,,Anatoly Belovodchenko,pending_primary_source,https://icepartnersearch.com/showbio.php?i=7608,self_report_not_official,Candidate 2000-01-31 from partner search; cannot promote without independent primary corroboration
+person_321d37d981a5a,Cristian MURER,2003-02-15,Cristian MURER,official_isu_checked,https://www.isuresults.com/bios/isufs00119121.htm,same_pair,Nicole CALDERARI / Cristian MURER
+person_399adc33c4b22,Liubov EFIMENKO,1999-06-20,Liubov EFIMENKO,official_isu_checked,https://results.isu.org/bios/isufs00034247.htm,official_individual_profile,ISU former singles profile of Liubov EFIMENKO
+person_40605683ad2b9,Mark BARDEI,1996-07-15,Mark BARDEI,official_isu_checked,https://www.isuresults.com/bios/isufs00106594.htm,same_pair,Justine BRASSEUR / Mark BARDEI
+person_40ec37f013637,Daniil RAGIMOV,,Daniil RAGIMOV,pending_primary_source,https://www.fgsk8.com/skaters-lists/russia-skaters-list,third_party_compilation,Candidate 1998-05-22 from Japanese compilation; official ISU new pair profile only supplies first skater DOB
+person_7ea36556fb6c6,Edoardo CAPUTO,1997-08-11,Edoardo CAPUTO,official_isu_checked,https://results.isu.org/bios/isufs00106724.htm,same_pair,Giulia FORESTI / Edoardo CAPUTO
+person_8946055737560,Danylo YEFREMENKO,2002-12-27,Danylo YEFREMENKO,official_isu_checked,https://www.isuresults.com/bios/isufs00104477.htm,former_partner_profile,Official ISU former couple with Sofiia LYZOHUB
+person_8968cfa091fa7,Alla LOBODA,1998-12-10,Alla LOBODA,official_isu_checked,https://results.isu.org/bios/isufs00034294.htm,former_partner_profile,Official ISU former couple with Pavel DROZD
+person_a200de88a0fcc,Anastasiia SAMMEL,2005-11-03,Anastasiia SAMMEL,official_isu_checked,https://results.isu.org/bios/isufs00106339.htm,former_partner_profile,Official ISU former couple with Mykyta POGORIELOV
+person_b13e6911bb9f1,Julia TULTSEVA,2001-06-04,Julia TULTSEVA,official_isu_checked,https://isu-skating.com/en/figure-skating/skaters/pairs/julia-tultseva-anatoliy-belovodchenko/,same_pair_first_skater_dob_only,Current ISU couple page contains only first skater's DOB: Julia; NOT Anatoliy
+person_baeb61412c129,Anton SHIBNEV,1994-09-12,Anton SHIBNEV,official_isu_checked,https://results.isu.org/bios/isufs00102330.htm,former_partner_profile,Official ISU couple with Vasilisa DAVANKOVA
+person_bfc78c004220b,Anastasia SHAKUN,2002-10-21,Anastasia SHAKUN,official_isu_checked,https://isu-skating.com/en/figure-skating/skaters/pairs/anastasia-shakun-daniil-ragimov/,same_pair_first_skater_dob_only,Current ISU couple page contains only first skater's DOB: Anastasia; NOT Daniil
+person_dd9466c707a75,Zachary DALEMAN,2000-03-01,Zachary DALEMAN,official_isu_checked,https://isu-skating.com/en/figure-skating/skaters/zachary-daleman/,official_individual_profile,ISU individual profile Zachary DALEMAN
+person_ea7bcfba6bdea,Justine BRASSEUR,2001-07-10,Justine BRASSEUR,official_isu_checked,https://www.isuresults.com/bios/isufs00106594.htm,same_pair,Justine BRASSEUR / Mark BARDEI
+person_fa5aed61daf2a,Evelyn Grace HANNS,2000-05-31,Evelyn Grace HANNS,official_isu_checked,https://results.isu.org/bios/isufs00114493.htm,same_pair,Evelyn Grace HANNS / Danny NEUDECKER
