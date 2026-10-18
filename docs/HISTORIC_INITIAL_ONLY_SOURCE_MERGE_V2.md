@@ -54,8 +54,17 @@ Use each command as a single PowerShell line:
 The last cross-era pass uses the same original modern ranking and
 Biography source files. It does not overwrite the prior cross-era v1
 manifest or the 8-date supplemental preview (which was scoped to
-v1 candidate edges). The DOB rescue ledger can be reapplied later to
-the new v2 edge table only after checking its candidate IDs.
+v1 candidate edges). The eight prior missing-DOB historic IDs were
+cross-checked against the 12 newly reviewed initial-only source IDs;
+none is changed by the v2 mergers. After running the cross-era v2
+audit, reapply the SAME source-reviewed 8-DOB ledger to the new
+v2 candidate preview, preserving the previous original outputs:
+
+    python .\scripts\audit_cross_era_bio_rescues_v1.py --review .\output\historic_dob\cross_era_identity\historical_v2\historic_modern_identity_review_v1.csv --manifest .\output\historic_dob\cross_era_identity\historical_v2\historic_modern_cross_era_manifest_v1.json --out .\output\historic_dob\cross_era_identity\historical_v2\official_bio_rescue
+
+This should still rescue eight source-specific edges if the exact
+same season rankings and Biography files are used; verify the
+new source-augmented manifest rather than assuming it succeeded.
 
 ## Outputs and expected structural counts
 
