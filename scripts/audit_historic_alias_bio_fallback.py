@@ -66,8 +66,18 @@ def validate_leads(rows):
             raise ValueError("Repeated candidate pair/profile/person-side")
         keys.add(key)
         url = urlsplit(row["source_url"])
-        if (url.scheme != "https" or url.hostname not in OFFICIAL_HOSTS
-                or Path(url.path).stem.lower() != profile.lower()):
+        # Legacy ISU index pages supplied http:// links, even though
+        # the domain/profile path are official. This is an OFFLINE source
+        # audit: accepting their recorded URI does not fetch over HTTP.
+        # Retain the exact input URL as provenance, do not silently rewrite.
+        # Reject all other domains, URL schemes, userinfo, custom ports,
+        # unrelated paths, and query/fragment redirections.
+        if (url.scheme not in {"http", "https"}
+                or url.hostname not in OFFICIAL_HOSTS
+                or url.username is not None or url.password is not None
+                or url.port is not None
+                or url.path.lower() != f"/bios/{profile.lower()}.htm"
+                or url.query or url.fragment):
             raise ValueError("Unapproved ISU source link")
         if row["published_dob"] and not valid_date(row["published_dob"]):
             raise ValueError("Invalid original official DOB")

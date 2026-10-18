@@ -160,6 +160,44 @@ class HistoricAliasNameFallbackTests(unittest.TestCase):
         self.assertEqual(row["original_published_dob"], "")
         self.assertEqual(row["historical_name_dob_candidate"], "1980-02-29")
 
+    def test_archived_official_http_source_links_are_accepted_and_preserved(self):
+        # Real ISU index extraction produces http://www.isuresults.com links
+        # for both athlete sides, even when the HTML is in local cache.
+        for record in self.rows:
+            record["source_url"] = record["source_url"].replace(
+                "https://www.isuresults.com/", "http://www.isuresults.com/"
+            )
+        self.save()
+        original = self.src.read_bytes()
+        summary = audit(self.src, self.cache, self.out)
+        self.assertEqual(summary["source_lead_rows"], 8)
+        self.assertEqual(summary["new_unique_official_slots_recovered"], 2)
+        self.assertEqual(summary["profiles_without_cached_html"], 0)
+        output = read_csv(self.out / "historic_alias_source_name_fallback_leads.csv")
+        self.assertTrue(all(
+            r["source_url"].startswith("http://www.isuresults.com/bios/isufs")
+            for r in output
+        ))
+        self.assertEqual(self.src.read_bytes(), original)
+
+    def test_http_is_not_permitted_outside_exact_official_bio_url(self):
+        examples = (
+            "http://www.isuresults.com.evil.example/bios/isufs00004927.htm",
+            "http://evil.example/bios/isufs00004927.htm",
+            "http://www.isuresults.com/not-bios/isufs00004927.htm",
+            "http://www.isuresults.com/bios/isufs00034201.htm",
+            "http://user@www.isuresults.com/bios/isufs00004927.htm",
+            "http://www.isuresults.com:8080/bios/isufs00004927.htm",
+            "http://www.isuresults.com/bios/isufs00004927.htm?redirect=yes",
+            "ftp://www.isuresults.com/bios/isufs00004927.htm",
+        )
+        for invalid in examples:
+            with self.subTest(url=invalid):
+                self.rows[0]["source_url"] = invalid
+                self.save()
+                with self.assertRaisesRegex(ValueError, "Unapproved ISU source"):
+                    audit(self.src, self.cache, self.out)
+
     def test_unofficial_sources_and_missing_pair_sides_rejected(self):
         self.rows[0]["source_url"] = "https://unofficial.example/figure-skating"
         self.save()

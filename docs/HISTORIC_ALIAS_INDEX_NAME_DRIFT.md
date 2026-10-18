@@ -85,3 +85,20 @@ historical candidate links is still only two official side positions.
 
 We do not calculate any BaZi, compatibility hypothesis or random-pair
 null-model statistic during this data-collection stage.
+
+## Archived official HTTP hyperlinks (source-format correction)
+
+The original alias lead CSV produced by the public ISU biography index
+contains URLs such as `http://www.isuresults.com/bios/isufs00004927.htm`.
+All 138 rows of the initial full alias-source batch use this legacy HTTP
+format. The offline fallback previously rejected those source citations
+by requiring HTTPS, stopping before checking any cached file.
+
+The URL validation now accepts the recorded HTTP **or** HTTPS scheme
+only for exact official ISU hosts and the corresponding
+`/bios/<profile_id>.htm` path. Untrusted hosts, URL userinfo, nondefault
+ports, arbitrary paths and query/fragment strings are still rejected.
+The original source URL is preserved unchanged for reproducibility.
+This validation never initiates an HTTP request; all DOB lookups are
+from existing local HTML cache.
+
