@@ -7,7 +7,7 @@ frozen cohort or a destructive modification of existing person/pair IDs.
 Rules:
  - Candidates: two distinct historic IDs with the same position/discipline,
    the same real historic partner ID, and identical official day-level DOB.
- - Acceptance: only an independent source-reviewed v1 adjudication CSV,
+ - Acceptance: only explicitly source-reviewed versioned adjudication CSV,
    with pair/provenance constraints and identical official DOB.
  - Ambiguous homonyms split by earlier source audit remain separate.
  - Pair groups retain all original pair IDs. No event counts or ranks are
@@ -29,7 +29,7 @@ from urllib.parse import urlsplit
 from audit_isu_identities import digest, joined, read_csv, valid_date, write_csv
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_RULES = ROOT / "data/adjudications/isu_historic_shared_partner_id_merges_v2.csv"
+DEFAULT_RULES = ROOT / "data/adjudications/isu_historic_shared_partner_id_merges_v3.csv"
 HOSTS = {"results.isu.org", "www.isuresults.com", "isu-skating.com",
          "www.isu-skating.com"}
 CAND_FIELDS = [
@@ -228,6 +228,8 @@ def audit(
             raise ValueError("Reviewed alias is not attached to a valid official ISU biography")
         other_url = urlsplit(r["corroborating_source_url"])
         if (other_url.scheme != "https" or other_url.hostname not in HOSTS
+                or other_url.username is not None or other_url.password is not None
+                or other_url.port is not None or other_url.query or other_url.fragment
                 or not other_url.path.startswith(("/results/", "/events/", "/en/", "/bios/"))):
             raise ValueError("Reviewed alias corroboration is not an approved ISU source")
         expected_side = "1" if sides[0] == "a" else "2"

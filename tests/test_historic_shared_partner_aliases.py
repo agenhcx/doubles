@@ -184,11 +184,44 @@ class SharedPartnerAliasTests(unittest.TestCase):
             self.assertIn("source_reviewed_same_person", r["evidence_status"])
             self.assertTrue(len(r["identity_note"]) > 70)
 
-    def test_real_eight_reviewed_links_match_original_partner_pairs(self):
+    def test_v3_preserves_v2_rules_and_25_new_source_specific_merges(self):
+        old = read_csv(ROOT /
+            "data/adjudications/isu_historic_shared_partner_id_merges_v2.csv")
+        current = read_csv(ROOT /
+            "data/adjudications/isu_historic_shared_partner_id_merges_v3.csv")
+        self.assertEqual(len(old), 8)
+        self.assertEqual(len(current), 33)
+        self.assertEqual(current[:8], old)
+        new = current[8:]
+        self.assertEqual(len(new), 25)
+        for column in ("canonical_person_id", "alternate_person_id",
+                       "official_profile_id"):
+            self.assertEqual(len({r[column] for r in new}), 25)
+        self.assertTrue(all(
+            r["evidence_status"] == "source_reviewed_same_person"
+            and r["official_source_url"].startswith("https://results.isu.org/bios/")
+            and r["corroborating_source_url"].startswith("https://")
+            and len(r["identity_note"]) >= 60 for r in new
+        ))
+
+    def test_source_corroboration_rejects_malicious_urls(self):
+        bad = (
+            "https://results.isu.org/bios/isufs00001001.htm?redirect=true",
+            "https://results.isu.org:8080/events/result.htm",
+            "https://name@results.isu.org/bios/isufs00001001.htm",
+        )
+        for url in bad:
+            with self.subTest(url=url):
+                self.rule_rows[0]["corroborating_source_url"] = url
+                self.save()
+                with self.assertRaisesRegex(ValueError, "not an approved ISU source"):
+                    self.perform()
+
+    def test_real_thirty_three_reviewed_links_match_original_partner_pairs(self):
         root = ROOT
         rules = read_csv(root /
-            "data/adjudications/isu_historic_shared_partner_id_merges_v2.csv")
-        self.assertEqual(len(rules), 8)
+            "data/adjudications/isu_historic_shared_partner_id_merges_v3.csv")
+        self.assertEqual(len(rules), 33)
         all_pairs = {r["pair_id"]: r for r in read_csv(
             root / "data/historic/v4/couples_v4.csv"
         )}
