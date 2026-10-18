@@ -102,3 +102,20 @@ The original source URL is preserved unchanged for reproducibility.
 This validation never initiates an HTTP request; all DOB lookups are
 from existing local HTML cache.
 
+## Source full names versus incomplete historical names
+
+The first local fallback run revealed two one-word historical names in
+the 138-row source-lead CSV: `WINDSOR` (Harley WINDSOR,
+1996-10-22) and `MARINARO` (Michael MARINARO, 1992-01-07).
+Those two DOBs were already extracted from ISU biographies using the
+published full names. The old fallback attempted to reparse both
+members unconditionally, raising `ValueError: Expected full athlete name`.
+
+The fallback now processes each partner separately and only reparses
+a person whose originally bound published-name DOB is blank. Unknown
+historical names consisting of only one word or initials are labelled
+`historic_name_incomplete_review_only` rather than crashing the full
+batch or inferring a date. Prior ISU dates, original source URLs, profile
+IDs, and master records are never changed. The program still requires
+exact biographical label/date association and manual identity verification.
+

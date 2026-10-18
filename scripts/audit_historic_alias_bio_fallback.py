@@ -22,7 +22,7 @@ from urllib.parse import urlsplit
 from bs4 import BeautifulSoup
 
 from audit_isu_identities import digest, read_csv, valid_date, write_csv
-from collect_historic_isu_biographies import fold, parse_pair_profile
+from collect_historic_isu_biographies import fold, parse_member
 
 OFFICIAL_HOSTS = {"www.isuresults.com", "results.isu.org"}
 OUT_FIELDS = [
@@ -96,6 +96,18 @@ def validate_leads(rows):
             raise ValueError("Inconsistent official source URL or discipline")
     return grouped
 
+
+
+def eligible_historic_full_name(name):
+    """Only attempt fallback with an actual full name, not a bare surname or initials.
+
+    Source-name-only rows (such as WINDSOR or MARINARO) are legitimate
+    historical observations, but cannot prove an individual's identity.
+    A full-name check applies ONLY to the fallback; source DOBs parsed
+    from the official published names are preserved as-is.
+    """
+    tokens = re.findall(r"[a-z0-9]+", fold(name).casefold())
+    return len(tokens) >= 2 and all(len(part) >= 2 for part in tokens)
 
 
 def full_name_ends_at_profile_field(html, observation):
@@ -176,17 +188,12 @@ def audit(
             unavailable[profile] = type(e).__name__
 
     output_rows = []
+    # Cache flattened biography headers by profile, not by historic
+    # couple. One official profile may have multiple candidate links.
+    flattened_headers = {}
     for (pair_id, profile), sides in sorted(pairs.items()):
-        evidence = (None, None)
-        if profile in documents:
-            evidence = parse_pair_profile(
-                documents[profile],
-                sides["1"]["historical_name"],
-                sides["2"]["historical_name"],
-            )
-        for index, side in enumerate(("1", "2")):
+        for side in ("1", "2"):
             original = sides[side]
-            observed = evidence[index]
             prior, original_dob = (original["prior_audited_dob"],
                                    original["published_dob"])
             recovered = ""
@@ -194,9 +201,23 @@ def audit(
             parse_status = "not_needed"
             parse_method = ""
             if not original_dob:
-                if observed is None:
+                if profile not in documents:
                     parse_status = "cached_html_missing"
+                elif not eligible_historic_full_name(original["historical_name"]):
+                    # A one-word historical surname or name with initials
+                    # cannot prove DOB ownership. Do not crash or match it.
+                    parse_status = "historic_name_incomplete_review_only"
                 else:
+                    if profile not in flattened_headers:
+                        soup = BeautifulSoup(documents[profile], "html.parser")
+                        for tag in soup(["script", "style"]):
+                            tag.decompose()
+                        flattened_headers[profile] = fold(
+                            soup.get_text(" ", strip=True)
+                        )[:3500]
+                    observed = parse_member(
+                        flattened_headers[profile], original["historical_name"]
+                    )
                     recovered = observed["date_of_birth"]
                     source_name = observed["observed_name"] if recovered else ""
                     parse_status = observed["parse_status"]
@@ -317,6 +338,7 @@ def audit(
             "All new dates are source-labelled candidates, NOT accepted historic person DOBs",
             "The pairing/identity across index names and historic names remains unverified",
             "Every original published DOB and all master records remain untouched",
+            "Incomplete historical names and initials are not parsed as full-name evidence",
             "No missing/ambiguous date or identity is guessed",
             "Profile/person-side duplicates are excluded from unique slot counts",
             "No BaZi, no partner null model and no statistical selection",

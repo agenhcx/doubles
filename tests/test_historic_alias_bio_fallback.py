@@ -198,6 +198,95 @@ class HistoricAliasNameFallbackTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "Unapproved ISU source"):
                     audit(self.src, self.cache, self.out)
 
+    def test_one_word_historic_names_with_existing_official_dobs_do_not_crash(self):
+        # Actual source pattern: historic WINDSOR / MARINARO, while
+        # official ISU biographies give the full skater name and DOB.
+        self.rows = [
+            dict(
+                historic_pair_id="windsor_pair", discipline="Pair Skating",
+                historic_person_id="alex", side_on_profile="1",
+                historical_name="Ekaterina ALEXANDROVSKAYA",
+                published_name="Ekaterina ALEXANDROVSKAYA",
+                published_dob="2000-01-01",
+                profile_id="isufs00101102",
+                source_url="http://www.isuresults.com/bios/isufs00101102.htm",
+                parse_status="dob_explicitly_bound_to_expected_name",
+                prior_audited_dob="2000-01-01",
+                historical_identity_link_status="not_verified_directory_candidate_only",
+            ),
+            dict(
+                historic_pair_id="windsor_pair", discipline="Pair Skating",
+                historic_person_id="windsor", side_on_profile="2",
+                historical_name="WINDSOR", published_name="Harley WINDSOR",
+                published_dob="1996-10-22", profile_id="isufs00101102",
+                source_url="http://www.isuresults.com/bios/isufs00101102.htm",
+                parse_status="dob_explicitly_bound_to_expected_name",
+                prior_audited_dob="",
+                historical_identity_link_status="not_verified_directory_candidate_only",
+            ),
+            dict(
+                historic_pair_id="marinaro_pair", discipline="Pair Skating",
+                historic_person_id="kirsten", side_on_profile="1",
+                historical_name="Kirsten MOORE-TOWERS",
+                published_name="Kirsten MOORE-TOWERS",
+                published_dob="1992-07-01", profile_id="isufs00054470",
+                source_url="http://www.isuresults.com/bios/isufs00054470.htm",
+                parse_status="dob_explicitly_bound_to_expected_name",
+                prior_audited_dob="1992-07-01",
+                historical_identity_link_status="not_verified_directory_candidate_only",
+            ),
+            dict(
+                historic_pair_id="marinaro_pair", discipline="Pair Skating",
+                historic_person_id="marinaro", side_on_profile="2",
+                historical_name="MARINARO", published_name="Michael MARINARO",
+                published_dob="1992-01-07", profile_id="isufs00054470",
+                source_url="http://www.isuresults.com/bios/isufs00054470.htm",
+                parse_status="dob_explicitly_bound_to_expected_name",
+                prior_audited_dob="",
+                historical_identity_link_status="not_verified_directory_candidate_only",
+            ),
+        ]
+        self.save()
+        original_bytes = self.src.read_bytes()
+        # No HTML is needed because each published-name DOB is already
+        # present. It must never try to parse the one-word historic name.
+        result = audit(self.src, self.cache, self.out)
+        self.assertEqual(result["source_lead_rows"], 4)
+        self.assertEqual(result["original_rows_without_published_dob"], 0)
+        self.assertEqual(result["remaining_unique_profile_slots_without_labelled_dob"], 0)
+        self.assertEqual(result["review_rows"], 0)
+        self.assertEqual(result["profiles_without_cached_html"], 2)
+        output = read_csv(self.out / "historic_alias_source_name_fallback_leads.csv")
+        self.assertTrue(all(row["historical_name_parse_status"] == "not_needed"
+                            for row in output))
+        self.assertEqual(self.src.read_bytes(), original_bytes)
+
+    def test_incomplete_name_with_missing_dob_is_review_only_not_fatal(self):
+        # Simulates an official indexed partner with an abbreviated
+        # historical surname; fallback cannot prove the DOB belongs to it.
+        self.rows[0]["historical_name"] = "FRASER"
+        self.save()
+        result = audit(self.src, self.cache, self.out)
+        self.assertEqual(result["source_lead_rows"], 8)
+        self.assertEqual(result["new_unique_official_slots_recovered"], 1)
+        reviews = read_csv(self.out / "historic_alias_source_name_fallback_review.csv")
+        row = next(r for r in reviews if r["historic_pair_id"] == "pair1")
+        self.assertEqual(row["historical_name_parse_status"],
+                         "historic_name_incomplete_review_only")
+        self.assertEqual(row["historical_name_dob_candidate"], "")
+        self.assertEqual(row["candidate_review_status"],
+                         "not_recovered_needs_official_source")
+
+    def test_historic_name_with_one_letter_initial_is_never_fallback_matched(self):
+        self.rows[0]["historical_name"] = "K FRASER"
+        self.save()
+        audit(self.src, self.cache, self.out)
+        rows = read_csv(self.out / "historic_alias_source_name_fallback_review.csv")
+        row = next(r for r in rows if r["historic_pair_id"] == "pair1")
+        self.assertEqual(row["historical_name_parse_status"],
+                         "historic_name_incomplete_review_only")
+        self.assertEqual(row["historical_name_dob_candidate"], "")
+
     def test_unofficial_sources_and_missing_pair_sides_rejected(self):
         self.rows[0]["source_url"] = "https://unofficial.example/figure-skating"
         self.save()
