@@ -50,3 +50,25 @@ on multiple official pair profiles is reported as conflicted, not silently
 assigned either date. Original hist v4 and modern rankings are unmodified.
 No astrological feature computation or partner-pool significance test
 is performed here.
+## Name-order reversal discovered in the 20-profile pilot
+
+The first 20 historical biographies all downloaded, with 38 of 40 DOB
+slots automatically bound. The only incomplete profile was the former
+Italian ice-dance pair isufs00000472. Its historic ranking stores
+FUSAR POLI Barbara / MARGAGLIO Maurizio but the official biography
+prints Barbara FUSAR POLI (06.02.1972) and Maurizio MARGAGLIO
+(16.11.1974). The first uses the forward DOB label layout, while
+the second uses the historical reverse layout.
+
+The parser now accepts only the original full token sequence or a
+conservative surname-first/given-first token rotation **immediately
+adjacent to a full date and explicit Date of birth label**. It does not
+use unconstrained fuzzy matching. Such recovered rows are marked
+dob_bound_to_rotated_name_review and kept in historic_isu_bio_review.csv,
+even when the raw date field is populated. This lets an auditor accept
+the source after inspecting its official page and pair identity.
+
+Run the same 20-person sample with --offline before increasing the
+collection size. The expected 40/40 DOB extraction does not imply
+40 identity-reviewed records; the two rotated-name rows remain in
+the review queue for audit.

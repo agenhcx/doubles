@@ -50,6 +50,89 @@ class HistoricalBiographyTests(unittest.TestCase):
                          ["2000-01-01", "1998-02-02"])
         self.assertEqual(b["parse_method"], "name_date_label_legacy")
 
+    def test_legacy_name_order_reversal_without_dob_swap(self):
+        # Historic ranking and official bio for isufs00000472:
+        # FUSAR POLI Barbara vs Barbara FUSAR POLI; 2nd DOB precedes label.
+        html = """<html><body>ICE DANCING
+        Date of birth: 06.02.1972 Barbara FUSAR POLI ITA
+        Sesto San Giovanni Place of birth: Height: 168 cm
+        Other biographic fields ITA Milan Place of birth:
+        Maurizio MARGAGLIO 16.11.1974 Date of birth: internet
+        Personal Best Total Score 183.46 20.02.2006
+        </body></html>"""
+        a, b = parse_pair_profile(
+            html, "FUSAR POLI Barbara", "MARGAGLIO Maurizio")
+        self.assertEqual((a["date_of_birth"], b["date_of_birth"]),
+                         ("1972-02-06", "1974-11-16"))
+        self.assertEqual(a["observed_name"], "Barbara FUSAR POLI")
+        self.assertEqual(b["observed_name"], "Maurizio MARGAGLIO")
+        self.assertEqual(a["parse_method"], "label_date_name_name_rotation")
+        self.assertEqual(b["parse_method"], "name_date_label_legacy_name_rotation")
+        self.assertEqual(a["parse_status"], "dob_bound_to_rotated_name_review")
+        self.assertEqual(b["parse_status"], "dob_bound_to_rotated_name_review")
+
+    def test_rotated_name_still_requires_adjacent_dob_label(self):
+        html = """<html>ICE DANCING Barbara FUSAR POLI was born
+        on 06.02.1972 and won several medals.
+        Maurizio MARGAGLIO 16.11.1974 score history
+        Personal Best 183.46 20.02.2006</html>"""
+        a, b = parse_pair_profile(
+            html, "FUSAR POLI Barbara", "MARGAGLIO Maurizio")
+        self.assertEqual(a["date_of_birth"], "")
+        self.assertEqual(b["date_of_birth"], "")
+        self.assertEqual(a["parse_status"], "name_present_without_bound_dob")
+        self.assertEqual(b["parse_status"], "name_present_without_bound_dob")
+
+    def test_opposite_rotations_with_conflicting_birthdays_are_held(self):
+        html = """<html>ICE DANCING
+        Date of birth: 06.02.1972 Barbara FUSAR POLI
+        Date of birth: 07.02.1972 Barbara FUSAR POLI
+        Maurizio MARGAGLIO 16.11.1974 Date of birth:</html>"""
+        a, b = parse_pair_profile(
+            html, "FUSAR POLI Barbara", "MARGAGLIO Maurizio")
+        self.assertEqual(a["date_of_birth"], "")
+        self.assertEqual(a["parse_status"], "conflicting_labelled_dates_on_page")
+        self.assertEqual(b["date_of_birth"], "1974-11-16")
+
+    def test_cached_reversed_name_profile_is_counted_but_held_for_review(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            pair_file = root / "pairs.csv"
+            source = root / "cache"
+            seed = root / "seed.csv"
+            out = root / "out"
+            save(pair_file, [dict(
+                historic_pair_id="pair_italy", index_match_status="exact_couple_profile",
+                exact_profile_ids="isufs00000472",
+                exact_profile_urls="https://www.isuresults.com/bios/isufs00000472.htm",
+                historic_person_a_id="barbara", historic_person_b_id="maurizio",
+                historic_person_a_name="FUSAR POLI Barbara",
+                historic_person_b_name="MARGAGLIO Maurizio",
+            )])
+            seed.write_text("historic_person_id,date_of_birth,evidence_status\n",
+                            encoding="utf-8")
+            source.mkdir()
+            (source / "isufs00000472.html").write_text("""<html>ICE DANCING
+                Date of birth: 06.02.1972 Barbara FUSAR POLI ITA
+                Place of birth: Sesto San Giovanni Height: 168 cm
+                Place of birth: Milan
+                Maurizio MARGAGLIO 16.11.1974 Date of birth:
+                Hobbies: internet</html>""", encoding="utf-8")
+            opts = argparse.Namespace(
+                pairs=str(pair_file), seed=str(seed), cache=str(source),
+                out=str(out), limit=0, offline=True, refresh=False,
+                proxy=None, no_env_proxy=True, timeout=5, delay=0,
+            )
+            summary = run(opts)
+            self.assertEqual(summary["profiles_both_dobs_bound"], 1)
+            self.assertEqual(summary["slots_with_explicitly_bound_dob"], 2)
+            self.assertEqual(summary["review_rows"], 2)
+            self.assertEqual(summary["person_dob_status_counts"]["name_order_review"], 2)
+            records = read_csv(out / "historic_isu_person_dob_candidates.csv")
+            self.assertTrue(all(row["date_of_birth_candidate"] == "" for row in records))
+            self.assertEqual({row["distinct_dates"] for row in records},
+                             {"1972-02-06", "1974-11-16"})
+
     def test_name_and_date_must_be_adjacent_to_date_of_birth_label(self):
         html = """<html>PAIRS
         Date of birth: 01.01.2000 Alice ONE

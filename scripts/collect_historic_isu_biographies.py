@@ -59,45 +59,95 @@ def fold(value):
 
 
 def name_rx(value):
-    name = fold(value)
-    if not name or len(name.split()) < 2:
+    """Strict full-token name pattern with whitespace flexibility."""
+    parts = fold(value).split()
+    if len(parts) < 2:
         raise ValueError("Expected full athlete name")
-    return r"(?<!\w)" + r"\s+".join(re.escape(x) for x in name.split()) + r"(?!\w)"
+    return r"(?<!\w)" + r"\s+".join(re.escape(x) for x in parts) + r"(?!\w)"
+
+
+def name_forms(value):
+    """Original name, then only two conservative given/family-name rotations.
+
+    Old ISU result indexes may say 'FUSAR POLI Barbara', while the same
+    official biography uses 'Barbara FUSAR POLI'. Rotations are separately
+    flagged for human review. No arbitrary fuzzy/sub-string matching.
+    """
+    parts = fold(value).split()
+    if len(parts) < 2:
+        raise ValueError("Expected full athlete name")
+    candidates = [
+        ("exact", parts),
+        ("rotation", parts[-1:] + parts[:-1]),
+        ("rotation", parts[1:] + parts[:1]),
+    ]
+    forms, seen = [], set()
+    for style, tokens in candidates:
+        label = " ".join(tokens)
+        if label.casefold() in seen:
+            continue
+        seen.add(label.casefold())
+        forms.append((style, name_rx(label)))
+    return forms
 
 
 def parse_member(flat, expected_name):
-    """Extract ONLY explicitly labelled DOBs beside this exact full name.
+    """Bind DOB only to a full known name next to an official DOB label.
 
-    Forward:  Date of birth: 04.10.1985 Dan ZHANG ...
-    Reversed: Alexander SHAKALOV 26.03.1982 Date of birth: ...
-    Multiple contradictory dates or unbound names are review-only.
+    Forward:  Date of birth: 06.02.1972 Barbara FUSAR POLI ...
+    Reversed: Maurizio MARGAGLIO 16.11.1974 Date of birth: ...
+    A name-order rotation is retained as review-only evidence.
     """
-    target = name_rx(expected_name)
-    forward = re.compile(BIRTH_LABEL + r"\s*" + DATE + r"\s+" + target, re.I)
-    reverse = re.compile(target + r"\s+" + DATE + r"\s+" + BIRTH_LABEL, re.I)
-    dates = defaultdict(set)
-    for pattern, method in ((forward, "label_date_name"),
-                            (reverse, "name_date_label_legacy")):
-        for match in pattern.finditer(flat):
-            try:
-                value = dt.datetime.strptime(match.group(1), "%d.%m.%Y").date()
-                if dt.date(1850, 1, 1) <= value <= dt.date.today():
-                    dates[value.isoformat()].add(method)
-            except ValueError:
-                continue
-    if not dates:
-        status = "name_present_without_bound_dob" if re.search(target, flat, re.I) else "expected_name_not_in_header"
-        return {"date_of_birth": "", "parse_method": "",
-                "parse_status": status, "observed_name": expected_name}
-    if len(dates) > 1:
-        return {"date_of_birth": "", "parse_method": "",
-                "parse_status": "conflicting_labelled_dates_on_page",
-                "observed_name": expected_name}
-    date_value = next(iter(dates))
-    return {"date_of_birth": date_value,
-            "parse_method": "; ".join(sorted(dates[date_value])),
-            "parse_status": "dob_explicitly_bound_to_expected_name",
-            "observed_name": expected_name}
+    occurrences = defaultdict(list)
+    name_present = False
+    date_expr = r"(?P<dob>[0-3]?\d\.[01]?\d\.(?:18|19|20)\d{2})"
+    for style, target in name_forms(expected_name):
+        name_present = name_present or bool(re.search(target, flat, re.I))
+        labelled_name = r"(?P<source_name>" + target + r")"
+        patterns = (
+            (re.compile(BIRTH_LABEL + r"\s*" + date_expr + r"\s+" + labelled_name, re.I),
+             "label_date_name"),
+            (re.compile(labelled_name + r"\s+" + date_expr + r"\s+" + BIRTH_LABEL, re.I),
+             "name_date_label_legacy"),
+        )
+        for pattern, method in patterns:
+            for match in pattern.finditer(flat):
+                try:
+                    parsed = dt.datetime.strptime(match.group("dob"), "%d.%m.%Y").date()
+                    if dt.date(1850, 1, 1) <= parsed <= dt.date.today():
+                        method_name = method + ("_name_rotation" if style == "rotation" else "")
+                        occurrences[parsed.isoformat()].append(
+                            (method_name, match.group("source_name"))
+                        )
+                except ValueError:
+                    continue
+
+    if not occurrences:
+        return {
+            "date_of_birth": "", "parse_method": "",
+            "parse_status": ("name_present_without_bound_dob"
+                             if name_present else "expected_name_not_in_header"),
+            "observed_name": expected_name,
+        }
+    if len(occurrences) > 1:
+        return {
+            "date_of_birth": "", "parse_method": "",
+            "parse_status": "conflicting_labelled_dates_on_page",
+            "observed_name": expected_name,
+        }
+
+    dob = next(iter(occurrences))
+    hits = sorted(occurrences[dob], key=lambda x: (
+        x[0].endswith("_name_rotation"), x[0], x[1]))
+    exact_name_found = any(not method.endswith("_name_rotation")
+                           for method, _ in hits)
+    return {
+        "date_of_birth": dob,
+        "parse_method": "; ".join(sorted({method for method, _ in hits})),
+        "parse_status": ("dob_explicitly_bound_to_expected_name" if exact_name_found
+                         else "dob_bound_to_rotated_name_review"),
+        "observed_name": hits[0][1],
+    }
 
 
 def parse_pair_profile(html, name_a, name_b):
@@ -196,7 +246,16 @@ def summarize_people(candidates, seed):
         elif values and prior and values[0] != prior:
             status, date = "official_seed_dob_conflict", ""
         elif values:
-            status, date = "consistent_profile_candidate", values[0]
+            independently_supported = any(
+                r["parse_status"] == "dob_explicitly_bound_to_expected_name"
+                and r["date_of_birth"] == values[0] for r in rows
+            )
+            if not independently_supported and not prior:
+                # Preserve the raw labelled DOB on its source row, but do not
+                # promote a rotated-name association without manual review.
+                status, date = "name_order_review", ""
+            else:
+                status, date = "consistent_profile_candidate", values[0]
         else:
             status, date = "no_parseable_dob", ""
         records.append({
