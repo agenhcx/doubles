@@ -99,7 +99,7 @@ class ModernDobCoverageTests(unittest.TestCase):
             partner_b="Zarah WOOD", official_date_of_birth="2003-03-09",
             official_url_a="https://results.isu.org/bios/isufs00111279.htm",
             official_url_b="https://results.isu.org/bios/isufs00119902.htm",
-            review_status="source_reviewed_same_skater_cross_discipline"))
+            review_status="source_reviewed_same_skater_cross_discipline")]
         self.save()
 
     def save(self):
