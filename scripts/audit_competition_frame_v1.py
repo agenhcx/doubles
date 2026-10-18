@@ -222,8 +222,8 @@ def audit(event_path=HIST_EVENTS, season_path=HIST_SEASONS,
                 r['discipline'] not in DISCIPLINES or
                 r['season'] != '2017-2018' or r['event_code'] != 'wc2018' or
                 not official_entry_url(r['official_entry_url'], r['event_code'], r['discipline']) or
-                not r['official_event_index_url'].startswith(
-                    'https://results.isu.org/results/season1718/wc2018/index.htm') or
+                r['official_event_index_url'] !=
+                    'https://results.isu.org/results/season1718/wc2018/index.htm' or
                 len(r['review_note']) < 45):
             raise ValueError('Unverified ISU event seed entry: ' + repr(key))
         observed = key in hist_seen
