@@ -151,6 +151,36 @@ class HistoricGapTests(unittest.TestCase):
             self.assertIn(record["historic_person_id"], historic)
             self.assertEqual(record["historic_name"], historic[record["historic_person_id"]])
 
+    def test_exact_pair_with_conflicting_official_birthdate_reenters_queue(self):
+        seed = self.root / "primary_seed.csv"
+        save(seed, [dict(
+            historic_person_id="h_a", historic_name="Alice ONE",
+            date_of_birth="2000-01-02",
+            source_url="https://results.isu.org/bios/isufs00000001.htm",
+            evidence_status="manually_checked_source",
+        )])
+        summary = historic_candidates(self.history, self.old_pairs,
+                                      self.people, self.roster, self.out, seed)
+        self.assertEqual(summary["primary_source_seed_conflicts"], 1)
+        queue = read_csv(self.out / "historic_dob_followup_queue.csv")
+        flagged = next(x for x in queue if x["historic_person_id"] == "h_a")
+        self.assertEqual(flagged["match_status"], "exact_name_same_pair")
+        self.assertEqual(flagged["primary_seed_consistency"], "dob_conflict_hold")
+
+    def test_official_primary_source_seed_v2_expanded(self):
+        root = Path(__file__).resolve().parent.parent
+        historical = {r["person_id"]: r for r in
+                      read_csv(root / "data/historic/v4/athletes_v4.csv")}
+        official = read_csv(root / "data/adjudications/isu_historic_primary_dob_seed_v2.csv")
+        self.assertEqual(len(official), 35)
+        self.assertEqual(len({r["historic_person_id"] for r in official}),35)
+        for r in official:
+            self.assertIn(r["historic_person_id"], historical)
+            self.assertEqual(r["historic_name"], historical[r["historic_person_id"]]["name_display"])
+        zhang = next(r for r in official if r["historic_name"] == "Dan ZHANG")
+        self.assertEqual(zhang["date_of_birth"], "1985-10-04")
+        self.assertIn("isufs00003604", zhang["source_url"])
+
     def test_incomplete_ranked_dates_rejected(self):
         self.rp[0]["date_of_birth"]=""
         self.save()

@@ -75,6 +75,47 @@ ranked-canonical DOB. A discrepancy is flagged (dob_conflict_hold) and kept
 in the follow-up queue. It never silently changes the canonical master and
 it never passes Wikidata-generated candidates as verified official data.
 
+## Official index discovery and expanded official DOB pilot
+
+Two official directories list pair names, country groups and links to each
+biographical profile, including retired pairs:
+
+- Ice Dance: https://www.isuresults.com/bios/fsbiosdance.htm
+- Pairs: https://www.isuresults.com/bios/fsbiospairs.htm
+
+These directories provide more precise identities than a broad Wikidata
+name-only search. The local index script downloads **only these two
+pages**, caches their HTML, and joins them to historical couples using
+both full published names, discipline and partner ordering. No DOB is
+inferred merely from directory membership.
+
+    python .\scripts\audit_historic_isu_indexes.py --proxy http://127.0.0.1:10808
+
+Its historic_isu_index_manifest.json and
+historic_exact_pair_profile_queue.csv (under
+output/historic_dob/isu_index/) give the initial coverage. All links
+remain candidates until the biography itself is read. Old ISU tables
+sometimes reverse name/DOB field order; follow-up parsing must validate
+both athletes.
+
+The source-reviewed primary DOB seed was expanded from **7 to 35**
+original historic IDs in v2
+(data/adjudications/isu_historic_primary_dob_seed_v2.csv). The 28 new
+entries were checked against published official ISU pages, including
+20 skaters from the initial Wikidata pilot and eight directly recorded
+former/current partners. These are **source facts, not BaZi outcomes**.
+Notable corrections: the Wikidata name-search for Dan ZHANG returned
+five non-skaters, but the ISU couple biography isufs00003604 directly
+confirms her 1985-10-04 DOB (partner Hao ZHANG 1984-07-06).
+Yuko KAWAGUCHI and Yuko KAVAGUTI appear as separate historic provisional
+IDs, but the official ISU profile explicitly says her spelling changed;
+the two IDs are *not silently merged*.
+
+New local gap audits default to v2. The v1 seed is retained unchanged
+as a historical record. An official source DOB conflicting with a
+linked ranked DOB is always held for manual review, even if the
+pair identity has already been matched.
+
 ## Verification policy
 
 Accept a new historical DOB only after matching the public figure using

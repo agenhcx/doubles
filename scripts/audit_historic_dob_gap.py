@@ -221,9 +221,9 @@ def historic_candidates(
     already = [r for r in rows if r["match_status"] == "exact_name_same_pair"]
     primary_pilot = [r for r in rows if r["primary_seed_dob"]]
     queue = [r for r in rows
-             if r["match_status"] != "exact_name_same_pair"
-             and (not r["primary_seed_dob"]
-                  or r["primary_seed_consistency"] == "dob_conflict_hold")]
+             if r["primary_seed_consistency"] == "dob_conflict_hold"
+             or (r["match_status"] != "exact_name_same_pair"
+                 and not r["primary_seed_dob"])]
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     write_csv(out / "historic_identity_dob_candidates.csv", FIELDS, rows)
@@ -281,7 +281,7 @@ def main():
     p.add_argument("--ranked-people", default="output/identity/supplemental/identity_canonical_people_supplemented.csv")
     p.add_argument("--ranked-roster", default="output/identity/identity_canonical_season_roster.csv")
     p.add_argument("--out", default="output/historic_dob")
-    p.add_argument("--primary-seed", default="data/adjudications/isu_historic_primary_dob_seed_v1.csv")
+    p.add_argument("--primary-seed", default="data/adjudications/isu_historic_primary_dob_seed_v2.csv")
     args = p.parse_args()
     historic_candidates(args.historic_people, args.historic_pairs,
                         args.ranked_people, args.ranked_roster, args.out,
