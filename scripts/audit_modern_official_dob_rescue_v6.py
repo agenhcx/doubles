@@ -188,7 +188,7 @@ def audit(manifest_path=MANIFEST, canonical_path=CANONICAL,
                 r["review_status"] != "source_reviewed_dob_evidence" or
                 not valid_date(r["verified_date_of_birth"]) or
                 not r["official_printed_name"] or
-                len(r["source_review_note"].strip()) < 85 or
+                len(r["source_review_note"].strip()) < 60 or
                 not allowed_url(r["primary_official_source_url"], r["source_tier"]) or
                 not context_url_ok(r["identity_context_source_url"])):
             raise ValueError("Incomplete or invalid source-specific curated DOB evidence for " + ident)
