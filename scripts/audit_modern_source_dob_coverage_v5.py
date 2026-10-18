@@ -196,6 +196,11 @@ def audit(roster_path=ROSTER, bios_path=BIOS, previous_path=PREVIOUS,
                 modern[canon]["profiles"].add(pid)
                 roster_sides[(d, pid, side)]["ids"].add(ident)
                 roster_sides[(d, pid, side)]["names"].add(name)
+    direct_roster_side_ids = {
+        (profile, side, ident)
+        for (disc, profile, side), info in roster_sides.items()
+        for ident in info["ids"]
+    }
     if (len(modern) != prior_manifest.get("projected_unique_modern_person_name_ids") or
             len(raw_ids) != prior_manifest.get("modern_raw_name_ids")):
         raise ValueError("Modern name IDs differ from approved v4 identity projection")
@@ -233,10 +238,7 @@ def audit(roster_path=ROSTER, bios_path=BIOS, previous_path=PREVIOUS,
         elif (not id_ or id_ not in raw_ids or not profile or
                 p != profile or side not in ("1", "2")):
             issue = "BIO_ID_PROFILE_OR_SIDE_MALFORMED"
-        elif id_ not in roster_sides.get((
-                next((d for d in modern[alias.get(id_, id_)]["disciplines"]
-                      if id_ in roster_sides.get((d, p, side), {}).get("ids", set())), ""),
-                p, side), {}).get("ids", set()):
+        elif (p, side, id_) not in direct_roster_side_ids:
             issue = "BIO_PROFILE_SIDE_NOT_IN_ORIGINAL_ROSTER"
         if issue:
             rejected.append({
@@ -256,13 +258,13 @@ def audit(roster_path=ROSTER, bios_path=BIOS, previous_path=PREVIOUS,
         if marker in curated_used or not valid_date(r["expected_dob"]) or not official_source(r["official_dob_source_url"]):
             raise ValueError("Invalid or duplicate reviewed DOB rescue")
         curated_used.add(marker)
-        if (side, r["modern_roster_name"], r["modern_partner_name"],
-            next(iter(memberships.get(marker, {("", "", "", "")})))[3]) not in memberships.get(marker, set()):
-            # Check exact roster side/name/partner, independent of biography URL.
-            if not any((s, n, partner) == (
-                    side, r["modern_roster_name"], r["modern_partner_name"])
-                    for s, n, partner, _ in memberships.get(marker, set())):
-                raise ValueError("Curated DOB rescue lacks a matching modern roster side/partner")
+        # Exact published roster side and partner are required. The curated
+        # profile may belong to a different ISU partnership/era, so do not
+        # require its official URL to equal the season-ranking profile ID.
+        if not any((s, n, partner) == (
+                side, r["modern_roster_name"], r["modern_partner_name"])
+                for s, n, partner, _ in memberships.get(marker, set())):
+            raise ValueError("Curated DOB rescue lacks a matching modern roster side/partner")
         add(id_, r["expected_dob"], r["official_dob_source_url"],
             "SOURCE_REVIEWED_BIO_RESCUE")
 
