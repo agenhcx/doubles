@@ -69,3 +69,48 @@ position as an event score.
 To continue in chat without uploading the full 1,194-row data, share only
 identity_audit_manifest.json plus identity_dob_conflicts.csv and
 identity_unresolved.csv if they contain rows.
+
+## Official supplemental DOB sources (October 2026)
+
+After the baseline audit, the 24 people without an ISU Biography hyperlink
+were independently traced to official DOB sources. The small reviewed evidence
+file data/adjudications/isu_supplemental_dobs_v1.csv stores their canonical
+person IDs, complete DOBs, names as printed, official URLs, identity links
+and source types:
+
+- 22 DOBs from ISU biographies or ISU individual/pair skater profiles.
+- 1 DOB for Anatoliy BELOVODCHENKO (2000-01-31) from the Moscow Figure
+  Skating Federation's 2020 championships entry list. It names his partner
+  Julia TULTSEVA (2001-06-04) on the adjacent line:
+  https://ffkm.ru/images/files/020-21/2020-12-09/Partlist_ChM_2020.pdf
+  (printed page 4; PDF page index 3).
+- 1 DOB for Daniil RAGIMOV (1998-05-22) from the Russian Figure Skating
+  Federation's signed 2015–16 national team roster, alongside previous
+  partner Karolina KLIKICH:
+  https://fsrussia.ru/files/docs/RUteam1516.pdf
+  (printed page 14; PDF page index 13).
+
+These two official federation records supersede earlier secondary leads.
+No date from the athlete partner-search site, fan forum, or unofficial
+compilation is accepted as the primary source. The official *new ISU pair*
+pages for Julia TULTSEVA and Anastasia SHAKUN show one woman's DOB,
+not the DOB of her male partner.
+
+**Non-destructive local workflow** (run from the repository root):
+
+    python .\scripts\apply_isu_supplemental_dobs.py
+
+Then recompute pair/season coverage against the supplemented copy:
+
+    python .\scripts\report_isu_dob_coverage.py --people .\output\identity\supplemental\identity_canonical_people_supplemented.csv --out .\output\identity\supplemental
+
+Output under output/identity/supplemental/ is local-only, and the original
+canonical people CSV remains unchanged. Review supplemental_dob_manifest.json
+and dob_coverage_manifest.json before concluding the final coverage.
+
+**Expected, not yet locally verified:** 24 supplemental DOB additions,
+1,038/1,038 canonical ranked athletes with DOB, and 612/612 ranked canonical
+pairs with both DOBs. The complete DOB coverage, even if achieved, does
+not mean the ranking corpus covers all ISU entrants, domestic skaters,
+or historical figure skaters. Independent DOB source confirmation and
+identity QA are still sampling prerequisites.
