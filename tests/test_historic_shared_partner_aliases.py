@@ -163,11 +163,32 @@ class SharedPartnerAliasTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "missing or conflicting official DOBs"):
             self.perform()
 
-    def test_real_four_reviewed_links_match_original_partner_pairs(self):
+    def test_new_four_reviewed_links_are_source_specific_not_similarity_merges(self):
+        actual = read_csv(ROOT /
+            "data/adjudications/isu_historic_shared_partner_id_merges_v2.csv")
+        added = actual[4:]
+        self.assertEqual(len(added), 4)
+        expected = {
+            ("person_003a7fd7f01ee", "person_688a8dc761563", "1994-12-15"),
+            ("person_7e8f44ec75fa7", "person_e70285027598e", "1975-09-09"),
+            ("person_9ab326510e11c", "person_a34cc3563255b", "1991-11-05"),
+            ("person_2431ac0d4737d", "person_6cbe40b096dfc", "1991-06-17")
+        }
+        self.assertEqual({
+            (r["canonical_person_id"], r["alternate_person_id"], r["expected_dob"])
+            for r in added
+        }, expected)
+        for r in added:
+            self.assertTrue(r["official_source_url"].startswith("https://"))
+            self.assertTrue(r["corroborating_source_url"].startswith("https://"))
+            self.assertIn("source_reviewed_same_person", r["evidence_status"])
+            self.assertTrue(len(r["identity_note"]) > 70)
+
+    def test_real_eight_reviewed_links_match_original_partner_pairs(self):
         root = ROOT
         rules = read_csv(root /
-            "data/adjudications/isu_historic_shared_partner_id_merges_v1.csv")
-        self.assertEqual(len(rules), 4)
+            "data/adjudications/isu_historic_shared_partner_id_merges_v2.csv")
+        self.assertEqual(len(rules), 8)
         all_pairs = {r["pair_id"]: r for r in read_csv(
             root / "data/historic/v4/couples_v4.csv"
         )}

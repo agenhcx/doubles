@@ -29,7 +29,7 @@ from urllib.parse import urlsplit
 from audit_isu_identities import digest, joined, read_csv, valid_date, write_csv
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_RULES = ROOT / "data/adjudications/isu_historic_shared_partner_id_merges_v1.csv"
+DEFAULT_RULES = ROOT / "data/adjudications/isu_historic_shared_partner_id_merges_v2.csv"
 HOSTS = {"results.isu.org", "www.isuresults.com", "isu-skating.com",
          "www.isu-skating.com"}
 CAND_FIELDS = [
@@ -362,7 +362,7 @@ def audit(
         "limitations": [
             "All outputs are a reversible QA preview, not a frozen analysis sample",
             "The same partner and DOB are not by themselves identity proof",
-            "Only four source-reviewed links are applied; further candidates remain separate",
+            "Only explicitly source-reviewed links in the selected adjudication CSV are applied; further candidates remain separate",
             "Event counts and season ranking positions are not aggregated",
             "Same-name different-person homonyms remain split by their audited IDs",
             "Same-person aliases not sharing an identical original partner may remain undiscovered",
