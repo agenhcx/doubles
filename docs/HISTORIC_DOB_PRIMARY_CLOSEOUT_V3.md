@@ -69,21 +69,31 @@ ISU domain. Untrusted domains, non-HTTPS sources, malformed profile
 paths, query parameters and userinfo are rejected. The corroborating
 page establishes the identity transition, not the actual DOB.
 
-## Expected local verification (not yet run)
+## Verified local closeout (2026-10-18)
 
-From the user's latest v2 manifest, v3 should yield:
+The user's final local manifest and two header-only review CSVs confirm,
+for the bounded 2004–2018 selected historic competitions:
 
-- **911 / 911 audited identity slots with official DOB evidence**;
-- **553 / 553 selected historical pairs with both official DOBs**;
-- **0 unresolved missing official DOBs** and **0 date conflicts**;
-- *48 unresolved pair identity links*, plus *two profile-side duplicate-ID
-  candidates*, unchanged from v2.
+- **911 / 911 audited provisional identity slots** have official
+  day-level DOB source candidates;
+- **553 / 553 historical pair IDs** have both DOBs;
+- **zero primary DOB omissions and zero conflicting source rows**;
+- 910 original provisional skater IDs plus one proven distinct Arina
+  USHAKOVA person after the source-adjudicated homonym split;
+- 48 historic pair-to-official-profile identity links remain unresolved;
+- two exact official profile-side alias collision candidates remain
+  to be merged non-destructively, and broader name aliases also exist.
 
-These are projections until the user runs the new audit locally.
-Even when reached, the dataset is **DOB-source-complete**, not
-identity-frozen, and should not enter any BaZi or partner-null analysis.
-Further work should address reversible name aliases, sampled-event
-completeness, and later prospective/preregistered study selection.
+The actual v3 source table input SHA-256 is
+`471a1925f61170db97ecb3f9b6dd418836272a3a12bd85aa909fa32ab62b7cb5`.
+The original historical master, source biography caches and older v1/v2
+evidence tables are unchanged.
+
+**Closure scope:** DOB primary-source coverage is complete *within this
+collected historic roster only*. It does not establish 911 distinct
+natural people, 553 distinct partnerships, exhaustive event coverage,
+or independent cross-checks of every printed DOB. The next phase is
+identity and event-source QA without inspecting BaZi relationships.
 
 From the repository root, run:
 

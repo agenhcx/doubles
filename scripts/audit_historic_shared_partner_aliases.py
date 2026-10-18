@@ -96,8 +96,18 @@ def audit(
         if not aid or aid in people_by_audit or not orig:
             raise ValueError("Blank or duplicated audited identity ID")
         dob = p["date_of_birth_primary_candidate"]
-        if dob and not valid_date(dob):
-            raise ValueError("Invalid official DOB on audited person")
+        status = p["dob_coverage_status"]
+        if status not in {
+            "official_source_linked", "ranked_same_pair_only_review",
+            "secondary_only_review", "dob_not_found",
+            "cross_source_conflict_hold"
+        }:
+            raise ValueError("Unknown historical source DOB status")
+        if dob:
+            if status != "official_source_linked" or not valid_date(dob):
+                raise ValueError("Non-official or invalid DOB in primary source field")
+        elif status == "official_source_linked":
+            raise ValueError("Official source-linked person unexpectedly lacks DOB")
         people_by_audit[aid] = p
         for discipline in p["disciplines"].split(";"):
             disc = discipline.strip()
@@ -283,8 +293,8 @@ def audit(
     people_preview = []
     for canonical, members in sorted(projected_members.items()):
         dates = {r["date_of_birth_primary_candidate"] for r in members}
-        if len(dates) != 1:
-            raise ValueError("Projected identity would merge conflicting or missing official DOBs")
+        if len(dates) != 1 or "" in dates:
+            raise ValueError("Projected identity has missing or conflicting official DOBs")
         people_preview.append({
             "projected_person_id": canonical,
             "audit_person_ids": joined(r["audit_person_id"] for r in members),

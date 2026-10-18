@@ -150,6 +150,19 @@ class SharedPartnerAliasTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "ambiguous audited ID"):
             self.perform()
 
+    def test_official_reviewed_merge_rejects_secondary_only_dob(self):
+        self.people_rows[0]["dob_coverage_status"] = "secondary_only_review"
+        self.save()
+        with self.assertRaisesRegex(ValueError, "Non-official or invalid DOB"):
+            self.perform()
+
+    def test_unchanged_person_without_official_dob_cannot_be_called_complete(self):
+        self.people_rows[3]["dob_coverage_status"] = "dob_not_found"
+        self.people_rows[3]["date_of_birth_primary_candidate"] = ""
+        self.save()
+        with self.assertRaisesRegex(ValueError, "missing or conflicting official DOBs"):
+            self.perform()
+
     def test_real_four_reviewed_links_match_original_partner_pairs(self):
         root = ROOT
         rules = read_csv(root /
