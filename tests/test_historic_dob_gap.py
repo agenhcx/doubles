@@ -22,6 +22,7 @@ class HistoricGapTests(unittest.TestCase):
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         root = Path(tmp.name)
+        self.root = root
         self.history = root / "historical_people.csv"
         self.old_pairs = root / "historic_pairs.csv"
         self.people = root / "ranked_people.csv"
