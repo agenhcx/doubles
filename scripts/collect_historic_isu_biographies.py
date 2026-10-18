@@ -45,6 +45,7 @@ CAND_FIELDS = [
     "date_of_birth", "parse_method", "parse_status",
     "seed_dob", "seed_consistency", "source_url"
 ]
+REVIEW_FIELDS = CAND_FIELDS + ["review_reason"]
 PERSON_FIELDS = [
     "historic_person_id", "historic_names", "source_profile_ids",
     "distinct_dates", "date_of_birth_candidate", "source_count",
@@ -357,10 +358,26 @@ def run(args):
 
     per_person = summarize_people(candidates, seed)
     write_csv(out / "historic_isu_person_dob_candidates.csv", PERSON_FIELDS, per_person)
-    need_review = [x for x in candidates
-                   if x["parse_status"] != "dob_explicitly_bound_to_expected_name"
-                   or x["seed_consistency"] == "conflict_with_primary_seed"]
-    write_csv(out / "historic_isu_bio_review.csv", CAND_FIELDS, need_review)
+    # Every source row for a person whose dates disagree must enter the
+    # review queue, even when all individual page parsers succeeded.
+    conflicting_people = {
+        item["historic_person_id"] for item in per_person
+        if item["dob_status"] in (
+            "cross_profile_dob_conflict", "official_seed_dob_conflict"
+        )
+    }
+    need_review = []
+    for row in candidates:
+        reasons = []
+        if row["parse_status"] != "dob_explicitly_bound_to_expected_name":
+            reasons.append(row["parse_status"])
+        if row["seed_consistency"] == "conflict_with_primary_seed":
+            reasons.append("conflict_with_primary_seed")
+        if row["historic_person_id"] in conflicting_people:
+            reasons.append("cross_profile_or_seed_conflict")
+        if reasons:
+            need_review.append(dict(row, review_reason="; ".join(sorted(set(reasons)))))
+    write_csv(out / "historic_isu_bio_review.csv", REVIEW_FIELDS, need_review)
     stats = Counter(x["status"] for x in inventory)
     pstats = Counter(x["dob_status"] for x in per_person)
     summary = {
@@ -378,6 +395,7 @@ def run(args):
         "distinct_historic_people_in_pilot": len(per_person),
         "person_dob_status_counts": dict(sorted(pstats.items())),
         "review_rows": len(need_review),
+        "people_with_dob_conflict": len(conflicting_people),
         "parsed_methods": dict(sorted(Counter(x["parse_method"]
                               for x in candidates if x["parse_method"]).items())),
         "offline": bool(args.offline),

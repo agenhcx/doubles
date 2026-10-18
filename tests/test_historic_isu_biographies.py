@@ -225,6 +225,12 @@ class HistoricalBiographyTests(unittest.TestCase):
             self.assertEqual(persons["a"]["dob_status"], "cross_profile_dob_conflict")
             self.assertEqual(persons["a"]["date_of_birth_candidate"], "")
             self.assertEqual(report["person_dob_status_counts"]["cross_profile_dob_conflict"], 1)
+            reviews = read_csv(out / "historic_isu_bio_review.csv")
+            conflicted = [r for r in reviews if r["historic_person_id"] == "a"]
+            self.assertEqual(len(conflicted), 2)
+            self.assertTrue(all("cross_profile_or_seed_conflict" in r["review_reason"]
+                                for r in conflicted))
+            self.assertEqual(report["people_with_dob_conflict"], 1)
 
 
 if __name__ == "__main__":

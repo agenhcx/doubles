@@ -72,3 +72,11 @@ Run the same 20-person sample with --offline before increasing the
 collection size. The expected 40/40 DOB extraction does not imply
 40 identity-reviewed records; the two rotated-name rows remain in
 the review queue for audit.
+
+A later audit hardening rule also ensures that if the same historical
+person has contradictory DOBs from different profiles, **every source
+row for that person** is written to the review CSV. The additional
+review_reason field distinguishes a legacy name rotation, a direct
+seed disagreement and a cross-profile contradiction. These rows do
+not become canonical DOBs until the sources are adjudicated.
+
