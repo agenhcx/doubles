@@ -79,6 +79,41 @@ class SupplementalDobTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "not on ISU"):
             apply_supplemental_dobs(self.people, self.evidence, self.out)
 
+    def test_official_federation_pdf_accepted_and_keeps_cyrillic_name(self):
+        self.people_rows[1]["roster_names"] = "Daniil RAGIMOV"
+        self.sources[1] = dict(
+            canonical_person_id="p2", roster_name="Daniil RAGIMOV",
+            date_of_birth="1998-05-22",
+            official_observed_name="Рагимов Даниил Алексеевич",
+            evidence_status="official_federation_checked",
+            source_url="https://fsrussia.ru/files/docs/RUteam1516.pdf",
+            identity_basis="former_pair_russian_federation_team_roster",
+            evidence_note="Signed federation team roster",
+        )
+        self.save()
+        result = apply_supplemental_dobs(self.people, self.evidence, self.out)
+        self.assertEqual(result["new_official_dobs_accepted"], 2)
+        self.assertEqual(result["pending_primary_verification"], 0)
+        self.assertEqual(result["people_with_consistent_dob_after"], 3)
+        records = {r["canonical_person_id"]: r for r in
+                   read_csv(self.out / "identity_canonical_people_supplemented.csv")}
+        self.assertEqual(records["p2"]["date_of_birth"], "1998-05-22")
+        self.assertEqual(records["p2"]["supplemental_evidence_status"],
+                         "official_federation_checked")
+
+    def test_false_federation_source_rejected(self):
+        self.sources[0]["evidence_status"] = "official_federation_checked"
+        self.save()
+        with self.assertRaisesRegex(ValueError, "not on approved skating federation"):
+            apply_supplemental_dobs(self.people, self.evidence, self.out)
+
+    def test_non_pdf_federation_source_rejected(self):
+        self.sources[0]["evidence_status"] = "official_federation_checked"
+        self.sources[0]["source_url"] = "https://ffkm.ru/athletes/profile.html"
+        self.save()
+        with self.assertRaisesRegex(ValueError, "official PDF"):
+            apply_supplemental_dobs(self.people, self.evidence, self.out)
+
     def test_existing_dob_disagreement_rejected(self):
         self.people_rows[0]["dob_status"] = "consistent"
         self.people_rows[0]["date_of_birth"] = "2003-06-15"

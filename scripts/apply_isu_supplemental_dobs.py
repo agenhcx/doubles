@@ -17,9 +17,12 @@ from audit_isu_identities import digest, norm, read_csv, valid_date, write_csv
 
 ROOT = Path(__file__).resolve().parent.parent
 EVIDENCE = ROOT / "data" / "adjudications" / "isu_supplemental_dobs_v1.csv"
-OFFICIAL_HOSTS = frozenset((
+ISU_HOSTS = frozenset((
     "results.isu.org", "www.isuresults.com",
     "isu-skating.com", "www.isu-skating.com",
+))
+FEDERATION_HOSTS = frozenset((
+    "ffkm.ru", "www.ffkm.ru", "fsrussia.ru", "www.fsrussia.ru",
 ))
 EVIDENCE_FIELDS = (
     "canonical_person_id", "roster_name", "date_of_birth",
@@ -114,10 +117,16 @@ def apply_supplemental_dobs(
             if source_date:
                 raise ValueError("Pending source must not provide accepted DOB: " + person_id)
             action = "held_pending_primary"
-        elif source_status == "official_isu_checked":
-            host = urlsplit(e["source_url"]).hostname
-            if host not in OFFICIAL_HOSTS:
+        elif source_status in {"official_isu_checked", "official_federation_checked"}:
+            parsed_url = urlsplit(e["source_url"])
+            host = parsed_url.hostname
+            if source_status == "official_isu_checked" and host not in ISU_HOSTS:
                 raise ValueError("Approved birthdate URL not on ISU domain: " + person_id)
+            if source_status == "official_federation_checked":
+                if host not in FEDERATION_HOSTS:
+                    raise ValueError("Birthdate URL not on approved skating federation domain: " + person_id)
+                if not parsed_url.path.lower().endswith(".pdf"):
+                    raise ValueError("Federation DOB evidence must be an official PDF: " + person_id)
             if not valid_date(source_date):
                 raise ValueError("Official evidence has invalid DOB: " + person_id)
             if person["dob_status"] == "dob_conflict":
@@ -175,8 +184,8 @@ def apply_supplemental_dobs(
             "identity_canonical_people_supplemented.csv", "supplemental_dob_audit.csv"
         ],
         "limitations": [
-            "Sources and identity linkage curated manually; not independently reverified by this offline script",
-            "Two pending non-ISU sources remain excluded from accepted dates",
+            "Official ISU biographies and federation source PDFs curated manually; source contents are not rechecked by this offline script",
+            "Non-official or unverified sources, if provided, remain excluded",
             "The evidence source URL and name are kept on each supplemented record",
             "The original canonical people CSV and raw biographies are not overwritten",
             "DOB consistency and pair coverage require running the follow-up coverage report",
