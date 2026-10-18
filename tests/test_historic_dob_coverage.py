@@ -171,6 +171,11 @@ class HistoricCumulativeDobCoverageTests(unittest.TestCase):
         self.assertEqual(result["missing_primary_dob_slots"], 3)
         self.assertEqual(len(read_csv(
             self.out / "historic_dob_source_conflicts_v1.csv")), 1)
+        missing_ids = {
+            row["audit_person_id"] for row in
+            read_csv(self.out / "historic_dob_missing_priority_v1.csv")
+        }
+        self.assertIn("h4", missing_ids)
         persons = {r["audit_person_id"]: r for r in
                    read_csv(self.out / "historic_dob_coverage_people_v1.csv")}
         self.assertEqual(persons["h4"]["date_of_birth_primary_candidate"], "")

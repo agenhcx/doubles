@@ -305,7 +305,9 @@ def coverage(
                 "source_urls": row["source_urls"],
                 "conflict_reason": "Incompatible source DOBs or uncertain identity",
             })
-        elif not strict:
+        if not strict:
+            # Conflicted DOBs are unusable and must remain on the
+            # missing/verification priority list, not only in conflicts.csv.
             missing.append(row)
 
     people_by_aid = {r["audit_person_id"]: r for r in person_output}
