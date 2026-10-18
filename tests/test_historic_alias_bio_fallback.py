@@ -95,6 +95,49 @@ class HistoricAliasNameFallbackTests(unittest.TestCase):
         self.assertEqual(self.src.read_bytes(), before)
         self.assertEqual(report["review_rows"], 4)
 
+    def test_legacy_second_skater_name_and_reverse_date_layout(self):
+        self.rows = [
+            {
+                "historic_pair_id": "oldpair", "discipline": "Pair Skating",
+                "historic_person_id": "olga", "side_on_profile": "1",
+                "historical_name": "Olga BOGUSLAVSKA",
+                "published_name": "Olga BOGUSLAVSKA",
+                "published_dob": "1982-03-15",
+                "profile_id": "isufs00006196",
+                "source_url": "https://www.isuresults.com/bios/isufs00006196.htm",
+                "parse_status": "dob_explicitly_bound_to_expected_name",
+                "prior_audited_dob": "",
+                "historical_identity_link_status": "not_verified_directory_candidate_only",
+            },
+            {
+                "historic_pair_id": "oldpair", "discipline": "Pair Skating",
+                "historic_person_id": "andrei", "side_on_profile": "2",
+                "historical_name": "Andrei BROVENKO",
+                "published_name": "Andrejs BROVENKO",
+                "published_dob": "",
+                "profile_id": "isufs00006196",
+                "source_url": "https://www.isuresults.com/bios/isufs00006196.htm",
+                "parse_status": "expected_name_not_in_header",
+                "prior_audited_dob": "",
+                "historical_identity_link_status": "not_verified_directory_candidate_only",
+            },
+        ]
+        self.save()
+        (self.cache / "isufs00006196.html").write_text(
+            """PAIRS Date of birth: 15.03.1982 Olga BOGUSLAVSKA LAT
+            Other fields Latvian historical archive
+            Andrei BROVENKO 05.07.1983 Date of birth:
+            Riga Place of birth: Other details""", encoding="utf-8"
+        )
+        result = audit(self.src, self.cache, self.out)
+        self.assertEqual(result["new_unique_official_slots_recovered"], 1)
+        self.assertEqual(result["remaining_unique_profile_slots_without_labelled_dob"], 0)
+        rows = read_csv(self.out / "historic_alias_source_name_fallback_review.csv")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["historical_name_dob_candidate"], "1983-07-05")
+        self.assertEqual(rows[0]["historical_name_parse_method"],
+                         "name_date_label_legacy")
+
     def test_missing_cache_is_explicit_and_never_treated_as_negative_dob(self):
         (self.cache / "isufs00004927.html").unlink()
         report = audit(self.src, self.cache, self.out)

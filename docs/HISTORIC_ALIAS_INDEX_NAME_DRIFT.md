@@ -54,6 +54,13 @@ an explicit Date of birth label, a valid full date, and the entire
 historic name. It uses the same limited punctuation/name-order parser
 as the audited original collector. It does not use fuzzy matching.
 
+One extra guard rejects partial historical names that are only prefixes
+of the printed ISU name, e.g. "Alexa SCIMECA" is not the whole name
+"Alexa SCIMECA KNIERIM". Recovery requires evidence that the official
+name field actually ends at that point (or the legacy DOB label directly
+follows in reverse-layout pages). A source-dated full name and a short
+historical name are not automatically considered the same athlete.
+
 Three outputs under output/historic_dob/alias_fallback/:
 
 - historic_alias_source_name_fallback_manifest.json:

@@ -14,12 +14,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from bs4 import BeautifulSoup
+
 from audit_isu_identities import digest, read_csv, valid_date, write_csv
-from collect_historic_isu_biographies import parse_pair_profile
+from collect_historic_isu_biographies import fold, parse_pair_profile
 
 OFFICIAL_HOSTS = {"www.isuresults.com", "results.isu.org"}
 OUT_FIELDS = [
@@ -84,6 +87,62 @@ def validate_leads(rows):
     return grouped
 
 
+
+def full_name_ends_at_profile_field(html, observation):
+    """Reject a short historic name that is a PREFIX of a longer source name.
+
+    Example: 'Alexa SCIMECA' is a prefix of the official profile name
+    'Alexa SCIMECA KNIERIM', so the DOB is NOT source-bound to that
+    shorter historical name without a separate identity review.
+
+    This guard is only applied to the new fallback, not the original,
+    previously audited primary DOB records.
+    """
+    if not observation or not observation["date_of_birth"]:
+        return False
+    method = observation["parse_method"]
+    if "name_date_label_legacy" in method:
+        # Reversed layout requires the complete name immediately before
+        # the date and date-of-birth label, already enforced by parser.
+        return True
+    if "label_date_name" not in method:
+        return False
+    soup = BeautifulSoup(html, "html.parser")
+    for tag in soup(["script", "style"]):
+        tag.decompose()
+    flat = fold(soup.get_text(" ", strip=True))[:3500]
+    shown_name = fold(observation["observed_name"])
+    year, month, day = map(int, observation["date_of_birth"].split("-"))
+    normalized_date = f"{year:04d}-{month:02d}-{day:02d}"
+    expr = re.compile(
+        r"\bDate\s+of\s+birth\s*:\s*"
+        r"(?P<date>[0-3]?\d\.[01]?\d\.(?:18|19|20)\d{2})\s+"
+        + re.escape(shown_name) + r"(?!\w)",
+        re.I,
+    )
+    # The immediately following token should be the team code, a known
+    # field heading, or the next person's 'Date of birth' heading.
+    # A longer surname (like KNIERIM) or more given-name material
+    # is NOT a complete match.
+    end_marker = re.compile(
+        r"^(?:[A-Z]{3}\b|Place\s+of\s+birth\s*:|Date\s+of\s+birth\s*:"
+        r"|Height\s*:|Home\s+town\s*:|Former\s+Partners\s*:)",
+        re.I,
+    )
+    import datetime as dt
+    for m in expr.finditer(flat):
+        try:
+            parsed = dt.datetime.strptime(m.group("date"), "%d.%m.%Y").date()
+        except ValueError:
+            continue
+        if parsed.isoformat() != normalized_date:
+            continue
+        tail = flat[m.end():].lstrip()
+        if not tail or end_marker.match(tail):
+            return True
+    return False
+
+
 def audit(
     leads_path="output/historic_dob/alias_biographies/historic_alias_dob_leads.csv",
     cache_dir="cache/isu_bios",
@@ -132,6 +191,13 @@ def audit(
                     source_name = observed["observed_name"] if recovered else ""
                     parse_status = observed["parse_status"]
                     parse_method = observed["parse_method"]
+                    if recovered and not full_name_ends_at_profile_field(
+                        documents[profile], observed
+                    ):
+                        recovered = ""
+                        source_name = ""
+                        parse_status = "source_name_prefix_or_header_boundary_ambiguous"
+                        parse_method = ""
 
             if original_dob:
                 review_state = "original_official_dob_unaltered"
