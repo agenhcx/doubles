@@ -141,7 +141,7 @@ def cross_era(people_path=HIST_PEOPLE, pairs_path=HIST_PAIRS,
             for name in parts(historic[pid]['historic_names']):
                 if norm(name):
                     h_names[(d, norm(name))].add(pid)
-            h_dates[(d, historic[pid]['date_of_birth'])].add(pid
+            h_dates[(d, historic[pid]['date_of_birth'])].add(pid)
 
     modern_people = {}
     modern_pairs = defaultdict(lambda: {'pair_ids': set(), 'seasons': set(), 'profiles': set()})
