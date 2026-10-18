@@ -103,6 +103,53 @@ class HistoricGapTests(unittest.TestCase):
         self.assertFalse(rows["h_a"]["ranked_canonical_id"])
         self.assertEqual(result["same_pair_correlated_dob_candidates"],0)
 
+    def test_primary_dob_seed_keeps_sources_separate_and_detects_conflicts(self):
+        seed = self.root / "primary_seed.csv"
+        row = dict(
+            historic_person_id="h_e", historic_name="Evelyn FIVE",
+            date_of_birth="2000-02-03",
+            source_url="https://results.isu.org/bios/isufs00000002.htm",
+            evidence_status="manually_checked_source",
+        )
+        save(seed, [row])
+        result = historic_candidates(self.history, self.old_pairs, self.people,
+                                     self.roster, self.out, seed)
+        self.assertEqual(result["primary_source_seed_people"], 1)
+        self.assertEqual(result["primary_source_seed_conflicts"], 0)
+        self.assertEqual(result["followup_people"], 2)
+        pilot = read_csv(self.out / "historic_official_primary_pilot.csv")
+        self.assertEqual(pilot[0]["primary_seed_consistency"], "agrees_with_ranked_dob")
+        # Conflicting evidence is not used to remove anyone from follow-up.
+        row["date_of_birth"] = "2000-02-04"
+        save(seed, [row])
+        result = historic_candidates(self.history, self.old_pairs, self.people,
+                                     self.roster, self.out, seed)
+        self.assertEqual(result["primary_source_seed_conflicts"], 1)
+        self.assertEqual(result["followup_people"], 3)
+
+    def test_untrusted_historic_seed_is_rejected(self):
+        seed = self.root / "primary_seed.csv"
+        save(seed, [dict(
+            historic_person_id="h_e", historic_name="Evelyn FIVE",
+            date_of_birth="2000-02-03",
+            source_url="https://example.com/wiki/Evelyn",
+            evidence_status="manually_checked_source",
+        )])
+        with self.assertRaisesRegex(ValueError, "not an allowed ISU host"):
+            historic_candidates(self.history, self.old_pairs, self.people,
+                                self.roster, self.out, seed)
+
+    def test_checked_source_rows_match_public_historic_identity_ids(self):
+        official = read_csv(Path(__file__).resolve().parent.parent /
+                            "data/adjudications/isu_historic_primary_dob_seed_v1.csv")
+        historic = {r["person_id"]: r["name_display"] for r in
+                    read_csv(Path(__file__).resolve().parent.parent /
+                             "data/historic/v4/athletes_v4.csv")}
+        self.assertEqual(len(official), 7)
+        for record in official:
+            self.assertIn(record["historic_person_id"], historic)
+            self.assertEqual(record["historic_name"], historic[record["historic_person_id"]])
+
     def test_incomplete_ranked_dates_rejected(self):
         self.rp[0]["date_of_birth"]=""
         self.save()

@@ -49,6 +49,32 @@ or performance-based athlete exclusion occur in this phase.
    as absent people. Do not conduct a large full run until the 20-person pilot
    establishes API accessibility and useful candidate quality.
 
+## Direct official primary-source pilot: seven historical DOBs
+
+Seven historic v4 athletes have also been manually checked against named ISU
+profiles. The source-scoped CSV lives at:
+data/adjudications/isu_historic_primary_dob_seed_v1.csv
+
+- Alisa AGAFONOVA — 1991-01-15; Alper UCAR — 1985-01-19.
+  Both are on ISU pair profile isufs00012930 (2017–18).
+- Olga AKIMOVA — 1983-05-28; Alexander SHAKALOV — 1982-03-26.
+  Both are on historical pair profile isufs00007164; Shakalov's date
+  is independently shown on his ISU individual page.
+- Ramil SARKULOV — 1981-06-16. Historical pair profile isufs00006649.
+- Aaron VAN CLEAVE — 1987-03-14, ISU individual profile.
+- Madeline AARON — 1994-10-25, ISU individual profile.
+
+Important: early ISU HTML tables can list the second person's NAME BEFORE the
+DOB and can contain other reversed columns. The modern parser is NOT considered
+validated against those old reversed-layout pages. These seven dates were
+checked individually, associated with their original historic v4 ID and ISU
+official URL, and kept in a separate primary-source seed.
+
+The historical gap-audit script checks any seeded DOB against a reused
+ranked-canonical DOB. A discrepancy is flagged (dob_conflict_hold) and kept
+in the follow-up queue. It never silently changes the canonical master and
+it never passes Wikidata-generated candidates as verified official data.
+
 ## Verification policy
 
 Accept a new historical DOB only after matching the public figure using

@@ -14,6 +14,7 @@ import json
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from audit_isu_identities import digest, joined, norm, read_csv, valid_date, write_csv
 
@@ -24,7 +25,9 @@ FIELDS = [
     "ranked_canonical_id", "ranked_roster_names", "ranked_dob_candidate",
     "ranking_profile_ids", "supplemental_dob_url",
     "identical_pair_support", "possible_partner_alias_ids",
-    "is_abbreviated", "review_required"
+    "is_abbreviated", "review_required",
+    "primary_seed_dob", "primary_seed_source_url",
+    "primary_seed_evidence_status", "primary_seed_consistency"
 ]
 PRIORITY = {
     "exact_name_same_pair": 0, "exact_name_only": 1,
@@ -53,6 +56,7 @@ def historic_candidates(
     new_people_path="output/identity/supplemental/identity_canonical_people_supplemented.csv",
     new_roster_path="output/identity/identity_canonical_season_roster.csv",
     out_dir="output/historic_dob",
+    primary_seed_path=None,
 ):
     paths = list(map(Path, (old_people_path, old_pairs_path, new_people_path, new_roster_path)))
     old_people, old_pairs, new_people, new_roster = [read_csv(p) for p in paths]
@@ -65,6 +69,29 @@ def historic_candidates(
         if not pid or pid in old_index:
             raise ValueError("Duplicate or blank historical athlete ID")
         old_index[pid] = row
+
+    # Officially inspected early ISU pages remain separate, auditable evidence.
+    # A source DOB with a conflicting ranked DOB must never be silently merged.
+    trusted_hosts = {"results.isu.org", "www.isuresults.com",
+                     "isu-skating.com", "www.isu-skating.com"}
+    primary_seed = {}
+    if primary_seed_path is not None:
+        seed_path = Path(primary_seed_path)
+        for item in read_csv(seed_path):
+            pid = item["historic_person_id"]
+            if pid not in old_index or pid in primary_seed:
+                raise ValueError("Missing or duplicated historic primary-source ID")
+            official_names = name_options(old_index[pid], "name_display",
+                                          "name_variants", " | ")
+            if norm(item["historic_name"]) not in {norm(n) for n in official_names}:
+                raise ValueError("Historical official source name does not match seed identity")
+            if not valid_date(item.get("date_of_birth", "")):
+                raise ValueError("Invalid primary historical DOB in source seed")
+            if urlsplit(item.get("source_url", "")).hostname not in trusted_hosts:
+                raise ValueError("Primary DOB source is not an allowed ISU host")
+            if item.get("evidence_status") != "manually_checked_source":
+                raise ValueError("Unreviewed historical birthdate source")
+            primary_seed[pid] = item
 
     canonical = {}
     ranked_names = defaultdict(set)
@@ -148,6 +175,17 @@ def historic_candidates(
 
         cp = next(iter(options)) if len(options) == 1 else ""
         verified = canonical.get(cp, {})
+        seed = primary_seed.get(pid, {})
+        seed_dob = seed.get("date_of_birth", "")
+        ranked_dob = verified.get("date_of_birth", "")
+        if seed_dob and ranked_dob and seed_dob != ranked_dob:
+            consistency = "dob_conflict_hold"
+        elif seed_dob and ranked_dob:
+            consistency = "agrees_with_ranked_dob"
+        elif seed_dob:
+            consistency = "official_source_without_ranked_link"
+        else:
+            consistency = "not_in_primary_seed"
         partners = old_partner_ids.get(pid, set())
         rows.append({
             "historic_person_id": pid,
@@ -168,6 +206,10 @@ def historic_candidates(
             "possible_partner_alias_ids": joined(alias_suggestions.get(pid, set())),
             "is_abbreviated": "YES" if not has_safe_name[pid] else "NO",
             "review_required": "YES",
+            "primary_seed_dob": seed_dob,
+            "primary_seed_source_url": seed.get("source_url", ""),
+            "primary_seed_evidence_status": seed.get("evidence_status", ""),
+            "primary_seed_consistency": consistency,
         })
 
     # Sort with high-evidence links first, then competition count within tiers.
@@ -177,12 +219,17 @@ def historic_candidates(
         x["historic_person_id"]
     ))
     already = [r for r in rows if r["match_status"] == "exact_name_same_pair"]
-    queue = [r for r in rows if r["match_status"] != "exact_name_same_pair"]
+    primary_pilot = [r for r in rows if r["primary_seed_dob"]]
+    queue = [r for r in rows
+             if r["match_status"] != "exact_name_same_pair"
+             and (not r["primary_seed_dob"]
+                  or r["primary_seed_consistency"] == "dob_conflict_hold")]
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     write_csv(out / "historic_identity_dob_candidates.csv", FIELDS, rows)
     write_csv(out / "historic_same_pair_candidates.csv", FIELDS, already)
     write_csv(out / "historic_dob_followup_queue.csv", FIELDS, queue)
+    write_csv(out / "historic_official_primary_pilot.csv", FIELDS, primary_pilot)
 
     report = {
         "scope": "Selected 2004-2018 historical ISU event data, not all entrants",
@@ -193,14 +240,22 @@ def historic_candidates(
         "matched_historic_people_any_full_name": sum(len(v) == 1 for v in matched.values()),
         "same_pair_correlated_dob_candidates": counts["exact_name_same_pair"],
         "name_only_dob_candidates_need_review": counts["exact_name_only"],
+        "primary_source_seed_people": len(primary_pilot),
+        "primary_source_seed_conflicts": sum(
+            r["primary_seed_consistency"] == "dob_conflict_hold" for r in primary_pilot
+        ),
         "identity_status_counts": dict(sorted(counts.items())),
         "followup_people": len(queue),
-        "input_sha256": {str(p): digest(p) for p in paths},
+        "input_sha256": {
+            str(p): digest(p) for p in
+            paths + ([Path(primary_seed_path)] if primary_seed_path is not None else [])
+        },
         "limitations": [
             "The historical list is drawn from selected ISU events, not all skaters",
             "Historical names with initials cannot be safely auto-resolved",
             "Exact names alone are candidates, not identity confirmations",
             "A shared historical/ranked pair gives stronger linkage but not independent DOB verification",
+            "Manual official DOB seeds are separately versioned; agreement is checked, conflicts held",
             "Former-partner suggestions are NEVER treated as proven identity",
             "No BaZi and no mutation of master data or original athlete IDs",
         ],
@@ -212,7 +267,8 @@ def historic_candidates(
         "historical_people", "historical_pairs",
         "matched_historic_people_any_full_name",
         "same_pair_correlated_dob_candidates",
-        "name_only_dob_candidates_need_review", "followup_people",
+        "name_only_dob_candidates_need_review", "primary_source_seed_people",
+        "primary_source_seed_conflicts", "followup_people",
         "identity_status_counts"
     )}, ensure_ascii=False, indent=2))
     return report
@@ -225,9 +281,11 @@ def main():
     p.add_argument("--ranked-people", default="output/identity/supplemental/identity_canonical_people_supplemented.csv")
     p.add_argument("--ranked-roster", default="output/identity/identity_canonical_season_roster.csv")
     p.add_argument("--out", default="output/historic_dob")
+    p.add_argument("--primary-seed", default="data/adjudications/isu_historic_primary_dob_seed_v1.csv")
     args = p.parse_args()
     historic_candidates(args.historic_people, args.historic_pairs,
-                        args.ranked_people, args.ranked_roster, args.out)
+                        args.ranked_people, args.ranked_roster, args.out,
+                        args.primary_seed)
 
 
 if __name__ == "__main__":
