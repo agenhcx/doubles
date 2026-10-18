@@ -64,7 +64,12 @@ def name_rx(value):
     parts = fold(value).split()
     if len(parts) < 2:
         raise ValueError("Expected full athlete name")
-    return r"(?<!\w)" + r"\s+".join(re.escape(x) for x in parts) + r"(?!\w)"
+    # ISU biography pages sometimes replace name hyphens with spaces.
+    # Match identical name tokens only; do not permit substitutions or
+    # arbitrary token reordering.
+    tokens = [x for x in re.split(r"[\s\-\u2010-\u2015]+", " ".join(parts)) if x]
+    separator = r"(?:\s+|\s*[-\u2010-\u2015]\s*)"
+    return r"(?<!\w)" + separator.join(re.escape(x) for x in tokens) + r"(?!\w)"
 
 
 def name_forms(value):
@@ -88,7 +93,7 @@ def name_forms(value):
         if label.casefold() in seen:
             continue
         seen.add(label.casefold())
-        forms.append((style, name_rx(label)))
+        forms.append((style, name_rx(label), label))
     return forms
 
 
@@ -102,7 +107,7 @@ def parse_member(flat, expected_name):
     occurrences = defaultdict(list)
     name_present = False
     date_expr = r"(?P<dob>[0-3]?\d\.[01]?\d\.(?:18|19|20)\d{2})"
-    for style, target in name_forms(expected_name):
+    for style, target, reference_name in name_forms(expected_name):
         name_present = name_present or bool(re.search(target, flat, re.I))
         labelled_name = r"(?P<source_name>" + target + r")"
         patterns = (
@@ -116,9 +121,14 @@ def parse_member(flat, expected_name):
                 try:
                     parsed = dt.datetime.strptime(match.group("dob"), "%d.%m.%Y").date()
                     if dt.date(1850, 1, 1) <= parsed <= dt.date.today():
+                        name_seen = match.group("source_name")
+                        punct_variant = (fold(name_seen).casefold() !=
+                                         fold(reference_name).casefold())
                         method_name = method + ("_name_rotation" if style == "rotation" else "")
+                        if punct_variant:
+                            method_name += "_punctuation_variant"
                         occurrences[parsed.isoformat()].append(
-                            (method_name, match.group("source_name"))
+                            (method_name, name_seen)
                         )
                 except ValueError:
                     continue
@@ -140,13 +150,18 @@ def parse_member(flat, expected_name):
     dob = next(iter(occurrences))
     hits = sorted(occurrences[dob], key=lambda x: (
         x[0].endswith("_name_rotation"), x[0], x[1]))
-    exact_name_found = any(not method.endswith("_name_rotation")
-                           for method, _ in hits)
+    clean_name_found = any(
+        "_name_rotation" not in method and "_punctuation_variant" not in method
+        for method, _ in hits
+    )
+    rotation_found = any("_name_rotation" in method for method, _ in hits)
+    status = ("dob_explicitly_bound_to_expected_name" if clean_name_found else
+              "dob_bound_to_rotated_name_review" if rotation_found else
+              "dob_bound_to_punctuation_variant_review")
     return {
         "date_of_birth": dob,
         "parse_method": "; ".join(sorted({method for method, _ in hits})),
-        "parse_status": ("dob_explicitly_bound_to_expected_name" if exact_name_found
-                         else "dob_bound_to_rotated_name_review"),
+        "parse_status": status,
         "observed_name": hits[0][1],
     }
 
@@ -252,9 +267,14 @@ def summarize_people(candidates, seed):
                 and r["date_of_birth"] == values[0] for r in rows
             )
             if not independently_supported and not prior:
-                # Preserve the raw labelled DOB on its source row, but do not
-                # promote a rotated-name association without manual review.
-                status, date = "name_order_review", ""
+                # Preserve raw DOB but do not promote name variants until
+                # a human confirms the published spelling and pair identity.
+                if any(r["parse_status"] == "dob_bound_to_rotated_name_review"
+                       for r in rows):
+                    status = "name_order_review"
+                else:
+                    status = "name_punctuation_review"
+                date = ""
             else:
                 status, date = "consistent_profile_candidate", values[0]
         else:

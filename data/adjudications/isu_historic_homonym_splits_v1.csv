@@ -1,0 +1,3 @@
+historic_person_id,profile_id,side_on_profile,audit_person_id,discipline,expected_name,expected_dob,official_source_url,evidence_status,review_note
+person_91415bb478168,isufs00008744,1,historic_person_ushakova_1989_pairs,Pair Skating,Arina USHAKOVA,1989-12-18,https://www.isuresults.com/bios/isufs00008744.htm,source_corroborated,Former pair with Sergei KAREV; 2007-08 season; born in Perm
+person_91415bb478168,isufs00101140,1,historic_person_ushakova_2002_dance,Ice Dance,Arina USHAKOVA,2002-06-27,https://www.isuresults.com/bios/isufs00101140.htm,source_corroborated,2017-18 ice dance with Maxim NEKRASOV; born in Tcheliabinsk

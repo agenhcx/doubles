@@ -133,6 +133,37 @@ class HistoricalBiographyTests(unittest.TestCase):
             self.assertEqual({row["distinct_dates"] for row in records},
                              {"1972-02-06", "1974-11-16"})
 
+    def test_hyphenated_surname_matches_official_space_variant_as_review(self):
+        # Exact name tokens; only the hyphen is rendered as a space on
+        # two actual ISU biography pages.
+        html = """<html>Pairs Date of birth: 04.01.2000 Lana PETRANOVIC
+        Date of birth: 21.03.1993 Antonio SOUZA KORDEIRU
+        Personal Best Score 155.80 21.03.2017</html>"""
+        a, b = parse_pair_profile(
+            html, "Lana PETRANOVIC", "Antonio SOUZA-KORDEIRU"
+        )
+        self.assertEqual(a["date_of_birth"], "2000-01-04")
+        self.assertEqual(b["date_of_birth"], "1993-03-21")
+        self.assertEqual(b["parse_method"], "label_date_name_punctuation_variant")
+        self.assertEqual(b["parse_status"], "dob_bound_to_punctuation_variant_review")
+        self.assertEqual(b["observed_name"], "Antonio SOUZA KORDEIRU")
+
+    def test_second_hyphenated_surname_and_unlabelled_date_guard(self):
+        html = """<html>Ice Dance Date of birth: 13.06.1997 Tina GARABEDIAN
+        Date of birth: 06.12.1991 Simon PROULX SENECAL
+        Personal Best 07.01.2018</html>"""
+        _, b = parse_pair_profile(
+            html, "Tina GARABEDIAN", "Simon PROULX-SENECAL"
+        )
+        self.assertEqual(b["date_of_birth"], "1991-12-06")
+        self.assertEqual(b["parse_status"], "dob_bound_to_punctuation_variant_review")
+        no_label = """<html>Simon PROULX SENECAL 06.12.1991
+        Personal Best Total Score 182.22</html>"""
+        _, n = parse_pair_profile(
+            no_label, "Tina GARABEDIAN", "Simon PROULX-SENECAL"
+        )
+        self.assertEqual(n["date_of_birth"], "")
+
     def test_name_and_date_must_be_adjacent_to_date_of_birth_label(self):
         html = """<html>PAIRS
         Date of birth: 01.01.2000 Alice ONE
