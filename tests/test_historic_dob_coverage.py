@@ -260,6 +260,7 @@ class HistoricCumulativeDobCoverageTests(unittest.TestCase):
             self.audit_priority()
         row["historic_partner_name"] = "Sergei KAREV"
         row["historic_person_id"] = "h5"
+        row["historic_name"] = "Jong SAMPLE"
         save(self.priority, [row])
         with self.assertRaisesRegex(ValueError, "not in referenced historic pair"):
             self.audit_priority()
