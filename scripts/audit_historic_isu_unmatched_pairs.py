@@ -40,7 +40,7 @@ QUEUE_FIELDS = [
 def required(rows, columns, label):
     if not rows:
         raise ValueError(label + " is empty")
-    absent = set(columns) - rows[0]
+    absent = set(columns) - set(rows[0])
     if absent:
         raise ValueError(label + " missing required columns: " + repr(sorted(absent)))
 
