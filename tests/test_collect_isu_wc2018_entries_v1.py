@@ -49,6 +49,40 @@ def parse_fixture(disc, kind, n, complete=None, **kw):
 
 
 class Milan2018OfficialSourceTests(unittest.TestCase):
+    def test_bulgarian_ice_dance_entry_and_fnr_result_nation(self):
+        # Real 2018 ISU pages show Teodora MARKOVA / Simon DAZE (BUL).
+        # Earlier explicit country allowlist omitted BUL and rejected both
+        # Ice Dance source pages despite valid downloaded HTML.
+        name = 'Teodora MARKOVA / Simon DAZE'
+        profile = 'https://www.isuresults.com/bios/isufs00098765.htm'
+        entry_html = (
+            '<html><h1>Ice Dance Entries</h1><table><tr>'
+            f'<td>4</td><td><a href="{profile}">{name}</a></td>'
+            '<td><img src="flags/BUL.gif" alt="BUL"></td>'
+            '</tr></table></html>'
+        )
+        result_html = (
+            '<html><h1>Ice Dance Result</h1><table>'
+            '<tr><th>Final not Reached</th></tr><tr>'
+            f'<td>29</td><td><a href="{profile}">{name}</a></td>'
+            '<td>BUL</td><td>47,57</td><td>29</td>'
+            '</tr></table></html>'
+        )
+        entry = parse_list(entry_html, discipline='Ice Dance', kind='entry',
+                           source_uri=url('Ice Dance', 'entry'), raw_sha='entry')
+        result = parse_list(result_html, discipline='Ice Dance', kind='result',
+                            source_uri=url('Ice Dance', 'result'), raw_sha='result')
+        self.assertEqual(len(entry), 1)
+        self.assertEqual(len(result), 1)
+        self.assertEqual(entry[0]['nation_as_published'], 'BUL')
+        self.assertEqual(result[0]['nation_as_published'], 'BUL')
+        self.assertEqual(result[0]['result_status'], 'FINAL_NOT_REACHED')
+        self.assertEqual(result[0]['short_segment_points_if_fnr'], '47.57')
+        linked, unmatched = link_entries_results(entry, result)
+        self.assertFalse(unmatched)
+        self.assertEqual(linked[0]['entry_result_link_status'],
+                         'PROFILE_MATCH_BOTH_OFFICIAL_PAGES')
+
     def test_published_entries_and_final_not_reached_remain_separate(self):
         entries = parse_fixture('Pair Skating', 'entry', 28)
         results = parse_fixture('Pair Skating', 'result', 28, 16)
