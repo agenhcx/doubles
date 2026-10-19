@@ -65,10 +65,12 @@ class Milan2018IdentityBridgeTests(unittest.TestCase):
         for i in range(497):
             self.hist.append(dict(pair_id=f'x{i}',discipline='Ice Dance',person_a_id=f'x_person_{i}_a',person_b_id=f'x_person_{i}_b',person_a_name=f'Foo{i} Pseudo',person_b_name=f'Bar{i} Pseudo'))
         self.hgroup=[]
+        eligible=[i for i in range(514) if self.hist[i]['discipline']=='Ice Dance'][:39]
+        extras=dict(zip(eligible,range(514,553)))
         for i in range(514):
             old=self.hist[i]
             orig=[old['pair_id']]
-            if i<39:orig.append(self.hist[514+i]['pair_id'])
+            if i in extras:orig.append(self.hist[extras[i]]['pair_id'])
             self.hgroup.append(dict(discipline=old['discipline'],projected_person_a_id=f'P{(i*2)%865}',projected_person_b_id=f'P{(i*2+1)%865}',original_pair_ids='; '.join(orig)))
         self.hpeople=[dict(projected_person_id=f'P{i}',date_of_birth='1990-01-01') for i in range(865)]
         self.mod=[]
@@ -136,6 +138,20 @@ class Milan2018IdentityBridgeTests(unittest.TestCase):
         save(self.old_events,[dict(event_id='2017-2018|wc2018|Pair Skating')])
         with self.assertRaisesRegex(ValueError,'already present'):
             self.run_audit()
+
+    def test_multiple_modern_identity_ids_never_auto_promoted(self):
+        initial=self.rows[0]
+        # Reuse one filler ranking row with the same official biography
+        # profile, but conflicting original IDs for both skaters.
+        filler=self.mod[40]
+        filler.update(discipline=initial['discipline'],
+            profile_url=initial['isu_profile_url'],
+            person_a_name=initial['person_a_as_published'],
+            person_b_name=initial['person_b_as_published'])
+        self.save_inputs()
+        summary=self.run_audit()
+        self.assertEqual(summary['modern_source_pair_link_status_counts']
+                         ['MULTIPLE_MODERN_CANONICAL_MEMBER_IDS_HOLD'],1)
 
     def test_missing_one_historic_lineage_group_rejected(self):
         self.hgroup[0]['original_pair_ids']='fake_pair'
