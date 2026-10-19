@@ -27,7 +27,7 @@ OUTPUT = ROOT / "output/frame/isu_wc2018_pilot_v1"
 EVENT_CODE = "wc2018"
 SEASON = "2017-2018"
 ALLOWED = {"results.isu.org", "www.isuresults.com"}
-COUNTRIES = frozenset("ARM AUS AUT AZE BEL BLR BRA CAN CHN CRO CZE DEN ESP EST FIN FRA GBR GEO GER GRE HKG HUN INA IND IRL ISL ISR ITA JPN KAZ KOR LAT LTU MEX NED NOR NZL POL PRK ROU RUS SUI SVK SWE TPE TUR UKR USA UZB".split())
+COUNTRIES = frozenset("ARM AUS AUT AZE BEL BLR BRA BUL CAN CHN CRO CZE DEN ESP EST FIN FRA GBR GEO GER GRE HKG HUN INA IND IRL ISL ISR ITA JPN KAZ KOR LAT LTU MEX NED NOR NZL POL PRK ROU RUS SUI SVK SWE TPE TUR UKR USA UZB".split())
 GAP_FIELDS = ["season", "event_code", "discipline", "official_entry_url", "official_published_entry_pairs"]
 ENTRY_FIELDS = [
     "event_id", "discipline", "entry_ordinal", "name_as_published",
