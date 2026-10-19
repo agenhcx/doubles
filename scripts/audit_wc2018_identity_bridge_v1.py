@@ -169,6 +169,8 @@ def audit(event_rows=EVENT_ROWS,event_manifest=EVENT_MANIFEST,inventory=PAGE_INV
         for pid in ids:
             if pid in pair_canonical or pid not in old_by_id:
                 raise ValueError('Original pair ID not uniquely represented in reviewed historical projection')
+            if old_by_id[pid]['discipline']!=g['discipline']:
+                raise ValueError('Reviewed historic pair would cross competition disciplines')
             pair_canonical[pid]=g
     if set(pair_canonical)!=set(old_by_id):
         raise ValueError('Review projection does not preserve all original historic pair IDs')
@@ -247,7 +249,9 @@ def audit(event_rows=EVENT_ROWS,event_manifest=EVENT_MANIFEST,inventory=PAGE_INV
         modern_union=modern_name_hits+modern_profile_hits
         ca={modern_idmap[(d,x['person_a_id'])] for x in modern_union}
         cb={modern_idmap[(d,x['person_b_id'])] for x in modern_union}
-        if exact_modern_prof:
+        if len(ca)>1 or len(cb)>1:
+            ms='MULTIPLE_MODERN_CANONICAL_MEMBER_IDS_HOLD'
+        elif exact_modern_prof:
             ms='SAME_OFFICIAL_PROFILE_AND_BOTH_NAMES_MODERN_ROSTER'
         elif modern_profile_hits:
             ms='SAME_PROFILE_DIFFERENT_MODERN_PUBLISHED_NAMES_REVIEW'
