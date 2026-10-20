@@ -1,0 +1,298 @@
+{
+  "stage": "HISTORICAL_PARTNER_TIMING_BATCH02_V8_SOURCE_LEDGER_NOT_FROZEN",
+  "review_date": "2026-10-20",
+  "application_status": "EVIDENCE_LEDGER_ONLY_NOT_APPLIED_TO_REGISTRIES",
+  "baseline": {
+    "file": "historical_pair_seasons_v6.csv",
+    "sha256_reported_by_prior_manifest": "dfad3b67b7b1c397ee5bb64f5d279043510ed28f44525b09e5a9a26304438fca",
+    "hash_independently_recomputed_this_turn": false,
+    "selected_pair_season_rows_reported": 1315,
+    "selected_pair_event_rows_reported": 3296,
+    "selected_event_backed_pair_keys_reported": 501
+  },
+  "selection": {
+    "rule": "Continue the prior discipline-specific order by registry person ID and chronological different-partner observed-season comparison; three comparisons per discipline, not three distinct people.",
+    "verification_mode": "Manually reconstructed from exact-ID file retrieval because the prior ZIP and container runtime could not be opened; original v7 contrast IDs and queue hashes were not revalidated.",
+    "comparison_count": 6,
+    "distinct_focal_person_ids": 5,
+    "explicit_new_pair_formation_statements_found": 4,
+    "new_pair_formation_time_unresolved": 2,
+    "additional_intervening_partner_cases": 1,
+    "source_work_selection_not_research_sample": true
+  },
+  "cases": [
+    {
+      "case_id": "V8_D04",
+      "discipline": "Ice Dance",
+      "person_id": "person_142b935fcddd2",
+      "person_name": "Justyna PLUTOWSKA",
+      "before": {
+        "partner_id": "person_8aadec53a9ba4",
+        "partner_name": "Peter GERBER",
+        "registry_pair_key": "registry_pair_837d6486efcff231ac62642c",
+        "last_selected_observed_season": "2013-2014"
+      },
+      "after": {
+        "partner_id": "person_c60fd5f24150c",
+        "partner_name": "Jeremie FLEMIN",
+        "registry_pair_key": "registry_pair_fa531aef6ccb20aecef0cb61",
+        "first_selected_observed_season": "2017-2018"
+      },
+      "new_pair_formation": {
+        "status": "EXPLICIT_PRIMARY_SOURCE_TIME",
+        "year": 2016,
+        "month": 5,
+        "day": null,
+        "season_text": null,
+        "precision": "MONTH",
+        "source_id": "S01",
+        "excerpt": "Plutowska/Flemin teamed up in May 2016."
+      },
+      "former_pair_end_time": null,
+      "former_pair_end_status": "NOT_ESTABLISHED_IN_REVIEWED_PRIMARY_SOURCES",
+      "direct_previous_to_new_transition_confirmed": null
+    },
+    {
+      "case_id": "V8_D05",
+      "discipline": "Ice Dance",
+      "person_id": "person_15f446828a13a",
+      "person_name": "Paul POIRIER",
+      "before": {
+        "partner_id": "person_68badf0392417",
+        "partner_name": "Vanessa CRONE",
+        "registry_pair_key": "registry_pair_b7f718bd67b8a627dc051df3",
+        "last_selected_observed_season": "2010-2011"
+      },
+      "after": {
+        "partner_id": "person_46b442e097843",
+        "partner_name": "Piper GILLES",
+        "registry_pair_key": "registry_pair_4a2f8dcfdf0c93c8e8ba7fcd",
+        "first_selected_observed_season": "2012-2013"
+      },
+      "new_pair_formation": {
+        "status": "EXPLICIT_PRIMARY_SOURCE_TIME",
+        "year": 2011,
+        "month": 7,
+        "day": null,
+        "season_text": null,
+        "precision": "MONTH",
+        "source_id": "S02",
+        "excerpt": "Poirier teamed up with Gilles in July 2011."
+      },
+      "former_pair_end_time": null,
+      "former_pair_end_status": "PRIMARY_ANNOUNCEMENT_NOT_RETRIEVED",
+      "direct_previous_to_new_transition_confirmed": null,
+      "source_context": "The Canadian Olympic Committee distinguishes formation in July 2011 from the pair's first national championships in January 2012 and its later international debut. Those are separate events, not alternative formation dates."
+    },
+    {
+      "case_id": "V8_D06",
+      "discipline": "Ice Dance",
+      "person_id": "person_1630bdc244c07",
+      "person_name": "Kristian RAND; Kristjan RAND",
+      "before": {
+        "partner_id": "person_aa2c4700d4c7d",
+        "partner_name": "Grethe GRUENBERG",
+        "registry_pair_key": "registry_pair_fc9e9256a2573c567f3a2e8c",
+        "last_selected_observed_season": "2006-2007"
+      },
+      "after": {
+        "partner_id": "person_306f803f630c4",
+        "partner_name": "Caitlin MALLORY",
+        "registry_pair_key": "registry_pair_5c4806bf3f7ddbaea5901780",
+        "first_selected_observed_season": "2008-2009"
+      },
+      "new_pair_formation": {
+        "status": "EXPLICIT_PRIMARY_SOURCE_TIME",
+        "year": 2008,
+        "month": null,
+        "day": null,
+        "season_text": "summer",
+        "precision": "YEAR_PLUS_SEASON_WORD",
+        "source_id": "S03",
+        "excerpt": "Mallory and Rand teamed up in summer 2008."
+      },
+      "former_pair_end_time": null,
+      "former_pair_end_status": "FORMER_PARTNER_RETIREMENT_MENTIONED_WITHOUT_DATE",
+      "direct_previous_to_new_transition_confirmed": null,
+      "source_context": "ISU says Rand moved to the USA to seek a partner after Gruenberg retired. No calendar date for that retirement is supplied; do not derive it from the new formation year or the page update date."
+    },
+    {
+      "case_id": "V8_P04",
+      "discipline": "Pair Skating",
+      "person_id": "person_0705a75b1ea5c",
+      "person_name": "Nathan BARTHOLOMAY",
+      "before": {
+        "partner_id": "person_85ee04ac4313b",
+        "partner_name": "Felicia ZHANG",
+        "registry_pair_key": "registry_pair_ef29e2b8b711f31fd1f2f05b",
+        "last_selected_observed_season": "2013-2014"
+      },
+      "after": {
+        "partner_id": "person_ab3dc51545e5e",
+        "partner_name": "Deanna STELLATO",
+        "registry_pair_key": "registry_pair_654771a4bb771ab234fa9ec2",
+        "first_selected_observed_season": "2017-2018"
+      },
+      "new_pair_formation": {
+        "status": "EXPLICIT_PRIMARY_SOURCE_TIME",
+        "year": 2016,
+        "month": 7,
+        "day": null,
+        "season_text": null,
+        "precision": "MONTH",
+        "source_id": "S04",
+        "corroborating_source_id": "S05",
+        "excerpt": "Teamed up in July 2016."
+      },
+      "former_pair_end_time": null,
+      "former_pair_end_status": "FORMER_PARTNER_RETIREMENT_TIME_REPORTED_SEPARATELY_NOT_CONVERTED_TO_EXACT_SPLIT_DATE",
+      "direct_previous_to_new_transition_confirmed": false,
+      "intervening_partner": {
+        "name_as_published": "Gretchen Donlan",
+        "registry_person_id": null,
+        "registry_pair_key": null,
+        "status": "PRIMARY_SOURCE_CONFIRMED_INTERMEDIATE_PARTNER_ABSENT_FROM_FOCAL_SELECTED_PAIR_SEASON_SEQUENCE",
+        "source_ids": ["S04", "S05"],
+        "published_partnership_year_range": "2014-16",
+        "formation_exact_date": null,
+        "end_time": {
+          "year": 2016,
+          "month": 3,
+          "day": null,
+          "precision": "MONTH",
+          "event_type": "INTERVENING_PARTNERSHIP_SPLIT",
+          "source_id": "S05",
+          "excerpt": "splitting in March of 2016"
+        },
+        "possible_existing_registry_only_pair_not_checked": true,
+        "new_identity_or_event_added": false
+      },
+      "additional_time_statement": {
+        "person": "Felicia Zhang",
+        "event_type": "RETIREMENT",
+        "source_id": "S05",
+        "excerpt": "Then in July, Zhang retired.",
+        "month": 7,
+        "year_from_article_context": 2014,
+        "year_explicit_in_same_sentence": false,
+        "normalized_partnership_end_date": null,
+        "note": "The surrounding narrative concerns Sochi 2014. Preserve the contextual year interpretation separately; do not encode retirement as an exact partnership-end day."
+      }
+    },
+    {
+      "case_id": "V8_P05",
+      "discipline": "Pair Skating",
+      "person_id": "person_091b337a56806",
+      "person_name": "Aritz MAESTU",
+      "before": {
+        "partner_id": "person_1662ec4706a97",
+        "partner_name": "Veronica GRIGORIEVA",
+        "registry_pair_key": "registry_pair_0532cc1a05f839784023475d",
+        "last_selected_observed_season": "2013-2014"
+      },
+      "after": {
+        "partner_id": "person_082971fe18b16",
+        "partner_name": "Marcelina LECH",
+        "registry_pair_key": "registry_pair_d2f77e6bd37b16c8703738c9",
+        "first_selected_observed_season": "2015-2016"
+      },
+      "new_pair_formation": {
+        "status": "NO_EXPLICIT_FORMATION_TIME_IN_REVIEWED_PRIMARY_SOURCES",
+        "year": null,
+        "month": null,
+        "day": null,
+        "season_text": null,
+        "precision": null,
+        "reviewed_source_ids": ["S06", "S07", "S08"]
+      },
+      "former_pair_end_time": null,
+      "former_pair_end_status": "NOT_ESTABLISHED_IN_REVIEWED_PRIMARY_SOURCES",
+      "direct_previous_to_new_transition_confirmed": null,
+      "additional_earlier_observation": {
+        "kind": "OFFICIAL_COMPETITION_RESULT_NOT_FORMATION_TIME",
+        "event_name": "Campeonato de Espana 2014",
+        "event_window_start": "2014-12-19",
+        "event_window_end": "2014-12-21",
+        "pair_as_published": "Marcelina LECH / Aritz MAESTU BABARRO",
+        "source_ids": ["S07", "S08"],
+        "pair_specific_competition_day": null,
+        "results_page_update_date": "2014-12-22",
+        "update_date_used_as_event_date": false,
+        "formation_date_imputed": false,
+        "added_to_selected_history_events": false
+      }
+    },
+    {
+      "case_id": "V8_P06",
+      "discipline": "Pair Skating",
+      "person_id": "person_091b337a56806",
+      "person_name": "Aritz MAESTU",
+      "before": {
+        "partner_id": "person_082971fe18b16",
+        "partner_name": "Marcelina LECH",
+        "registry_pair_key": "registry_pair_d2f77e6bd37b16c8703738c9",
+        "last_selected_observed_season": "2015-2016"
+      },
+      "after": {
+        "partner_id": "person_5b41a59666457",
+        "partner_name": "Laura BARQUERO",
+        "registry_pair_key": "registry_pair_cfa4c7735488d8694d16af6d",
+        "first_selected_observed_season": "2017-2018"
+      },
+      "new_pair_formation": {
+        "status": "NO_EXPLICIT_FORMATION_TIME_IN_REVIEWED_PRIMARY_SOURCES",
+        "year": null,
+        "month": null,
+        "day": null,
+        "season_text": null,
+        "precision": null,
+        "reviewed_source_ids": ["S09", "S10"]
+      },
+      "former_pair_end_time": null,
+      "former_pair_end_status": "NOT_ESTABLISHED_IN_REVIEWED_PRIMARY_SOURCES",
+      "direct_previous_to_new_transition_confirmed": null,
+      "unadjudicated_source_lead": {
+        "url": "https://www.olympics.com/es/noticias/laura-barquero-y-marco-zandron-5-cosas-que-saber-patinaje-artistico",
+        "status": "SEARCH_INDEX_LEAD_FULL_PAGE_FETCH_FAILED_502",
+        "note": "Indexed text mentions entering pairs in 2017 and Aritz Maestu. It was not promoted to a pair-formation date because the full passage was not retrieved and assessed."
+      }
+    }
+  ],
+  "sources": [
+    {"source_id": "S01", "publisher": "International Skating Union", "url": "https://www.isuresults.com/bios/isufs00101397.htm", "source_type": "RETROSPECTIVE_OFFICIAL_PAIR_BIOGRAPHY", "location": "Final biographical paragraph; Plutowska/Flemin formation sentence", "page_update_date": "2020-02-27"},
+    {"source_id": "S02", "publisher": "Canadian Olympic Committee", "url": "https://olympic.ca/team-canada/paul-poirier/", "source_type": "RETROSPECTIVE_OFFICIAL_ATHLETE_BIOGRAPHY", "location": "Biography paragraph beginning Poirier teamed up with Gilles", "page_update_date": null},
+    {"source_id": "S03", "publisher": "International Skating Union", "url": "https://www.isuresults.com/bios/isufs00011454.htm", "source_type": "RETROSPECTIVE_OFFICIAL_PAIR_BIOGRAPHY", "location": "Final paragraph on formation and former partner retirement", "page_update_date": "2010-07-24"},
+    {"source_id": "S04", "publisher": "U.S. Figure Skating", "url": "https://usfigureskating.org/sports/figure-skating/roster/-nbsp--deanna-stellato-and-nathan-bartholomay/57", "source_type": "OFFICIAL_2018_19_ATHLETE_ROSTER_PROFILE", "location": "SKATING NOTES: formation month and previous partnership year ranges", "page_update_date": null},
+    {"source_id": "S05", "publisher": "U.S. Figure Skating", "url": "https://usfigureskating.org/news/2018/11/15/figure-skating-nathan-bartholomay-found-the-right-girl-in-deanna-stellato.aspx", "source_type": "RETROSPECTIVE_FEDERATION_ATHLETE_INTERVIEW", "publication_date": "2018-11-15", "location": "Chronological account of Zhang retirement, Donlan partnership and March 2016 split, then Stellato formation"},
+    {"source_id": "S06", "publisher": "International Skating Union", "url": "https://www.isuresults.com/bios/isufs00054545.htm", "source_type": "OFFICIAL_PAIR_BIOGRAPHY_WITH_NO_EXPLICIT_FORMATION_DATE", "location": "Lech/Maestu identity and former-partner fields; no formation sentence found", "page_update_date": "2016-08-31"},
+    {"source_id": "S07", "publisher": "Real Federacion Espanola Deportes de Hielo", "url": "https://www.rfedh.es/wp-content/uploads/resultados-patinaje/CEsp_2014/CAT027RS.HTM", "source_type": "OFFICIAL_NATIONAL_COMPETITION_RESULT", "location": "Parejas Senior: Lech / Maestu Babarro result row", "page_update_date": "2014-12-22"},
+    {"source_id": "S08", "publisher": "Real Federacion Espanola Deportes de Hielo", "url": "https://www.rfedh.es/wp-content/uploads/resultados-patinaje/CEsp_2014/index.htm", "source_type": "OFFICIAL_EVENT_INDEX", "location": "Event heading: Granada, 19/12/2014 - 21/12/2014", "page_update_date": null},
+    {"source_id": "S09", "publisher": "International Skating Union", "url": "https://www.isuresults.com/bios/isufs00103015.htm", "source_type": "OFFICIAL_PAIR_BIOGRAPHY_WITH_NO_EXPLICIT_FORMATION_DATE", "location": "Barquero/Maestu profile: identities and competition history; no formation sentence found", "page_update_date": "2026-05-21"},
+    {"source_id": "S10", "publisher": "Real Federacion Espanola Deportes de Hielo", "url": "https://www.rfedh.es/patinaje-artistico-challenge-cup/", "source_type": "FEDERATION_COMPETITION_NEWS_NOT_FORMATION_ANNOUNCEMENT", "publication_date": "2018-02-22", "location": "Barquero/Maestu competition preview; not a statement of when their partnership began"}
+  ],
+  "verification": {
+    "basis": "MANUAL_FILE_ID_AND_OBSERVED_SEASON_RETRIEVAL_PLUS_PRIMARY_WEB_TEXT_REVIEW",
+    "code_execution_available": false,
+    "tests_executed": 0,
+    "raw_html_snapshots_saved": false,
+    "new_zip_generated": false,
+    "old_v7_zip_opened": false,
+    "exact_formation_days_filled": 0,
+    "unknown_dates_imputed": 0,
+    "original_registry_or_event_rows_modified": 0,
+    "global_identity_merges": 0,
+    "historical_event_rows_appended": 0
+  },
+  "limitations": [
+    "These six rows are observed-season comparison work items, not six independent people or six confirmed direct switches.",
+    "Aritz Maestu contributes two comparison rows; five distinct focal IDs are reviewed in this batch.",
+    "Formation, retirement, partnership termination, announcement, event observation and page-update dates are different event types.",
+    "Summer is preserved as a source word, with no invented month, day or hemisphere-specific interval.",
+    "The Bartholomay comparison has a source-confirmed intervening partner; its observed endpoints must not be modeled as one direct switch.",
+    "An earlier national competition is supplementary evidence, not an authorized expansion of the selected event frame.",
+    "No time found in these reviewed sources means missing evidence in this pass, not proof that no public source exists.",
+    "Official profiles can repeat a common historical source; multiple URLs are not necessarily independent corroboration.",
+    "No scripts were executed, raw HTML archived, global queues rewritten or cohort frozen in this runtime-failure session.",
+    "No BaZi features, scores, performance-conditioned sampling, inference tests or partnership-duration calculations."
+  ]
+}
